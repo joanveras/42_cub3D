@@ -1,33 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/26 15:01:17 by jveras            #+#    #+#             */
-/*   Updated: 2024/12/27 16:35:35 by jveras           ###   ########.fr       */
+/*   Created: 2023/10/17 11:12:37 by jveras2           #+#    #+#             */
+/*   Updated: 2024/12/27 16:25:50 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/cube3d.h"
+#include "../../includes/libft.h"
 
-int	main(int argc, char **argv)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	t_program	program;
+	unsigned char	*new_s1;
+	unsigned char	*new_s2;
 
-	if (argc == 1)
-		return (1);
-	x11_connect(&program);
-
-	program.map = open_map(argv[1]);
-
-	
-
-	mlx_key_hook(program.mlx_win, handle_key_inputs, &program);
-	mlx_hook(program.mlx_win, ON_DESTROY, 0L, safe_exit, &program);
-	
-	mlx_loop(program.mlx);
-
+	new_s1 = (unsigned char *) s1;
+	new_s2 = (unsigned char *) s2;
+	while ((*new_s1 || *new_s2) && n--)
+	{
+		if (*new_s1 != *new_s2)
+			return (*new_s1 - *new_s2);
+		new_s1++;
+		new_s2++;
+	}
 	return (0);
 }

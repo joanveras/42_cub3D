@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/26 15:01:17 by jveras            #+#    #+#             */
-/*   Updated: 2024/12/27 16:35:35 by jveras           ###   ########.fr       */
+/*   Created: 2023/10/17 09:09:49 by jveras2           #+#    #+#             */
+/*   Updated: 2024/12/27 16:25:50 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/cube3d.h"
+#include "../../includes/libft.h"
 
-int	main(int argc, char **argv)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	t_program	program;
+	size_t	c;
+	size_t	d;
 
-	if (argc == 1)
-		return (1);
-	x11_connect(&program);
-
-	program.map = open_map(argv[1]);
-
-	
-
-	mlx_key_hook(program.mlx_win, handle_key_inputs, &program);
-	mlx_hook(program.mlx_win, ON_DESTROY, 0L, safe_exit, &program);
-	
-	mlx_loop(program.mlx);
-
-	return (0);
+	if (dstsize <= ft_strlen(dst))
+		return (dstsize + ft_strlen(src));
+	c = ft_strlen(dst);
+	d = 0;
+	while (src[d] != '\0' && c + 1 < dstsize)
+	{
+		dst[c] = src[d];
+		c++;
+		d++;
+	}
+	dst[c] = '\0';
+	return (ft_strlen(dst) + ft_strlen(&src[d]));
 }

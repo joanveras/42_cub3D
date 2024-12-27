@@ -1,33 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/26 15:01:17 by jveras            #+#    #+#             */
-/*   Updated: 2024/12/27 16:35:35 by jveras           ###   ########.fr       */
+/*   Created: 2023/10/18 09:29:47 by jveras2           #+#    #+#             */
+/*   Updated: 2024/12/27 16:25:50 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/cube3d.h"
+#include "../../includes/libft.h"
 
-int	main(int argc, char **argv)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	t_program	program;
+	size_t	i;
+	size_t	j;
 
-	if (argc == 1)
-		return (1);
-	x11_connect(&program);
-
-	program.map = open_map(argv[1]);
-
-	
-
-	mlx_key_hook(program.mlx_win, handle_key_inputs, &program);
-	mlx_hook(program.mlx_win, ON_DESTROY, 0L, safe_exit, &program);
-	
-	mlx_loop(program.mlx);
-
-	return (0);
+	if (!*little)
+		return ((char *) big);
+	i = 0;
+	while (big[i])
+	{
+		j = 0;
+		if (big[i] == little[j])
+		{
+			while ((big[i + j] == little[j])
+				&& big[i + j] && ((i + j) < len))
+				j++;
+			if (!little[j])
+				return (((char *) big) + i);
+		}
+		i++;
+	}
+	return (NULL);
 }

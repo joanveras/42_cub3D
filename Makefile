@@ -2,6 +2,7 @@ NAME = cube3D.a
 
 
 SRCS =	$(wildcard sources/*.c) \
+		$(wildcard sources/utils/*.c) \
 		$(wildcard sources/get_next_line/*.c)
 
 
@@ -34,7 +35,7 @@ fclean: clean
 	@ $(RM) minilibx-linux
 
 
-re: fclean all
+re: fclean minilibx all
 
 
 minilibx:

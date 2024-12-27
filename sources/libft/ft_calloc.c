@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/26 15:01:17 by jveras            #+#    #+#             */
-/*   Updated: 2024/12/27 16:35:35 by jveras           ###   ########.fr       */
+/*   Created: 2023/10/23 11:07:58 by jveras2           #+#    #+#             */
+/*   Updated: 2024/12/27 16:25:50 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/cube3d.h"
+#include "../../includes/libft.h"
 
-int	main(int argc, char **argv)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	t_program	program;
+	void	*list;
+	size_t	total_size;
 
-	if (argc == 1)
-		return (1);
-	x11_connect(&program);
-
-	program.map = open_map(argv[1]);
-
-	
-
-	mlx_key_hook(program.mlx_win, handle_key_inputs, &program);
-	mlx_hook(program.mlx_win, ON_DESTROY, 0L, safe_exit, &program);
-	
-	mlx_loop(program.mlx);
-
-	return (0);
+	total_size = nmemb * size;
+	list = malloc(total_size);
+	if (list != NULL)
+		ft_memset(list, 0, total_size);
+	return (list);
 }

@@ -19,15 +19,18 @@ typedef enum e_window
 	WINDOW_HEIGHT = 720
 }	t_window;
 
-typedef struct program
+typedef struct s_program
 {
 	void	*mlx;
 	void	*mlx_win;
+	char	**map;
 }	t_program;
 
 void	x11_connect(t_program *program);
 
 int		safe_exit(t_program *program);
 int		handle_key_inputs(int keycode, t_program *program);
+
+char	**open_map(char *path);
 
 #endif

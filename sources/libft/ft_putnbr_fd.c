@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/26 15:01:17 by jveras            #+#    #+#             */
-/*   Updated: 2024/12/27 16:35:35 by jveras           ###   ########.fr       */
+/*   Created: 2023/10/25 09:57:33 by jveras2           #+#    #+#             */
+/*   Updated: 2024/12/27 16:25:50 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/cube3d.h"
+#include "../../includes/libft.h"
 
-int	main(int argc, char **argv)
+void	ft_putnbr_fd(int n, int fd)
 {
-	t_program	program;
-
-	if (argc == 1)
-		return (1);
-	x11_connect(&program);
-
-	program.map = open_map(argv[1]);
-
-	
-
-	mlx_key_hook(program.mlx_win, handle_key_inputs, &program);
-	mlx_hook(program.mlx_win, ON_DESTROY, 0L, safe_exit, &program);
-	
-	mlx_loop(program.mlx);
-
-	return (0);
+	if (n == -2147483648)
+		ft_putstr_fd("-2147483648", fd);
+	else if (n < 0)
+	{
+		ft_putchar_fd('-', fd);
+		ft_putnbr_fd(-n, fd);
+	}
+	else if (n >= 10)
+	{
+		ft_putnbr_fd(n / 10, fd);
+		ft_putchar_fd((n % 10) + '0', fd);
+	}
+	else if (n < 10)
+		ft_putchar_fd((n % 10) + '0', fd);
 }
