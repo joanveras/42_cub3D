@@ -3,6 +3,7 @@ NAME = cube3D.a
 
 SRCS =	$(wildcard sources/*.c) \
 		$(wildcard sources/utils/*.c) \
+		$(wildcard sources/libft/*.c) \
 		$(wildcard sources/get_next_line/*.c)
 
 
@@ -19,7 +20,7 @@ RM = rm -rf
 
 $(NAME): $(OBJS)
 	ar rc $(NAME) $(OBJS)
-	$(CC) -g main.c $(SRCS) -L minilibx-linux -lmlx_Linux -o cube3D -lX11 -lXext
+	$(CC) -g main.c $(SRCS) -L minilibx-linux -lmlx_Linux -o cube3D -lX11 -lXext -lm
 
 
 all: $(NAME)
