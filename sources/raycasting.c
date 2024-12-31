@@ -6,16 +6,18 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 18:26:48 by jveras            #+#    #+#             */
-/*   Updated: 2024/12/30 01:20:33 by jveras           ###   ########.fr       */
+/*   Updated: 2024/12/30 22:47:33 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/libft.h"
 #include "../includes/cube3d.h"
 
 int	raycasting(t_program *program)
 {
 	int		x;
+	int		side;
+	int		lineHeight;
+	double	wallX;
 
 	clear_image(&program->image, 0x000000);
 	
@@ -29,88 +31,25 @@ int	raycasting(t_program *program)
 		program->map.x = (int)program->player.x;
 		program->map.y = (int)program->player.y;
 
-		program->raycast.deltaDistX = fabs(1 / program->raycast.rayDirX);
-		program->raycast.deltaDistY = fabs(1 / program->raycast.rayDirY);
+		program->raycast.deltaDistX = sqrt(1 + pow(program->raycast.rayDirY, 2) / pow(program->raycast.rayDirX, 2));
+		program->raycast.deltaDistY = sqrt(1 + pow(program->raycast.rayDirX, 2) / pow(program->raycast.rayDirY, 2));
 
-		if (program->raycast.rayDirX < 0)
-		{
-			program->map.step.x = -1;
-			program->raycast.sideDistX = (program->player.x - program->map.x) * program->raycast.deltaDistX;
-		}
-		else
-		{
-			program->map.step.x = 1;
-			program->raycast.sideDistX = (program->map.x + 1.0 - program->player.x) * program->raycast.deltaDistX;
-		}
-		if (program->raycast.rayDirY < 0)
-		{
-			program->map.step.y = -1;
-			program->raycast.sideDistY = (program->player.y - program->map.y) * program->raycast.deltaDistY;
-		}
-		else
-		{
-			program->map.step.y = 1;
-			program->raycast.sideDistY = (program->map.y + 1.0 - program->player.y) * program->raycast.deltaDistY;
-		}
+		calc_step_and_initial_side_dist(program);
 
-		int side;
+		perform_dda(program, &side);
 
-		while (1)
-		{
-			if (program->raycast.sideDistX < program->raycast.sideDistY)
-			{
-				program->raycast.sideDistX += program->raycast.deltaDistX;
-				program->map.x += program->map.step.x;
-				side = 0;
-			}
-			else
-			{
-				program->raycast.sideDistY += program->raycast.deltaDistY;
-				program->map.y += program->map.step.y;
-				side = 1;
-			}
-			if ((program->map.map[program->map.x][program->map.y] - '0') > 0)
-				break ;
-		}
+		calc_dist_of_perpendicular_ray(program, side);
 
-		if (side == 0)
-			program->raycast.perpWallDist = (program->raycast.sideDistX - program->raycast.deltaDistX);
-		else
-			program->raycast.perpWallDist = (program->raycast.sideDistY - program->raycast.deltaDistY);
-
-		int lineHeight = (int)(WINDOW_HEIGHT / program->raycast.perpWallDist);
-
-		int pitch = 100;
+		lineHeight = (int)(WINDOW_HEIGHT / program->raycast.perpWallDist);
 		
-		int drawStart = -lineHeight / 2 + WINDOW_HEIGHT / 2 + pitch;
-		if (drawStart < 0)
-			drawStart = 0;
-		int drawEnd = lineHeight / 2 + WINDOW_HEIGHT / 2 + pitch;
-		if (drawEnd >= WINDOW_HEIGHT)
-			drawEnd = WINDOW_HEIGHT - 1;
-
-		double wallX;
-		if (side == 0)
-			wallX = program->player.y + program->raycast.perpWallDist * program->raycast.rayDirY;
-		else
-			wallX = program->player.x + program->raycast.perpWallDist * program->raycast.rayDirX;
-		wallX -= floor(wallX);
+		calc_where_the_wall_was_hit(program, side, &wallX);
 		
-		int texX = (int)(wallX * program->texture.width) % program->texture.width;
-
-		int y = drawStart;
-		while (y < drawEnd)
-		{
-			int texY = (int)((y - drawStart) * (double)program->texture.height / lineHeight);
-			int color = get_texel_color(&program->texture, texX, texY);
-			put_pixel(&program->image, x, y, color);
-			y++;
-		}
+		calc_vertical_line_and_transform_image(program, x, wallX, lineHeight);
 		
 		x++;
 	}
 	
-	mlx_put_image_to_window(program->mlx, program->mlx_win, program->image.img, 0, 0);
+	mlx_put_image_to_window(program->mlx, program->mlx_win, program->image.img_ptr, 0, 0);
 
 	return (0);
 }

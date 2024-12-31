@@ -14,7 +14,7 @@ typedef enum e_hook_events
 
 typedef struct s_img_data
 {
-	void	*img;
+	void	*img_ptr;
 	int		width;
 	int		height;
 	char	*data;
@@ -25,7 +25,7 @@ typedef struct s_img_data
 
 typedef struct s_texture_data
 {
-	void	*tex;
+	void	*tex_ptr;
 	int		width;
 	int		height;
 	char	*data;

@@ -6,7 +6,7 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 01:18:46 by jveras            #+#    #+#             */
-/*   Updated: 2024/12/30 01:19:05 by jveras           ###   ########.fr       */
+/*   Updated: 2024/12/30 20:59:26 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,18 @@
 
 void clear_image(t_img_data *img, int color)
 {
-	int x, y;
+	int	x;
+	int	y;
 
-	for (y = 0; y < WINDOW_HEIGHT; y++)
+	y = 0;
+	while (y < WINDOW_HEIGHT)
 	{
-		for (x = 0; x < WINDOW_WIDTH; x++)
+		x = 0;
+		while (x < WINDOW_WIDTH)
 		{
 			put_pixel(img, x, y, color);
+			x++;
 		}
+		y++;
 	}
 }

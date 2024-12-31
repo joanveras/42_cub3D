@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_texel_color.c                                  :+:      :+:    :+:   */
+/*   load_game_and_raycast_initial_info.c               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/30 01:17:31 by jveras            #+#    #+#             */
-/*   Updated: 2024/12/30 22:35:55 by jveras           ###   ########.fr       */
+/*   Created: 2024/12/30 20:55:26 by jveras            #+#    #+#             */
+/*   Updated: 2024/12/30 20:56:39 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/cube3d.h"
 
-int get_texel_color(t_texture_data *tex, int texPosX, int texPosY)
+void	load_game_and_raycast_initial_info(t_program *program)
 {
-	char *dst = tex->data + (texPosY * tex->size_line + texPosX * (tex->bpp / 8));
-	return *(unsigned int *)dst;
+	program->player.x = 19;
+	program->player.y = 20;
+	program->player.viewDirX = -1;
+	program->player.viewDirY = 0;
+	program->raycast.camera.planeX = 0;
+	program->raycast.camera.planeY = 0.66;
 }
