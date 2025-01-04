@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   load_img_and_texture_data.c                        :+:      :+:    :+:   */
+/*   load_img_and_wall_texture_data.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -13,15 +13,15 @@
 #include "../../includes/libft.h"
 #include "../../includes/cube3d.h"
 
-void	load_img_data(t_program *program)
+void	load_img_data(t_img_data *image)
 {
-	program->image.data = mlx_get_data_addr(
-		program->image.img_ptr,
-		&program->image.bpp,
-		&program->image.size_line,
-		&program->image.endian
+	image->data = mlx_get_data_addr(
+		image->img_ptr,
+		&image->bpp,
+		&image->size_line,
+		&image->endian
 	);
-	if (!program->image.data)
+	if (!image->data)
 	{
 		ft_putendl_fd(
 			"Error! Loading image data: load_img_data()", STDERR_FILENO);
@@ -29,29 +29,29 @@ void	load_img_data(t_program *program)
 	}
 }
 
-void	load_img(t_program *program)
+void	load_img(void *mlx, t_img_data *image, int width, int height)
 {
-	program->image.img_ptr = mlx_new_image(
-		program->mlx,
-		WINDOW_WIDTH,
-		WINDOW_HEIGHT
+	image->img_ptr = mlx_new_image(
+		mlx,
+		width,
+		height
 	);
-	if (!program->image.img_ptr)
+	if (!image->img_ptr)
 	{
-		ft_putendl_fd("Error! loading image: load_img()", STDERR_FILENO);
+		ft_putendl_fd("Error! creating image: load_img()", STDERR_FILENO);
 		exit(EXIT_FAILURE);
 	}
 }
 
-void	load_texture_data(t_program *program)
+void	load_texture_data(t_texture_data *texture)
 {
-	program->texture.data = mlx_get_data_addr(
-		program->texture.tex_ptr,
-		&program->texture.bpp,
-		&program->texture.size_line,
-		&program->texture.endian
+	texture->data = mlx_get_data_addr(
+		texture->tex_ptr,
+		&texture->bpp,
+		&texture->size_line,
+		&texture->endian
 	);
-	if (!program->texture.data)
+	if (!texture->data)
 	{
 		ft_putendl_fd(
 			"Error! loading texture data: load_texture_data()", STDERR_FILENO);
@@ -59,29 +59,18 @@ void	load_texture_data(t_program *program)
 	}
 }
 
-void	load_texture(t_program *program, char *path)
+void	load_texture(void *mlx, t_texture_data *texture,char *path)
 {
-	program->texture.tex_ptr = mlx_xpm_file_to_image(
-		program->mlx,
+	texture->tex_ptr = mlx_xpm_file_to_image(
+		mlx,
 		path,
-		&program->texture.width,
-		&program->texture.height
+		&texture->width,
+		&texture->height
 	);
-	if (!program->texture.tex_ptr)
+	if (!texture->tex_ptr)
 	{
 		ft_putendl_fd(
 			"Error! loading texture: load_texture()", STDERR_FILENO);
 		exit(EXIT_FAILURE);
 	}
-}
-
-void	load_all_images(t_program *program, char *path)
-{
-	load_img(program);
-	load_img_data(program);
-	if (!path)
-		load_texture(program, "assets/textures/redbrick.xpm");
-	else
-		load_texture(program, path);
-	load_texture_data(program);
 }

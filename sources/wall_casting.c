@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   raycasting.c                                       :+:      :+:    :+:   */
+/*   wall_casting.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 18:26:48 by jveras            #+#    #+#             */
-/*   Updated: 2024/12/30 22:47:33 by jveras           ###   ########.fr       */
+/*   Updated: 2025/01/03 23:09:53 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cube3d.h"
 
-int	raycasting(t_program *program)
+int	wall_casting(t_program *program)
 {
 	int		x;
 	int		side;
 	int		lineHeight;
 	double	wallX;
 
-	clear_image(&program->image, 0x000000);
+	floor_and_ceiling_casting(program);
 	
 	x = 0;
 	while (x < WINDOW_WIDTH)
@@ -49,7 +49,7 @@ int	raycasting(t_program *program)
 		x++;
 	}
 	
-	mlx_put_image_to_window(program->mlx, program->mlx_win, program->image.img_ptr, 0, 0);
+	mlx_put_image_to_window(program->mlx, program->mlx_win, program->floor_and_ceiling_img.img_ptr, 0, 0);
 
 	return (0);
 }

@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   load_game_and_raycast_initial_info.c               :+:      :+:    :+:   */
+/*   transform_image_ceiling_side.c                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/30 20:55:26 by jveras            #+#    #+#             */
-/*   Updated: 2025/01/03 09:51:13 by jveras           ###   ########.fr       */
+/*   Created: 2025/01/03 23:55:20 by jveras            #+#    #+#             */
+/*   Updated: 2025/01/04 00:02:38 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cube3d.h"
+#include "../../../includes/cube3d.h"
+#include "../../../includes/structs.h"
 
-void	load_game_and_raycast_initial_info(t_program *program)
+void	transform_image_ceiling_side(t_program *program, t_floor_and_ceiling_casting *fc, int x, int y)
 {
-	program->player.x = 19;
-	program->player.y = 20;
-	program->player.viewDirX = -1;
-	program->player.viewDirY = 0;
-	program->raycast.camera.planeX = 0;
-	program->raycast.camera.planeY = 0.66;
+	int color;
+
+	color = get_texel_color(&program->ceiling_texture, fc->tx, fc->ty);
+	color = (color >> 1) & 8355711;
+	put_pixel(&program->floor_and_ceiling_img, x, WINDOW_HEIGHT - y - 1, color);
 }

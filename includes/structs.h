@@ -42,6 +42,25 @@ typedef struct s_player
 	double	viewDirY;
 }	t_player;
 
+typedef struct s_floor_and_ceiling_casting
+{
+	int p;
+	int cellX;
+	int cellY;
+	int tx;
+	int ty;
+	float rayDirX0;
+	float rayDirY0;
+	float rayDirX1;
+	float rayDirY1;
+	float posZ;
+	float rowDistance;
+	float floorStepX;
+	float floorStepY;
+	float floorX;
+	float floorY;
+}	t_floor_and_ceiling_casting;
+
 typedef struct s_camera
 {
 	double	x;
@@ -79,8 +98,10 @@ typedef struct s_program
 {
 	void			*mlx;
 	void			*mlx_win;
-	t_img_data		image;
-	t_texture_data	texture;
+	t_texture_data	wall_texture;
+	t_img_data		floor_and_ceiling_img;
+	t_texture_data	floor_texture;
+	t_texture_data	ceiling_texture;
 	t_player		player;
 	t_raycasting	raycast;
 	t_map			map;

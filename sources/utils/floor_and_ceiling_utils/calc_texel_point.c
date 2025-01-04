@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   load_game_and_raycast_initial_info.c               :+:      :+:    :+:   */
+/*   calc_texel_point.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/30 20:55:26 by jveras            #+#    #+#             */
-/*   Updated: 2025/01/03 09:51:13 by jveras           ###   ########.fr       */
+/*   Created: 2025/01/03 23:38:24 by jveras            #+#    #+#             */
+/*   Updated: 2025/01/03 23:41:35 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cube3d.h"
+#include "../../../includes/cube3d.h"
+#include "../../../includes/structs.h"
 
-void	load_game_and_raycast_initial_info(t_program *program)
+void	calc_texel_point(t_floor_and_ceiling_casting *fc)
 {
-	program->player.x = 19;
-	program->player.y = 20;
-	program->player.viewDirX = -1;
-	program->player.viewDirY = 0;
-	program->raycast.camera.planeX = 0;
-	program->raycast.camera.planeY = 0.66;
+	fc->cellX = (int)fc->floorX;
+	fc->cellY = (int)fc->floorY;
+
+	fc->tx = (int)(textureWidth * (fc->floorX - fc->cellX)) & (textureWidth - 1);
+	fc->ty = (int)(textureHeight * (fc->floorY - fc->cellY)) & (textureHeight - 1);
 }
