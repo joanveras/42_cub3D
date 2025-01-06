@@ -6,7 +6,7 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 07:44:18 by jveras            #+#    #+#             */
-/*   Updated: 2025/01/03 10:39:34 by jveras           ###   ########.fr       */
+/*   Updated: 2025/01/05 09:39:08 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,4 @@ void	load_floor_and_ceiling_data(t_program *program)
 	load_img(program->mlx, &program->floor_and_ceiling_img, WINDOW_WIDTH, WINDOW_HEIGHT);
 	load_img_data(&program->floor_and_ceiling_img);
 	load_floor_data(program, "assets/textures/colorstone.xpm");
-	load_ceiling_data(program, "assets/textures/greystone.xpm");
 }

@@ -45,11 +45,11 @@ void	load_game_and_raycast_initial_info(t_program *program);
 void	load_texture(void *mlx, t_texture_data *texture,char *path);
 void	calc_dist_of_perpendicular_ray(t_program *program, int side);
 void	load_img(void *mlx, t_img_data *image, int width, int height);
+void	transform_image_ceiling_side(t_program *program, int x, int y);
 void	calc_where_the_wall_was_hit(t_program *program, int side, double *wallX);
 void	calc_row_distance(t_program *program, t_floor_and_ceiling_casting *fc, int y);
 void	transform_image_floor_side(t_program *program, t_floor_and_ceiling_casting *fc, int x, int y);
-void	transform_image_ceiling_side(t_program *program, t_floor_and_ceiling_casting *fc, int x, int y);
-void	calc_vertical_line_and_transform_image(t_program *program, int x, double wallX, int lineHeight);
+void	calc_vertical_line_and_transform_image(t_program *program, int x, double wallX, int lineHeight, int side);
 
 int		safe_exit(t_program *program);
 int		wall_casting(t_program *program);

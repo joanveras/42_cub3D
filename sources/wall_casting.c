@@ -6,7 +6,7 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 18:26:48 by jveras            #+#    #+#             */
-/*   Updated: 2025/01/03 23:09:53 by jveras           ###   ########.fr       */
+/*   Updated: 2025/01/05 11:17:38 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	wall_casting(t_program *program)
 		
 		calc_where_the_wall_was_hit(program, side, &wallX);
 		
-		calc_vertical_line_and_transform_image(program, x, wallX, lineHeight);
+		calc_vertical_line_and_transform_image(program, x, wallX, lineHeight, side);
 		
 		x++;
 	}

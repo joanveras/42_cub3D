@@ -6,7 +6,7 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 23:08:22 by jveras            #+#    #+#             */
-/*   Updated: 2025/01/04 00:03:18 by jveras           ###   ########.fr       */
+/*   Updated: 2025/01/04 10:27:30 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	floor_and_ceiling_casting(t_program *program)
 
 			transform_image_floor_side(program, &fc, x, y);
 
-			transform_image_ceiling_side(program, &fc, x, y);
+			transform_image_ceiling_side(program, x, y);
 
 			x++;
 		}
