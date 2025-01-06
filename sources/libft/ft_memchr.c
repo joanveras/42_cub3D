@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_key_inputs.c                                :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/26 16:30:17 by jveras            #+#    #+#             */
-/*   Updated: 2025/01/04 00:16:40 by jveras           ###   ########.fr       */
+/*   Created: 2023/10/17 12:14:55 by jveras2           #+#    #+#             */
+/*   Updated: 2024/12/27 16:25:50 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cube3d.h"
+#include "../../includes/libft.h"
 
-int	handle_key_inputs(int keycode, t_program *program)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	if (keycode == ESC)
-		safe_exit(program);
+	size_t	i;
+	char	*new_s;
 
-	w_conditions(program, keycode);
-	s_conditions(program, keycode);
-	d_conditions(program, keycode);
-	a_conditions(program, keycode);
-
-	return (0);
+	i = 0;
+	new_s = (char *) s;
+	while (n--)
+	{
+		if (new_s[i] == c)
+			return (&new_s[i]);
+		i++;
+	}
+	return (NULL);
 }

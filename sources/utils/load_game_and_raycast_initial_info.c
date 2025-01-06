@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_key_inputs.c                                :+:      :+:    :+:   */
+/*   load_game_and_raycast_initial_info.c               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/26 16:30:17 by jveras            #+#    #+#             */
-/*   Updated: 2025/01/04 00:16:40 by jveras           ###   ########.fr       */
+/*   Created: 2024/12/30 20:55:26 by jveras            #+#    #+#             */
+/*   Updated: 2025/01/04 10:41:50 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cube3d.h"
+#include "../../includes/cube3d.h"
 
-int	handle_key_inputs(int keycode, t_program *program)
+void	load_game_and_raycast_initial_info(t_program *program)
 {
-	if (keycode == ESC)
-		safe_exit(program);
-
-	w_conditions(program, keycode);
-	s_conditions(program, keycode);
-	d_conditions(program, keycode);
-	a_conditions(program, keycode);
-
-	return (0);
+	program->player.x = 19;
+	program->player.y = 20;
+	program->player.viewDirX = -1;
+	program->player.viewDirY = 0;
+	program->raycast.camera.planeX = 0;
+	program->raycast.camera.planeY = 0.66;
 }

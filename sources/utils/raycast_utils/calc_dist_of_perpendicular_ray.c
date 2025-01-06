@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_key_inputs.c                                :+:      :+:    :+:   */
+/*   calc_dist_of_perpendicular_ray.c                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/26 16:30:17 by jveras            #+#    #+#             */
-/*   Updated: 2025/01/04 00:16:40 by jveras           ###   ########.fr       */
+/*   Created: 2024/12/30 22:43:40 by jveras            #+#    #+#             */
+/*   Updated: 2025/01/04 10:27:55 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cube3d.h"
+#include "../../../includes/cube3d.h"
 
-int	handle_key_inputs(int keycode, t_program *program)
+void	calc_dist_of_perpendicular_ray(t_program *program, int side)
 {
-	if (keycode == ESC)
-		safe_exit(program);
-
-	w_conditions(program, keycode);
-	s_conditions(program, keycode);
-	d_conditions(program, keycode);
-	a_conditions(program, keycode);
-
-	return (0);
+	if (side == 0)
+		program->raycast.perpWallDist = (program->raycast.sideDistX - program->raycast.deltaDistX);
+	else
+		program->raycast.perpWallDist = (program->raycast.sideDistY - program->raycast.deltaDistY);
 }

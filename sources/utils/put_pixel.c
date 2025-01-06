@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_key_inputs.c                                :+:      :+:    :+:   */
+/*   put_pixel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/26 16:30:17 by jveras            #+#    #+#             */
-/*   Updated: 2025/01/04 00:16:40 by jveras           ###   ########.fr       */
+/*   Created: 2024/12/30 01:15:57 by jveras            #+#    #+#             */
+/*   Updated: 2024/12/30 01:16:34 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cube3d.h"
+#include "../../includes/cube3d.h"
 
-int	handle_key_inputs(int keycode, t_program *program)
+void put_pixel(t_img_data *img, int x, int y, int color)
 {
-	if (keycode == ESC)
-		safe_exit(program);
+	char *dst;
 
-	w_conditions(program, keycode);
-	s_conditions(program, keycode);
-	d_conditions(program, keycode);
-	a_conditions(program, keycode);
-
-	return (0);
+	dst = img->data + (y * img->size_line + x * (img->bpp / 8));
+	*(unsigned int *)dst = color;
 }

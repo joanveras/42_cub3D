@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_key_inputs.c                                :+:      :+:    :+:   */
+/*   transform_image_floor_side.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/26 16:30:17 by jveras            #+#    #+#             */
-/*   Updated: 2025/01/04 00:16:40 by jveras           ###   ########.fr       */
+/*   Created: 2025/01/03 23:49:45 by jveras            #+#    #+#             */
+/*   Updated: 2025/01/05 10:21:31 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cube3d.h"
+#include "../../../includes/cube3d.h"
+#include "../../../includes/structs.h"
 
-int	handle_key_inputs(int keycode, t_program *program)
+void	transform_image_floor_side(t_program *program, t_floor_and_ceiling_casting *fc, int x, int y)
 {
-	if (keycode == ESC)
-		safe_exit(program);
+	int color;
 
-	w_conditions(program, keycode);
-	s_conditions(program, keycode);
-	d_conditions(program, keycode);
-	a_conditions(program, keycode);
-
-	return (0);
+	color = get_texel_color(&program->floor_texture, fc->tx, fc->ty);
+	color = (color >> 1) & 8355711;
+	put_pixel(&program->floor_and_ceiling_img, x, y, color);
 }

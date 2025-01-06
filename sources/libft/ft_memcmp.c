@@ -1,26 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_key_inputs.c                                :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/26 16:30:17 by jveras            #+#    #+#             */
-/*   Updated: 2025/01/04 00:16:40 by jveras           ###   ########.fr       */
+/*   Created: 2023/10/17 15:37:22 by jveras2           #+#    #+#             */
+/*   Updated: 2024/12/27 16:25:50 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cube3d.h"
+#include "../../includes/libft.h"
 
-int	handle_key_inputs(int keycode, t_program *program)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	if (keycode == ESC)
-		safe_exit(program);
+	unsigned char	*new_s1;
+	unsigned char	*new_s2;
 
-	w_conditions(program, keycode);
-	s_conditions(program, keycode);
-	d_conditions(program, keycode);
-	a_conditions(program, keycode);
-
+	new_s1 = (unsigned char *) s1;
+	new_s2 = (unsigned char *) s2;
+	while (n--)
+	{
+		if (*new_s1 > *new_s2)
+			return (1);
+		else if (*new_s1 < *new_s2)
+			return (-1);
+		new_s1++;
+		new_s2++;
+	}
 	return (0);
 }

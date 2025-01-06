@@ -1,26 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_key_inputs.c                                :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/26 16:30:17 by jveras            #+#    #+#             */
-/*   Updated: 2025/01/04 00:16:40 by jveras           ###   ########.fr       */
+/*   Created: 2023/10/18 09:29:47 by jveras2           #+#    #+#             */
+/*   Updated: 2024/12/27 16:25:50 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cube3d.h"
+#include "../../includes/libft.h"
 
-int	handle_key_inputs(int keycode, t_program *program)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	if (keycode == ESC)
-		safe_exit(program);
+	size_t	i;
+	size_t	j;
 
-	w_conditions(program, keycode);
-	s_conditions(program, keycode);
-	d_conditions(program, keycode);
-	a_conditions(program, keycode);
-
-	return (0);
+	if (!*little)
+		return ((char *) big);
+	i = 0;
+	while (big[i])
+	{
+		j = 0;
+		if (big[i] == little[j])
+		{
+			while ((big[i + j] == little[j])
+				&& big[i + j] && ((i + j) < len))
+				j++;
+			if (!little[j])
+				return (((char *) big) + i);
+		}
+		i++;
+	}
+	return (NULL);
 }

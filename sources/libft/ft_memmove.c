@@ -1,26 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_key_inputs.c                                :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/26 16:30:17 by jveras            #+#    #+#             */
-/*   Updated: 2025/01/04 00:16:40 by jveras           ###   ########.fr       */
+/*   Created: 2023/10/16 15:11:28 by jveras2           #+#    #+#             */
+/*   Updated: 2024/12/27 16:25:50 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cube3d.h"
+#include "../../includes/libft.h"
 
-int	handle_key_inputs(int keycode, t_program *program)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	if (keycode == ESC)
-		safe_exit(program);
+	size_t	i;
+	char	*new_dest;
+	char	*new_src;
 
-	w_conditions(program, keycode);
-	s_conditions(program, keycode);
-	d_conditions(program, keycode);
-	a_conditions(program, keycode);
-
-	return (0);
+	if (!dest && !src)
+		return (NULL);
+	new_dest = dest;
+	new_src = (char *) src;
+	i = 0;
+	if (new_dest < new_src)
+	{
+		ft_memcpy(new_dest, new_src, n);
+	}
+	else
+	{
+		i = n - 1;
+		while (n--)
+		{
+			new_dest[i] = new_src[i];
+			i--;
+		}
+	}
+	return (new_dest);
 }

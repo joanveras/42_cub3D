@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_key_inputs.c                                :+:      :+:    :+:   */
+/*   transform_image_ceiling_side.c                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/26 16:30:17 by jveras            #+#    #+#             */
-/*   Updated: 2025/01/04 00:16:40 by jveras           ###   ########.fr       */
+/*   Created: 2025/01/03 23:55:20 by jveras            #+#    #+#             */
+/*   Updated: 2025/01/04 10:26:27 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cube3d.h"
+#include "../../../includes/cube3d.h"
+#include "../../../includes/structs.h"
 
-int	handle_key_inputs(int keycode, t_program *program)
+void	transform_image_ceiling_side(t_program *program, int x, int y)
 {
-	if (keycode == ESC)
-		safe_exit(program);
-
-	w_conditions(program, keycode);
-	s_conditions(program, keycode);
-	d_conditions(program, keycode);
-	a_conditions(program, keycode);
-
-	return (0);
+	int color;
+	
+	color = (173 << 16) | (216 << 8) | 230;
+	put_pixel(&program->floor_and_ceiling_img, x, WINDOW_HEIGHT - y - 1, color);
 }

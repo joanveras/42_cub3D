@@ -1,26 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_key_inputs.c                                :+:      :+:    :+:   */
+/*   load_wall_data.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/26 16:30:17 by jveras            #+#    #+#             */
-/*   Updated: 2025/01/04 00:16:40 by jveras           ###   ########.fr       */
+/*   Created: 2025/01/03 08:26:12 by jveras            #+#    #+#             */
+/*   Updated: 2025/01/03 09:26:54 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cube3d.h"
+#include "../../includes/cube3d.h"
+#include "../../includes/structs.h"
 
-int	handle_key_inputs(int keycode, t_program *program)
+void	load_wall_data(t_program *program, char *path)
 {
-	if (keycode == ESC)
-		safe_exit(program);
-
-	w_conditions(program, keycode);
-	s_conditions(program, keycode);
-	d_conditions(program, keycode);
-	a_conditions(program, keycode);
-
-	return (0);
+	load_texture(program->mlx, &program->wall_texture, path);
+	load_texture_data(&program->wall_texture);
 }

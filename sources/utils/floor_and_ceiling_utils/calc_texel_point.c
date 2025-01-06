@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   handle_key_inputs.c                                :+:      :+:    :+:   */
+/*   calc_texel_point.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/26 16:30:17 by jveras            #+#    #+#             */
-/*   Updated: 2025/01/04 00:16:40 by jveras           ###   ########.fr       */
+/*   Created: 2025/01/03 23:38:24 by jveras            #+#    #+#             */
+/*   Updated: 2025/01/03 23:41:35 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cube3d.h"
+#include "../../../includes/cube3d.h"
+#include "../../../includes/structs.h"
 
-int	handle_key_inputs(int keycode, t_program *program)
+void	calc_texel_point(t_floor_and_ceiling_casting *fc)
 {
-	if (keycode == ESC)
-		safe_exit(program);
+	fc->cellX = (int)fc->floorX;
+	fc->cellY = (int)fc->floorY;
 
-	w_conditions(program, keycode);
-	s_conditions(program, keycode);
-	d_conditions(program, keycode);
-	a_conditions(program, keycode);
-
-	return (0);
+	fc->tx = (int)(textureWidth * (fc->floorX - fc->cellX)) & (textureWidth - 1);
+	fc->ty = (int)(textureHeight * (fc->floorY - fc->cellY)) & (textureHeight - 1);
 }
