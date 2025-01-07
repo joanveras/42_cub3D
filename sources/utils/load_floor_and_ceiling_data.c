@@ -6,7 +6,7 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 07:44:18 by jveras            #+#    #+#             */
-/*   Updated: 2025/01/05 09:39:08 by jveras           ###   ########.fr       */
+/*   Updated: 2025/01/07 18:49:54 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,13 @@ static void	load_floor_data(t_program *program, char *path)
 	load_texture_data(&program->floor_texture);
 }
 
+/*
 static void	load_ceiling_data(t_program *program, char *path)
 {
 	load_texture(program->mlx, &program->ceiling_texture, path);
 	load_texture_data(&program->ceiling_texture);
 }
+*/
 
 void	load_floor_and_ceiling_data(t_program *program)
 {
