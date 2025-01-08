@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   transform_image_ceiling_side.c                     :+:      :+:    :+:   */
+/*   transform_ceiling.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/03 23:55:20 by jveras            #+#    #+#             */
-/*   Updated: 2025/01/04 10:26:27 by jveras           ###   ########.fr       */
+/*   Created: 2025/01/08 09:04:04 by jveras            #+#    #+#             */
+/*   Updated: 2025/01/08 09:23:21 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/cube3d.h"
-#include "../../../includes/structs.h"
+#include "../../includes/cube3d.h"
 
-void	transform_image_ceiling_side(t_program *program, int x, int y)
+void	transform_ceiling(t_img_data *img, int color)
 {
-	int color;
-	
-	color = (173 << 16) | (216 << 8) | 230;
-	put_pixel(&program->floor_and_ceiling_img, x, WINDOW_HEIGHT - y - 1, color);
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < WINDOW_HEIGHT / 2)
+	{
+		x = 0;
+		while (x < WINDOW_WIDTH)
+		{
+			put_pixel(img, x, y, color);
+			x++;
+		}
+		y++;
+	}
 }

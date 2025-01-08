@@ -6,7 +6,7 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 22:46:19 by jveras            #+#    #+#             */
-/*   Updated: 2025/01/05 10:24:03 by jveras           ###   ########.fr       */
+/*   Updated: 2025/01/08 09:32:14 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	calc_vertical_line_and_transform_image(t_program *program, int x, double wa
 		color = get_texel_color(&program->wall_texture, texPosX, calc_tex_pos_y(program, y, lineHeight));
 		if (side == 1)
 			color = (color >> 1) & 8355711;
-		put_pixel(&program->floor_and_ceiling_img, x, y, color);
+		put_pixel(&program->main_image, x, y, color);
 		y++;
 	}
 }
