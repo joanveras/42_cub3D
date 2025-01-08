@@ -6,7 +6,7 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 15:01:17 by jveras            #+#    #+#             */
-/*   Updated: 2025/01/08 09:29:52 by jveras           ###   ########.fr       */
+/*   Updated: 2025/01/08 11:02:02 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ int	main(int argc, char **argv)
 	load_img(program.mlx, &program.main_image, WINDOW_WIDTH, WINDOW_HEIGHT);
 	load_img_data(&program.main_image);
 
-	load_texture(program.mlx, &program.wall_texture, "assets/textures/redbrick.xpm");
-	load_texture_data(&program.wall_texture);
+	load_textures(&program);
 
 	load_game_and_raycast_initial_info(&program);
 	

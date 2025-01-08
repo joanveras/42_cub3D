@@ -22,6 +22,7 @@
 
 void	x11_connect(t_program *program);
 void	load_img_data(t_img_data *image);
+void	load_textures(t_program *program);
 void	perform_dda(t_program *program, int *side);
 void	load_texture_data(t_texture_data *texture);
 void	transform_floor(t_img_data *img, int color);
@@ -43,7 +44,7 @@ void	calc_vertical_line_and_transform_image(t_program *program,
 int		safe_exit(t_program *program);
 int		wall_casting(t_program *program);
 int		handle_key_inputs(int keycode, t_program *program);
-int		get_texel_color(t_texture_data *tex, int texPosX, int texPosY);
+int		get_texel_color(t_program *program, t_texture_data *tex,int texPosX, int texPosY);
 
 char	**open_map(char *path);
 

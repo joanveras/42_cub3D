@@ -79,7 +79,7 @@ typedef struct s_program
 {
 	void			*mlx;
 	void			*mlx_win;
-	t_texture_data	wall_texture;
+	t_texture_data	wall_texture[9];
 	t_img_data		main_image;
 	t_player		player;
 	t_raycasting	raycast;
