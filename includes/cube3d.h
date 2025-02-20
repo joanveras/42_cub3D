@@ -10,8 +10,8 @@
 
 # define ESC 65307
 
-# define WINDOW_WIDTH 1024
-# define WINDOW_HEIGHT 720
+# define WINDOW_WIDTH 800
+# define WINDOW_HEIGHT 600
 
 # define textureWidth 64
 # define textureHeight 64
@@ -23,19 +23,21 @@
 void	x11_connect(t_program *program);
 void	load_img_data(t_img_data *image);
 void	load_textures(t_program *program);
+void	left(t_program *program, int keycode);
+void	right(t_program *program, int keycode);
+void	foward(t_program *program, int keycode);
+void	backward(t_program *program, int keycode);
 void	perform_dda(t_program *program, int *side);
 void	load_texture_data(t_texture_data *texture);
 void	transform_floor(t_img_data *img, int color);
 void	transform_ceiling(t_img_data *img, int color);
-void	w_conditions(t_program *program, int keycode);
-void	s_conditions(t_program *program, int keycode);
-void	d_conditions(t_program *program, int keycode);
-void	a_conditions(t_program *program, int keycode);
 void	put_pixel(t_img_data *img, int x, int y, int color);
 void	calc_step_and_initial_side_dist(t_program *program);
 void	load_game_and_raycast_initial_info(t_program *program);
 void	load_texture(void *mlx, t_texture_data *texture,char *path);
+
 void	calc_dist_of_perpendicular_ray(t_program *program, int side);
+
 void	load_img(void *mlx, t_img_data *image, int width, int height);
 void	calc_where_the_wall_was_hit(t_program *program, int side, double *wallX);
 void	calc_vertical_line_and_transform_image(t_program *program,

@@ -5,7 +5,7 @@ SRCS =	$(wildcard sources/*.c) \
 		$(wildcard sources/get_next_line/*.c) \
 		$(wildcard sources/utils/*.c) \
 		$(wildcard sources/utils/floor_and_ceiling_utils/*.c) \
-		$(wildcard sources/utils/handle_keys_inputs_utils/*.c) \
+		$(wildcard sources/utils/input_keys/*.c) \
 		$(wildcard sources/utils/raycast_utils/*.c)
 
 OBJS = $(SRCS:.c=.o)
