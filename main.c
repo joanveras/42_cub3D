@@ -6,11 +6,10 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 15:01:17 by jveras            #+#    #+#             */
-/*   Updated: 2025/01/08 11:02:02 by jveras           ###   ########.fr       */
+/*   Updated: 2025/03/12 14:43:35 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "includes/libft.h"
 #include "includes/cube3d.h"
 
 int	main(int argc, char **argv)
@@ -24,6 +23,9 @@ int	main(int argc, char **argv)
 
 	program.map.map = open_map(argv[1]);
 
+	validate_map(&program);
+
+	/* */
 	load_img(program.mlx, &program.main_image, WINDOW_WIDTH, WINDOW_HEIGHT);
 	load_img_data(&program.main_image);
 
@@ -35,6 +37,7 @@ int	main(int argc, char **argv)
 	mlx_hook(program.mlx_win, ON_DESTROY, NoEventMask, safe_exit, &program);
 
 	mlx_loop_hook(program.mlx, wall_casting, &program);
+	/* */
 	
 	mlx_loop(program.mlx);
 

@@ -4,9 +4,10 @@ SRCS =	$(wildcard sources/*.c) \
 		$(wildcard sources/libft/*.c) \
 		$(wildcard sources/get_next_line/*.c) \
 		$(wildcard sources/utils/*.c) \
-		$(wildcard sources/utils/floor_and_ceiling_utils/*.c) \
+		$(wildcard sources/utils/helper/*.c) \
 		$(wildcard sources/utils/input_keys/*.c) \
-		$(wildcard sources/utils/raycast_utils/*.c)
+		$(wildcard sources/utils/map_validations/*.c) \
+		$(wildcard sources/utils/raycasting/*.c)
 
 OBJS = $(SRCS:.c=.o)
 
@@ -49,10 +50,9 @@ fclean: clean
 	@echo -e "${YELLOW}Cleaning all generated files...${NC}"
 	@$(RM) $(NAME)
 	@$(RM) cube3D
-	@$(RM) minilibx-linux
 	@echo -e "${GREEN}All generated files cleaned.${NC}"
 
-re: fclean minilibx all
+re: fclean all
 
 minilibx:
 	@echo -e "${YELLOW}Downloading and extracting minilibx...${NC}"

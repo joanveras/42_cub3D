@@ -1,6 +1,8 @@
 #ifndef STRUCTS_H
 # define STRUCTS_H
 
+# include <stdint.h>
+
 typedef enum e_hook_events
 {
 	ON_KEYDOWN = 2,
@@ -11,6 +13,20 @@ typedef enum e_hook_events
 	ON_EXPOSE = 12,
 	ON_DESTROY = 17
 }	t_hook_events;
+
+typedef struct s_floor_and_ceiling_colors
+{
+	uint64_t	floor_color;
+	uint64_t	ceiling_color;
+}	t_floor_and_ceiling_colors;
+
+typedef struct s_textures
+{
+	char	*west;
+	char	*east;
+	char	*north;
+	char	*south;
+}	t_textures;
 
 typedef struct s_img_data
 {
@@ -77,13 +93,16 @@ typedef struct s_map
 
 typedef struct s_program
 {
-	void			*mlx;
-	void			*mlx_win;
-	t_texture_data	wall_texture[9];
-	t_img_data		main_image;
-	t_player		player;
-	t_raycasting	raycast;
-	t_map			map;
+	void						*mlx;
+	void						*mlx_win;
+	int							texture_index;
+	t_floor_and_ceiling_colors	f_c_colors;
+	t_textures					textures;
+	t_texture_data				wall_texture[4];
+	t_img_data					main_image;
+	t_player					player;
+	t_raycasting				raycast;
+	t_map						map;
 }	t_program;
 
 #endif
