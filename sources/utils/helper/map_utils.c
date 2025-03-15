@@ -6,13 +6,13 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 15:16:41 by jveras            #+#    #+#             */
-/*   Updated: 2024/12/28 02:16:05 by jveras           ###   ########.fr       */
+/*   Updated: 2025/03/12 15:17:13 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/libft.h"
-#include "../../includes/cube3d.h"
-#include "../../includes/get_next_line.h"
+#include "../../../includes/libft.h"
+#include "../../../includes/cube3d.h"
+#include "../../../includes/get_next_line.h"
 
 static int	count_lines(char *path)
 {

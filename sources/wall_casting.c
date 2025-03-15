@@ -6,7 +6,7 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 18:26:48 by jveras            #+#    #+#             */
-/*   Updated: 2025/01/05 11:17:38 by jveras           ###   ########.fr       */
+/*   Updated: 2025/03/12 15:28:08 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ int	wall_casting(t_program *program)
 	int		lineHeight;
 	double	wallX;
 
-	floor_and_ceiling_casting(program);
-	
+	transform_c_f(program);
+
 	x = 0;
 	while (x < WINDOW_WIDTH)
 	{
@@ -48,8 +48,8 @@ int	wall_casting(t_program *program)
 		
 		x++;
 	}
-	
-	mlx_put_image_to_window(program->mlx, program->mlx_win, program->floor_and_ceiling_img.img_ptr, 0, 0);
+
+	mlx_put_image_to_window(program->mlx, program->mlx_win, program->main_image.img_ptr, 0, 0);
 
 	return (0);
 }

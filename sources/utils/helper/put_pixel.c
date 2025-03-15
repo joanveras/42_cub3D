@@ -1,19 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_texel_color.c                                  :+:      :+:    :+:   */
+/*   put_pixel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/30 01:17:31 by jveras            #+#    #+#             */
-/*   Updated: 2024/12/30 22:35:55 by jveras           ###   ########.fr       */
+/*   Created: 2024/12/30 01:15:57 by jveras            #+#    #+#             */
+/*   Updated: 2025/03/12 15:17:20 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cube3d.h"
+#include "../../../includes/cube3d.h"
 
-int get_texel_color(t_texture_data *tex, int texPosX, int texPosY)
+void put_pixel(t_img_data *img, int x, int y, int color)
 {
-	char *dst = tex->data + (texPosY * tex->size_line + texPosX * (tex->bpp / 8));
-	return *(unsigned int *)dst;
+	char *dst;
+
+	dst = img->data + (y * img->size_line + x * (img->bpp / 8));
+	*(unsigned int *)dst = color;
 }

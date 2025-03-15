@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   load_game_and_raycast_initial_info.c               :+:      :+:    :+:   */
+/*   is_a_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/30 20:55:26 by jveras            #+#    #+#             */
-/*   Updated: 2025/01/04 10:41:50 by jveras           ###   ########.fr       */
+/*   Created: 2025/03/03 17:41:51 by jveras            #+#    #+#             */
+/*   Updated: 2025/03/06 14:06:57 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cube3d.h"
+#include "../../../includes/libft.h"
+#include "../../../includes/cube3d.h"
 
-void	load_game_and_raycast_initial_info(t_program *program)
+void	is_a_file(char *path)
 {
-	program->player.x = 19;
-	program->player.y = 20;
-	program->player.viewDirX = -1;
-	program->player.viewDirY = 0;
-	program->raycast.camera.planeX = 0;
-	program->raycast.camera.planeY = 0.66;
+	int	fd;
+
+	path = ft_strtrim(path, " \t\n");
+
+	fd = open(path, O_RDONLY);
+	if (fd < 0)
+	{
+		free(path);
+		error_message(INVALID_PATH);
+	}
+	free(path);
+
+	close(fd);
 }

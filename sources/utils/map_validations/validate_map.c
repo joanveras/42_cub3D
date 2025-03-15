@@ -1,25 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   s_conditions.c                                     :+:      :+:    :+:   */
+/*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/04 00:08:34 by jveras            #+#    #+#             */
-/*   Updated: 2025/01/04 00:09:12 by jveras           ###   ########.fr       */
+/*   Created: 2025/03/03 15:53:34 by jveras            #+#    #+#             */
+/*   Updated: 2025/03/12 15:02:16 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../../includes/libft.h"
 #include "../../../includes/cube3d.h"
 #include "../../../includes/structs.h"
 
-void	s_conditions(t_program *program, int keycode)
+void	validate_map(t_program *program)
 {
-	if (keycode == 's' || keycode == 'S')
-	{
-		if (program->map.map[(int)(program->player.x - program->player.viewDirX * MOVE_SPEED)][(int)program->player.y] == '0')
-			program->player.x -= program->player.viewDirX * MOVE_SPEED;
-		if (program->map.map[(int)program->player.x][(int)(program->player.y - program->player.viewDirY * MOVE_SPEED)] == '0')
-			program->player.y -= program->player.viewDirY * MOVE_SPEED;
-	}
+
+	int		i;
+	int		*tmp;
+	char	*str;
+	
+	i = 0;
+	check_directions(program, &i);
+
+	tmp = check_colors(program->map.map, &i);
+	program->f_c_colors.floor_color = rgb_to_int(tmp);
+	// free tmp
+
+	tmp = check_colors(program->map.map, &i);
+	program->f_c_colors.ceiling_color = rgb_to_int(tmp);
+	// free tmp
+
+	printf("\n");
+	printf("%d\n", i + 1);
+	printf("%s\n", program->map.map[i]);
+
+	// ...
+
 }

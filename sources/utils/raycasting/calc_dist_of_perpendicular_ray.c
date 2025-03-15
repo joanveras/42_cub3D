@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   transform_image_ceiling_side.c                     :+:      :+:    :+:   */
+/*   calc_dist_of_perpendicular_ray.c                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/03 23:55:20 by jveras            #+#    #+#             */
-/*   Updated: 2025/01/04 10:26:27 by jveras           ###   ########.fr       */
+/*   Created: 2024/12/30 22:43:40 by jveras            #+#    #+#             */
+/*   Updated: 2025/03/01 02:20:02 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/cube3d.h"
-#include "../../../includes/structs.h"
 
-void	transform_image_ceiling_side(t_program *program, int x, int y)
+void	calc_dist_of_perpendicular_ray(t_program *program, int side)
 {
-	int color;
-	
-	color = (173 << 16) | (216 << 8) | 230;
-	put_pixel(&program->floor_and_ceiling_img, x, WINDOW_HEIGHT - y - 1, color);
+	if (side == 0)
+		program->raycast.perpWallDist = (program->raycast.sideDistX - program->raycast.deltaDistX);
+	else
+		program->raycast.perpWallDist = (program->raycast.sideDistY - program->raycast.deltaDistY);
 }

@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   load_wall_data.c                                   :+:      :+:    :+:   */
+/*   load_game_and_raycast_initial_info.c               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/03 08:26:12 by jveras            #+#    #+#             */
-/*   Updated: 2025/01/03 09:26:54 by jveras           ###   ########.fr       */
+/*   Created: 2024/12/30 20:55:26 by jveras            #+#    #+#             */
+/*   Updated: 2025/03/12 15:16:16 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/cube3d.h"
-#include "../../includes/structs.h"
+#include "../../../includes/cube3d.h"
 
-void	load_wall_data(t_program *program, char *path)
+void	load_game_and_raycast_initial_info(t_program *program)
 {
-	load_texture(program->mlx, &program->wall_texture, path);
-	load_texture_data(&program->wall_texture);
+	program->player.x = 19;
+	program->player.y = 20;
+	program->player.viewDirX = -1;
+	program->player.viewDirY = 0;
+	program->raycast.camera.planeX = 0;
+	program->raycast.camera.planeY = 0.66;
 }

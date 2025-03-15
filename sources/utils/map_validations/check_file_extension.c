@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   calc_texel_point.c                                 :+:      :+:    :+:   */
+/*   check_file_extension.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/03 23:38:24 by jveras            #+#    #+#             */
-/*   Updated: 2025/01/03 23:41:35 by jveras           ###   ########.fr       */
+/*   Created: 2025/03/03 17:46:57 by jveras            #+#    #+#             */
+/*   Updated: 2025/03/06 17:57:59 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../../includes/libft.h"
 #include "../../../includes/cube3d.h"
-#include "../../../includes/structs.h"
 
-void	calc_texel_point(t_floor_and_ceiling_casting *fc)
+void	check_file_extension( char *line )
 {
-	fc->cellX = (int)fc->floorX;
-	fc->cellY = (int)fc->floorY;
+	char	*file_extension;
 
-	fc->tx = (int)(textureWidth * (fc->floorX - fc->cellX)) & (textureWidth - 1);
-	fc->ty = (int)(textureHeight * (fc->floorY - fc->cellY)) & (textureHeight - 1);
+	if (!line)
+		error_message(INVALID_PATH);
+
+	file_extension = ft_strtrim(ft_strrchr(line, '.'), " \t");
+
+	if (!ft_strncmp(file_extension, ".xpm", ft_strlen(file_extension)));
+		return ;
+
+	free(file_extension);
+
+	error_message(INVALID_PATH);
 }
