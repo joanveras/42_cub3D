@@ -22,7 +22,7 @@ void	check_file_extension( char *line )
 
 	file_extension = ft_strtrim(ft_strrchr(line, '.'), " \t");
 
-	if (!ft_strncmp(file_extension, ".xpm", ft_strlen(file_extension)));
+	if (!ft_strncmp(file_extension, ".xpm", ft_strlen(file_extension)))
 		return ;
 
 	free(file_extension);
