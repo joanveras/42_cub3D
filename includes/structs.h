@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcribe <marcibe@student.42.rio>          +#+  +:+       +#+        */
+/*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:58:30 by marcribe          #+#    #+#             */
-/*   Updated: 2025/01/16 18:01:49 by marcribe         ###   ########.fr       */
+/*   Updated: 2025/03/22 15:37:34 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ typedef struct s_player
 
 typedef struct s_camera
 {
-	double	x;
 	double	planeX;
 	double	planeY;
 }	t_camera;
