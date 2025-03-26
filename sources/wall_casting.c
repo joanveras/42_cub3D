@@ -6,7 +6,7 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 18:26:48 by jveras            #+#    #+#             */
-/*   Updated: 2025/03/12 15:28:08 by jveras           ###   ########.fr       */
+/*   Updated: 2025/03/22 15:37:55 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,14 @@ int	wall_casting(t_program *program)
 	x = 0;
 	while (x < WINDOW_WIDTH)
 	{
-		program->raycast.camera.x = 2 * x / (double)WINDOW_WIDTH - 1;
-		program->raycast.rayDirX = program->player.viewDirX + program->raycast.camera.planeX * program->raycast.camera.x;
-		program->raycast.rayDirY = program->player.viewDirY + program->raycast.camera.planeY * program->raycast.camera.x;
+		program->raycast.rayDirX = program->player.viewDirX + program->raycast.camera.planeX * (2 * x / (double)WINDOW_WIDTH - 1);
+		program->raycast.rayDirY = program->player.viewDirY + program->raycast.camera.planeY * (2 * x / (double)WINDOW_WIDTH - 1);
 
 		program->map.x = (int)program->player.x;
 		program->map.y = (int)program->player.y;
 
-		program->raycast.deltaDistX = sqrt(1 + pow(program->raycast.rayDirY, 2) / pow(program->raycast.rayDirX, 2));
-		program->raycast.deltaDistY = sqrt(1 + pow(program->raycast.rayDirX, 2) / pow(program->raycast.rayDirY, 2));
+		program->raycast.deltaDistX = fabs(1 / program->raycast.rayDirX);
+		program->raycast.deltaDistY = fabs(1 / program->raycast.rayDirY);
 
 		calc_step_and_initial_side_dist(program);
 

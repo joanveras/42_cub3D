@@ -6,7 +6,7 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 22:46:19 by jveras            #+#    #+#             */
-/*   Updated: 2025/01/08 10:24:33 by jveras           ###   ########.fr       */
+/*   Updated: 2025/03/22 16:10:13 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,13 @@ static int		calc_draw_end(int lineHeight)
 
 static int	calc_tex_pos_y(t_program *program, int y, int lineHeight)
 {
+	int	d;
 	int	texPosY;
 
-	texPosY = (int)((y - calc_draw_start(lineHeight)) * (double)textureHeight / lineHeight);
+	d = y * 256 - WINDOW_HEIGHT * 128 + lineHeight * 128;
+
+	texPosY = ((d * textureHeight) / lineHeight) / 256;
+
 	return (texPosY);
 }
 
@@ -48,7 +52,7 @@ void	calc_vertical_line_and_transform_image(t_program *program, int x, double wa
 	int	color;
 
 	drawEnd = calc_draw_end(lineHeight);
-	
+
 	texPosX = (int)(wallX * textureWidth) % textureWidth;
 
 	y = calc_draw_start(lineHeight);
