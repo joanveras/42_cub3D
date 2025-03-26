@@ -6,14 +6,14 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 17:41:51 by jveras            #+#    #+#             */
-/*   Updated: 2025/03/06 14:06:57 by jveras           ###   ########.fr       */
+/*   Updated: 2025/03/26 19:04:12 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/libft.h"
 #include "../../../includes/cube3d.h"
 
-void	is_a_file(char *path)
+void	is_a_file(t_program *program, char *path)
 {
 	int	fd;
 
@@ -23,7 +23,7 @@ void	is_a_file(char *path)
 	if (fd < 0)
 	{
 		free(path);
-		error_message(INVALID_PATH);
+		error_message(program, INVALID_PATH);
 	}
 	free(path);
 
