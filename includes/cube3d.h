@@ -6,7 +6,7 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 19:51:52 by jveras            #+#    #+#             */
-/*   Updated: 2025/03/26 19:20:20 by jveras           ###   ########.fr       */
+/*   Updated: 2025/04/19 22:39:50 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,16 @@
 /*
 	File validations
 */
-void	validate_map(t_program *program);
+void	validate_file(t_program *program);
 void	is_a_file(t_program *program, char *path);
-void	check_directions( t_program *program, int *i );
+void	check_first_info( t_program *program, int *i );
 void	check_file_extension( t_program *program, char *line );
 void	error_message( t_program *program, const char *message );
 void	check_path( t_program *program, char c1, char c2, char *line );
 void	check_abbrev( t_program *program, char *line, int *dir_counter );
 
 int		rgb_to_int(int *nums);
-int		*check_colors(t_program *program, char **map, int *i);
+int		*check_colors(t_program *program, char **map, int i);
 
 
 /*

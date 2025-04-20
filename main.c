@@ -23,7 +23,7 @@ int	main(int argc, char **argv)
 
 	program.map.map = open_map(argv[1]);
 
-	validate_map(&program);
+	validate_file(&program);
 
 	/* */
 	load_img(program.mlx, &program.main_image, WINDOW_WIDTH, WINDOW_HEIGHT);
