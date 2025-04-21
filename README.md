@@ -7,16 +7,16 @@ A 3D rendering project using raycasting, inspired by the classic game Wolfenstei
 ```
 .
 ├── sources/
-│   ├── get_next_line/    # Line reading utility
-│   ├── libft/            # Custom C library
-│   ├── utils/            # Utility functions
-│   ├── wall_casting.c    # Raycasting implementation
-│   ├── safe_exit.c       # Cleanup and error handling
-│   ├── handle_key_inputs.c # Keyboard input handling
-│   └── x11_connect.c     # X11 window management
-├── includes/             # Header files
-├── maps/                 # Map files (*.cub)
-└── textures/             # Wall textures
+│   ├── get_next_line/       # Line reading utility
+│   ├── libft/               # Custom C library
+│   ├── utils/               # Utility functions
+│   ├── wall_casting.c       # Raycasting implementation
+│   ├── safe_exit.c          # Cleanup and error handling
+│   ├── handle_key_inputs.c  # Keyboard input handling
+│   └── x11_connect.c        # X11 window management
+├── includes/                # Header files
+├── maps/                    # Map files (*.cub)
+└── textures/                # Wall textures
 ```
 
 ## Requirements
@@ -28,7 +28,7 @@ A 3D rendering project using raycasting, inspired by the classic game Wolfenstei
 ## Building
 
 ```bash
-make
+make minilibx && make && make clean
 ```
 
 ## Running
@@ -52,23 +52,24 @@ NO textures/north.xpm    # North wall texture
 SO textures/south.xpm    # South wall texture
 WE textures/west.xpm     # West wall texture
 EA textures/east.xpm     # East wall texture
+
 F 220,100,0              # Floor color (RGB)
 C 225,30,0               # Ceiling color (RGB)
 
-1111111111111111111111
-1000000000110000000001
-1011000001110000000001
-1001000000000000000001
-1111111110110000011101
-1000000000110000011101
-1111011111111101110001
-1111011111111101110001
-1100000011010101110001
-1000000000000000110001
-1000000000000000110001
-1100000111010101111101
-11110111 1110101 1011
-11111111 1111111 1111
+        1111111111111111111111111
+        1000000000110000000000001
+        1011000001110000000000001
+        1001000000000000000000001
+111111111011000001110000000000001
+100000000011000001110111111111111
+11110111111111011100000010001
+11110111111111011101010010001
+11000000110101011100000010001
+10000000000000001100000010001
+10000000000000001101010010001
+11000001110101011111011110N0111
+11110111 1110101 101111010001
+11111111 1111111 111111111111
 ```
 
 - 1: Wall
