@@ -6,7 +6,7 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:58:30 by marcribe          #+#    #+#             */
-/*   Updated: 2025/03/22 15:37:34 by jveras           ###   ########.fr       */
+/*   Updated: 2025/04/21 16:12:03 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ typedef struct s_step
 
 typedef struct s_map
 {
+	char	**whole_file;
 	char	**map;
 	int		x;
 	int		y;
