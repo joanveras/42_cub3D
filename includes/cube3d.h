@@ -6,7 +6,7 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 19:51:52 by jveras            #+#    #+#             */
-/*   Updated: 2025/04/21 04:41:18 by jveras           ###   ########.fr       */
+/*   Updated: 2025/04/21 16:41:50 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@
 # define TEXTURE_SOUTH 3
 
 # define INVALID_PATH "Invalid Texture path\n"
-# define INVALID_FORMAT "Invalid Color format\n"
+# define INVALID_COLOR_FORMAT "Invalid Color format\n"
 
 
 /*
@@ -87,10 +87,11 @@ int		wall_casting(t_program *program);
 /*
 	Helper functions
 */
-void	free_map(t_map *map);
+void	free_file(t_map *map);
 void	load_img_data(t_img_data *image);
 void	load_textures(t_program *program);
 void	transform_c_f(t_program *program);
+void	free_textures_paths(t_program *program);
 void	load_texture_data(t_texture_data *texture);
 void	put_pixel(t_img_data *img, int x, int y, int color);
 void	load_texture(void *mlx, t_texture_data *texture,char *path);
@@ -104,6 +105,6 @@ void	x11_connect(t_program *program);
 
 int		safe_exit(t_program *program);
 
-char	**open_map(char *path);
+char	**open_file(char *path);
 
 #endif

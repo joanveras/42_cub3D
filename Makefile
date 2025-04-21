@@ -32,7 +32,7 @@ $(NAME): $(OBJS)
 	@echo -e "${BLUE}Creating archive $(NAME)...${NC}"
 	@ar rc $(NAME) $(OBJS)
 	@echo -e "${BLUE}Compiling executable cube3D...${NC}"
-	@$(CC) -fsanitize=address -g main.c $(SRCS) -L minilibx-linux -lmlx_Linux -o cube3D -lX11 -lXext -lm
+	@$(CC) -g main.c $(SRCS) -L minilibx-linux -lmlx_Linux -o cube3D -lX11 -lXext -lm
 	@echo -e "${GREEN}Compilation finished.${NC}"
 
 %.o: %.c

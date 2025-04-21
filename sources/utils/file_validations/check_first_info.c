@@ -6,7 +6,7 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 18:15:23 by jveras            #+#    #+#             */
-/*   Updated: 2025/04/19 23:59:37 by jveras           ###   ########.fr       */
+/*   Updated: 2025/04/21 16:12:47 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,14 @@ static int	is_rgb(t_program *program, char *line, int line_index)
 		return (0);
 	if (line[i] == 'F' && line[i + 1] == ' ')
 	{
-		tmp = check_colors(program, program->map.map, line_index);
+		tmp = check_colors(program, program->map.whole_file, line_index);
 		program->f_c_colors.floor_color = rgb_to_int(tmp);
 		free_tmp(tmp);
 		return (1);
 	}
 	else if (line[i] == 'C' && line[i + 1] == ' ')
 	{
-		tmp = check_colors(program, program->map.map, line_index);
+		tmp = check_colors(program, program->map.whole_file, line_index);
 		program->f_c_colors.ceiling_color = rgb_to_int(tmp);
 		free_tmp(tmp);
 		return (1);
@@ -92,14 +92,14 @@ void	check_first_info( t_program *program, int *i )
 	program->f_c_colors.floor_color = 0;
 	program->f_c_colors.ceiling_color = 0;
 	j = 0;
-	while (program->map.map[j] && !begin_map_info(program->map.map[j]))
+	while (program->map.whole_file[j] && !begin_map_info(program->map.whole_file[j]))
 	{
-		if (is_rgb(program, program->map.map[j], j))
+		if (is_rgb(program, program->map.whole_file[j], j))
 		{
 			j++;
 			continue;
 		}
-		check_abbrev(program, program->map.map[j], &dir_counter);
+		check_abbrev(program, program->map.whole_file[j], &dir_counter);
 		j++;
 	}
 	missing_info(program, dir_counter);

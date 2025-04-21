@@ -6,7 +6,7 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 13:32:08 by jveras            #+#    #+#             */
-/*   Updated: 2025/04/20 00:14:27 by jveras           ###   ########.fr       */
+/*   Updated: 2025/04/21 16:37:37 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void remain_something(t_program *program,
 		free(str);
 		free(tmp);
 		free(line);
-		error_message(program, INVALID_FORMAT);
+		error_message(program, INVALID_COLOR_FORMAT);
 	}
 	free(str);
 	free(line);
@@ -51,7 +51,7 @@ static int	is_next_char_a_digit(t_program *program, const char *str)
 		i++;
 
 	if (i == 0 || i > 3)
-		error_message(program, INVALID_FORMAT);
+		error_message(program, INVALID_COLOR_FORMAT);
 
 	return (i);
 
@@ -65,7 +65,7 @@ static void	validate_rgb_format(t_program *program, char *line, int *ret)
 
 	i = 0;
 	if (!line || line[i] == ',')
-		error_message(program, INVALID_FORMAT);
+		error_message(program, INVALID_COLOR_FORMAT);
 
 	str = line;
 

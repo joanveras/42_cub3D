@@ -6,7 +6,7 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 01:13:47 by jveras            #+#    #+#             */
-/*   Updated: 2025/04/21 05:41:00 by jveras           ###   ########.fr       */
+/*   Updated: 2025/04/21 16:25:56 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static void	save_player_pos(t_program *program, int x, int y)
 {
 	program->player.x = x + 0.5;
 	program->player.y = y + 0.5;
+	program->map.map[x][y] = '0';
 }
 
 static void	save_view_dir(t_program *program, double dirX, double dirY)

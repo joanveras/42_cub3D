@@ -10,25 +10,25 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../../includes/libft.h"
 #include "../../../includes/cube3d.h"
 
 void	validate_file(t_program *program)
 {
 
-	int		i;
-	char	**actual_map;
+	int	i;
 	
 	i = 0;
 	check_first_info(program, &i);
 
-	actual_map = &program->map.map[i];
+	program->map.map = &program->map.whole_file[i];
 
-	check_for_invalid_characthers(program, actual_map);
+	check_for_invalid_characthers(program, program->map.map);
 
-	check_for_duplicates(program, actual_map);
+	check_for_duplicates(program, program->map.map);
 
-	check_map_is_closed(program, actual_map);
+	check_map_is_closed(program, program->map.map);
 
-	get_player_info(program, actual_map);
+	get_player_info(program, program->map.map);
 
 }
