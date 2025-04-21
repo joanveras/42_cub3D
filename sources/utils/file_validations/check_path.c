@@ -10,18 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../../includes/libft.h"
 #include "../../../includes/cube3d.h"
 
 static void	get_path(t_program *program, char c1, char c2, char *line)
 {
 	if (c1 == 'N' && c2 == 'O')
-		program->textures.north = line;
+		program->textures.north = ft_strdup(line);
 	else if (c1 == 'S' && c2 == 'O')
-		program->textures.south = line;
+		program->textures.south = ft_strdup(line);
 	else if (c1 == 'W' && c2 == 'E')
-		program->textures.west = line;
+		program->textures.west = ft_strdup(line);
 	else if (c1 == 'E' && c2 == 'A')
-		program->textures.east = line;
+		program->textures.east = ft_strdup(line);
 }
 
 void	check_path( t_program *program, char c1, char c2, char *line )

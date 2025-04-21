@@ -6,7 +6,7 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 19:51:52 by jveras            #+#    #+#             */
-/*   Updated: 2025/04/19 22:39:50 by jveras           ###   ########.fr       */
+/*   Updated: 2025/04/21 04:41:18 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,15 @@
 void	validate_file(t_program *program);
 void	is_a_file(t_program *program, char *path);
 void	check_first_info( t_program *program, int *i );
+void	get_player_info(t_program *program, char **map);
+void	check_map_is_closed(t_program *program, char **map);
+void	check_for_duplicates(t_program *program, char **map);
 void	check_file_extension( t_program *program, char *line );
 void	error_message( t_program *program, const char *message );
+void	check_for_invalid_characthers(t_program *program, char **map);
 void	check_path( t_program *program, char c1, char c2, char *line );
 void	check_abbrev( t_program *program, char *line, int *dir_counter );
+
 
 int		rgb_to_int(int *nums);
 int		*check_colors(t_program *program, char **map, int i);
@@ -88,7 +93,6 @@ void	load_textures(t_program *program);
 void	transform_c_f(t_program *program);
 void	load_texture_data(t_texture_data *texture);
 void	put_pixel(t_img_data *img, int x, int y, int color);
-void	load_game_and_raycast_initial_info(t_program *program);
 void	load_texture(void *mlx, t_texture_data *texture,char *path);
 void	load_img(void *mlx, t_img_data *image, int width, int height);
 

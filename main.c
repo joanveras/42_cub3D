@@ -6,7 +6,7 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 15:01:17 by jveras            #+#    #+#             */
-/*   Updated: 2025/03/12 14:43:35 by jveras           ###   ########.fr       */
+/*   Updated: 2025/04/21 02:30:12 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ int	main(int argc, char **argv)
 	load_img_data(&program.main_image);
 
 	load_textures(&program);
-
-	load_game_and_raycast_initial_info(&program);
 	
 	mlx_hook(program.mlx_win, ON_KEYDOWN, KeyRelease, handle_key_inputs, &program);
 	mlx_hook(program.mlx_win, ON_DESTROY, NoEventMask, safe_exit, &program);
