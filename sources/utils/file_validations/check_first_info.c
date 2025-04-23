@@ -6,7 +6,7 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 18:15:23 by jveras            #+#    #+#             */
-/*   Updated: 2025/04/21 16:12:47 by jveras           ###   ########.fr       */
+/*   Updated: 2025/04/23 01:54:33 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ static void	missing_info(t_program *program, int dir_counter)
 {
 	if (dir_counter < 4)
 		error_message(program, "Missing direction information\n");
-	else if (!program->f_c_colors.floor_color)
+	else if (program->ceilling_floor.f_color == -1)
 		error_message(program, "Missing floor color information\n");
-	else if (!program->f_c_colors.ceiling_color)
+	else if (program->ceilling_floor.c_color == -1)
 		error_message(program, "Missing ceiling color information\n");
 }
 
@@ -45,14 +45,14 @@ static int	is_rgb(t_program *program, char *line, int line_index)
 	if (line[i] == 'F' && line[i + 1] == ' ')
 	{
 		tmp = check_colors(program, program->map.whole_file, line_index);
-		program->f_c_colors.floor_color = rgb_to_int(tmp);
+		program->ceilling_floor.f_color = rgb_to_int(tmp);
 		free_tmp(tmp);
 		return (1);
 	}
 	else if (line[i] == 'C' && line[i + 1] == ' ')
 	{
 		tmp = check_colors(program, program->map.whole_file, line_index);
-		program->f_c_colors.ceiling_color = rgb_to_int(tmp);
+		program->ceilling_floor.c_color = rgb_to_int(tmp);
 		free_tmp(tmp);
 		return (1);
 	}
@@ -89,8 +89,6 @@ void	check_first_info( t_program *program, int *i )
 	int	j;
 
 	dir_counter = 0;
-	program->f_c_colors.floor_color = 0;
-	program->f_c_colors.ceiling_color = 0;
 	j = 0;
 	while (program->map.whole_file[j] && !begin_map_info(program->map.whole_file[j]))
 	{
