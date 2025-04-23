@@ -11,17 +11,17 @@ A 3D rendering project using raycasting, inspired by the classic game Wolfenstei
 │   ├── libft/                           # Custom C library
 │   ├── utils/                           # Utility functions
 │   ├── wall_casting.c                   # Raycasting implementation
-│   ├── safe_exit.c                      # Cleanup and error handling
+│   ├── safe_exit.c                      # Cleanup memory leaks
 │   ├── handle_key_inputs.c              # Keyboard input handling
-│   ├── x11_connect.c                    # X11 window management
+│   ├── x11_connect.c
 │   └── bonus/                           # Bonus features
 │       ├── raycasting/                  # Bonus raycasting features
 │       │   └── ceilling_floor_casting/
 │       ├── bonus_load_textures.c        # Bonus texture loading
-│       └── bonus_safe_exit.c            # Bonus cleanup
-├── includes/                            # Header files
+│       └── bonus_safe_exit.c
+├── includes/
 ├── maps/                                # Map files (*.cub)
-└── textures/                            # Wall textures
+└── textures/
 ```
 
 ## Requirements
