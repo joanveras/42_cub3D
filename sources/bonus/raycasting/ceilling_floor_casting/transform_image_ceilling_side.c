@@ -1,34 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   transform_image_ceilling_side.c                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 12:22:16 by jveras2           #+#    #+#             */
-/*   Updated: 2025/04/23 18:24:12 by jveras           ###   ########.fr       */
+/*   Created: 2025/04/22 23:46:57 by jveras            #+#    #+#             */
+/*   Updated: 2025/04/23 02:54:57 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-long	ft_atoi(const char *nptr)
-{
-	int		sign;
-	long	result;
+#include "../../../../includes/cube3d.h"
 
-	sign = 1;
-	result = 0;
-	while ((*nptr >= '\t' && *nptr <= '\r') || *nptr == ' ')
-		nptr++;
-	if (*nptr == '-' || *nptr == '+')
-	{
-		if (*nptr == '-')
-			sign = sign * -1;
-		nptr++;
-	}
-	while (*nptr >= '0' && *nptr <= '9')
-	{
-		result = (result * 10) + (*nptr - '0');
-		nptr++;
-	}
-	return (result * sign);
+void	transform_image_ceilling_side(t_program *program, t_casting *casting, int x, int y)
+{
+	int color;
+
+	color = get_color(program->ceilling_floor.c_f_textures[0], casting->tx, casting->ty);
+	put_pixel(&program->main_image, x, WINDOW_HEIGHT - y - 1, color);
 }

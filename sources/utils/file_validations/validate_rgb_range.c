@@ -1,34 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   validate_rgb_range.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 12:22:16 by jveras2           #+#    #+#             */
-/*   Updated: 2025/04/23 18:24:12 by jveras           ###   ########.fr       */
+/*   Created: 2025/04/23 18:27:15 by jveras            #+#    #+#             */
+/*   Updated: 2025/04/23 18:42:59 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-long	ft_atoi(const char *nptr)
-{
-	int		sign;
-	long	result;
+#include "../../../includes/libft.h"
+#include "../../../includes/cube3d.h"
 
-	sign = 1;
-	result = 0;
-	while ((*nptr >= '\t' && *nptr <= '\r') || *nptr == ' ')
-		nptr++;
-	if (*nptr == '-' || *nptr == '+')
+void	validate_rgb_range(t_program *program, int *rgb)
+{
+	if (rgb[0] < 0 || rgb[0] > 255)
 	{
-		if (*nptr == '-')
-			sign = sign * -1;
-		nptr++;
+		free(rgb);	
+		error_message(program, INVALID_RGB_RANGE);
 	}
-	while (*nptr >= '0' && *nptr <= '9')
+	if (rgb[1] < 0 || rgb[1] > 255)
 	{
-		result = (result * 10) + (*nptr - '0');
-		nptr++;
+		free(rgb);
+		error_message(program, INVALID_RGB_RANGE);
 	}
-	return (result * sign);
+	if (rgb[2] < 0 || rgb[2] > 255)
+	{
+		free(rgb);
+		error_message(program, INVALID_RGB_RANGE);
+	}
 }

@@ -6,11 +6,11 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 22:44:48 by jveras            #+#    #+#             */
-/*   Updated: 2025/04/21 02:45:33 by jveras           ###   ########.fr       */
+/*   Updated: 2025/04/22 22:38:50 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/cube3d.h"
+#include "../../../../includes/cube3d.h"
 
 void	calc_where_the_wall_was_hit(t_program *program, int side, double *wallX)
 {

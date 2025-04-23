@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   clear_image.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 12:22:16 by jveras2           #+#    #+#             */
-/*   Updated: 2025/04/23 18:24:12 by jveras           ###   ########.fr       */
+/*   Created: 2025/04/22 23:19:32 by jveras            #+#    #+#             */
+/*   Updated: 2025/04/22 23:20:40 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-long	ft_atoi(const char *nptr)
-{
-	int		sign;
-	long	result;
+#include "../../../../includes/cube3d.h"
 
-	sign = 1;
-	result = 0;
-	while ((*nptr >= '\t' && *nptr <= '\r') || *nptr == ' ')
-		nptr++;
-	if (*nptr == '-' || *nptr == '+')
+void clear_image(t_img_data *img, int color)
+{
+	int	x;
+	int	y;
+
+	y = 0;
+	while (y < WINDOW_HEIGHT)
 	{
-		if (*nptr == '-')
-			sign = sign * -1;
-		nptr++;
+		x = 0;
+		while (x < WINDOW_WIDTH)
+		{
+			put_pixel(img, x, y, color);
+			x++;
+		}
+		y++;
 	}
-	while (*nptr >= '0' && *nptr <= '9')
-	{
-		result = (result * 10) + (*nptr - '0');
-		nptr++;
-	}
-	return (result * sign);
 }

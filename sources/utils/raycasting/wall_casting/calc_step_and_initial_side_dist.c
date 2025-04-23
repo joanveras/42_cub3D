@@ -6,11 +6,11 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 22:41:10 by jveras            #+#    #+#             */
-/*   Updated: 2025/04/21 05:43:41 by jveras           ###   ########.fr       */
+/*   Updated: 2025/04/22 22:38:52 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/cube3d.h"
+#include "../../../../includes/cube3d.h"
 
 void	calc_step_and_initial_side_dist(t_program *program)
 {

@@ -13,11 +13,23 @@
 #include "../../../includes/libft.h"
 #include "../../../includes/cube3d.h"
 
+static void	init_crucial_variables(t_program *program)
+{
+	program->ceilling_floor.f_color = -1;
+	program->ceilling_floor.c_color = -1;
+	program->textures.north = NULL;
+	program->textures.south = NULL;
+	program->textures.east = NULL;
+	program->textures.west = NULL;
+}
+
 void	validate_file(t_program *program)
 {
 
 	int	i;
-	
+
+	init_crucial_variables(program);
+
 	i = 0;
 	check_first_info(program, &i);
 

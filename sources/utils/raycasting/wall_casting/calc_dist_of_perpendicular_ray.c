@@ -1,34 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   calc_dist_of_perpendicular_ray.c                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/18 12:22:16 by jveras2           #+#    #+#             */
-/*   Updated: 2025/04/23 18:24:12 by jveras           ###   ########.fr       */
+/*   Created: 2024/12/30 22:43:40 by jveras            #+#    #+#             */
+/*   Updated: 2025/04/22 22:38:45 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-long	ft_atoi(const char *nptr)
-{
-	int		sign;
-	long	result;
+#include "../../../../includes/cube3d.h"
 
-	sign = 1;
-	result = 0;
-	while ((*nptr >= '\t' && *nptr <= '\r') || *nptr == ' ')
-		nptr++;
-	if (*nptr == '-' || *nptr == '+')
-	{
-		if (*nptr == '-')
-			sign = sign * -1;
-		nptr++;
-	}
-	while (*nptr >= '0' && *nptr <= '9')
-	{
-		result = (result * 10) + (*nptr - '0');
-		nptr++;
-	}
-	return (result * sign);
+void	calc_dist_of_perpendicular_ray(t_program *program, int side)
+{
+	if (side == 0)
+		program->raycast.perpWallDist = (program->raycast.sideDistX - program->raycast.deltaDistX);
+	else
+		program->raycast.perpWallDist = (program->raycast.sideDistY - program->raycast.deltaDistY);
 }

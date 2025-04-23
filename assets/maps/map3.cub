@@ -1,10 +1,10 @@
-NO assets/textures/eagle.xpm
-SO ./assets/textures/redbrick.xpm
-WE ./assets/textures/mossy.xpm
-EA ./assets/textures/wood.xpm
+NO assets/textures/blueskull.xpm
+SO ./assets/textures/eagle.xpm
+WE ./assets/textures/greybrick.xpm
+EA ./assets/textures/bluestone.xpm
 
 C 0,255,255 
-  F 255,0,255
+  F 255,0,355
 
          1
         101

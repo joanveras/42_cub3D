@@ -6,7 +6,7 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/12 13:45:28 by jveras            #+#    #+#             */
-/*   Updated: 2025/03/12 15:17:28 by jveras           ###   ########.fr       */
+/*   Updated: 2025/04/22 23:04:40 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,6 @@ static void	transform_floor(t_img_data *img, int color)
 
 void	transform_c_f(t_program *program)
 {
-	transform_ceiling(&program->main_image, program->f_c_colors.ceiling_color);
-	transform_floor(&program->main_image, program->f_c_colors.floor_color);
+	transform_ceiling(&program->main_image, program->ceilling_floor.c_color);
+	transform_floor(&program->main_image, program->ceilling_floor.f_color);
 }

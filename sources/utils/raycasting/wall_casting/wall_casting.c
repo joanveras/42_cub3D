@@ -6,11 +6,11 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 18:26:48 by jveras            #+#    #+#             */
-/*   Updated: 2025/03/22 15:37:55 by jveras           ###   ########.fr       */
+/*   Updated: 2025/04/23 01:01:27 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cube3d.h"
+#include "../../../../includes/cube3d.h"
 
 int	wall_casting(t_program *program)
 {
