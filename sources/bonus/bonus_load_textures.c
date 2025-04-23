@@ -6,7 +6,7 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 00:20:56 by jveras            #+#    #+#             */
-/*   Updated: 2025/04/23 03:31:01 by jveras           ###   ########.fr       */
+/*   Updated: 2025/04/23 16:19:43 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ void	bonus_load_textures(t_program *program)
 	load_texture(program->mlx, &program->ceilling_floor.c_f_textures[0], "");
 	load_texture_data(&program->ceilling_floor.c_f_textures[0]);
 	*/
-	load_texture(program->mlx, &program->ceilling_floor.c_f_textures[1], "assets/textures/grass_3.xpm");
+	load_texture(program->mlx, &program->ceilling_floor.c_f_textures[1], FLOOR_TEXTURE);
 	load_texture_data(&program->ceilling_floor.c_f_textures[1]);
 }
