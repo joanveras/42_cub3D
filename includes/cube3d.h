@@ -6,7 +6,7 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 19:51:52 by jveras            #+#    #+#             */
-/*   Updated: 2025/04/21 16:41:50 by jveras           ###   ########.fr       */
+/*   Updated: 2025/04/23 02:48:36 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ void	check_for_invalid_characthers(t_program *program, char **map);
 void	check_path( t_program *program, char c1, char c2, char *line );
 void	check_abbrev( t_program *program, char *line, int *dir_counter );
 
-
 int		rgb_to_int(int *nums);
 int		*check_colors(t_program *program, char **map, int i);
+
 
 
 /*
@@ -71,9 +71,18 @@ void	backward(t_program *program, int keycode);
 int		handle_key_inputs(int keycode, t_program *program);
 
 
+
 /*
 	Raycasting functios
 */
+void	calc_texel_point(t_casting *casting);
+void	clear_image(t_img_data *img, int color);
+void	ceiling_floor_casting(t_program *program);
+void	calc_row_distance(t_program *program, t_casting *casting, int y);
+void	transform_image_floor_side(t_program *program, t_casting *casting, int x, int y);
+void	transform_image_ceilling_side(t_program *program, t_casting *casting, int x, int y);
+
+
 void	perform_dda(t_program *program, int *side);
 void	calc_step_and_initial_side_dist(t_program *program);
 void	calc_dist_of_perpendicular_ray(t_program *program, int side);
@@ -82,6 +91,9 @@ void	calc_vertical_line_and_transform_image(t_program *program,
 	int x, double wallX, int lineHeight, int side);
 	
 int		wall_casting(t_program *program);
+int		bonus_wall_casting(t_program *program);
+int		get_color(t_texture_data tex, int texPosX, int texPosY);
+
 
 
 /*
@@ -91,6 +103,7 @@ void	free_file(t_map *map);
 void	load_img_data(t_img_data *image);
 void	load_textures(t_program *program);
 void	transform_c_f(t_program *program);
+void	bonus_load_textures(t_program *program);
 void	free_textures_paths(t_program *program);
 void	load_texture_data(t_texture_data *texture);
 void	put_pixel(t_img_data *img, int x, int y, int color);
@@ -104,6 +117,7 @@ int		get_texel_color(t_program *program, t_texture_data *tex,int texPosX, int te
 void	x11_connect(t_program *program);
 
 int		safe_exit(t_program *program);
+int		bonus_safe_exit(t_program *program);
 
 char	**open_file(char *path);
 
