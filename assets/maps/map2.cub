@@ -1,9 +1,9 @@
 
-NO assets/textures/bluestone.xpm
-SO ./assets/textures/colorstone.xpm
+NO assets/textures/greybrick.xpm
+SO ./assets/textures/greybrick.xpm
 C 225,30,0 
-WE ./assets/textures/greystone.xpm
-EA ./assets/textures/purplestone.xpm
+WE ./assets/textures/colorbrick.xpm
+EA ./assets/textures/redbrick.xpm
 
 F 220,100,0
 
