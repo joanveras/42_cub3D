@@ -6,7 +6,7 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 16:09:46 by jveras            #+#    #+#             */
-/*   Updated: 2025/04/21 16:40:00 by jveras           ###   ########.fr       */
+/*   Updated: 2025/04/23 00:36:02 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 
 static void	free_wall_textures(t_texture_data wall_texture[4], void *mlx)
 {
-	for (int i = 0; i < 4; i++)
+	int i = 0;
+	while (i < 4)
 	{
 		if (wall_texture[i].tex_ptr != NULL)
 		{
 			mlx_destroy_image(mlx, wall_texture[i].tex_ptr);
 			wall_texture[i].tex_ptr = NULL;
 		}
+		i++;
 	}
 }
 
