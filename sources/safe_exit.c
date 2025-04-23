@@ -6,7 +6,7 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 16:09:46 by jveras            #+#    #+#             */
-/*   Updated: 2025/03/26 19:17:50 by jveras           ###   ########.fr       */
+/*   Updated: 2025/04/21 16:40:00 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@ int	safe_exit(t_program *program)
 {
 	free_wall_textures(program->wall_texture, program->mlx);
 	free_main_image(&program->main_image, program->mlx);
-	free_map(&program->map);
+	free_textures_paths(program);
+	free_file(&program->map);
 	mlx_destroy_window(program->mlx, program->mlx_win);
 	mlx_destroy_display(program->mlx);
 	free(program->mlx);

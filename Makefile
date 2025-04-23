@@ -6,7 +6,7 @@ SRCS =	$(wildcard sources/*.c) \
 		$(wildcard sources/utils/*.c) \
 		$(wildcard sources/utils/helper/*.c) \
 		$(wildcard sources/utils/input_keys/*.c) \
-		$(wildcard sources/utils/map_validations/*.c) \
+		$(wildcard sources/utils/file_validations/*.c) \
 		$(wildcard sources/utils/raycasting/*.c)
 
 OBJS = $(SRCS:.c=.o)

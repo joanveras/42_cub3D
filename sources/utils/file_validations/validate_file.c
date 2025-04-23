@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate_map.c                                     :+:      :+:    :+:   */
+/*   validate_file.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,39 +12,23 @@
 
 #include "../../../includes/libft.h"
 #include "../../../includes/cube3d.h"
-#include "../../../includes/structs.h"
 
-static void	free_tmp(int *tmp)
-{
-	if (tmp != NULL)
-	{
-		free(tmp);
-		tmp = NULL; // Avoid dangling pointer
-	}
-}
-
-void	validate_map(t_program *program)
+void	validate_file(t_program *program)
 {
 
-	int		i;
-	int		*tmp;
-	char	*str;
+	int	i;
 	
 	i = 0;
-	check_directions(program, &i);
+	check_first_info(program, &i);
 
-	tmp = check_colors(program, program->map.map, &i);
-	program->f_c_colors.floor_color = rgb_to_int(tmp);
-	free_tmp(tmp);
+	program->map.map = &program->map.whole_file[i];
 
-	tmp = check_colors(program, program->map.map, &i);
-	program->f_c_colors.ceiling_color = rgb_to_int(tmp);
-	free_tmp(tmp);
+	check_for_invalid_characthers(program, program->map.map);
 
-	printf("\n");
-	printf("%d\n", i + 1);
-	printf("%s\n", program->map.map[i]);
+	check_for_duplicates(program, program->map.map);
 
-	// ...
+	check_map_is_closed(program, program->map.map);
+
+	get_player_info(program, program->map.map);
 
 }

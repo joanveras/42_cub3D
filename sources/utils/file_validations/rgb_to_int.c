@@ -12,5 +12,5 @@
 
 int	rgb_to_int(int *nums)
 {
-	return (nums[0] << 16) | (nums[1] << 8) | nums[2];
+	return ((nums[0] << 16) | (nums[1] << 8) | nums[2]);
 }

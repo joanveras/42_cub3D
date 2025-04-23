@@ -6,7 +6,7 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 22:41:10 by jveras            #+#    #+#             */
-/*   Updated: 2024/12/30 22:41:33 by jveras           ###   ########.fr       */
+/*   Updated: 2025/04/21 05:43:41 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 void	calc_step_and_initial_side_dist(t_program *program)
 {
+	program->map.x = (int)program->player.x;
+	program->map.y = (int)program->player.y;
+
 	if (program->raycast.rayDirX < 0)
 	{
 		program->map.step.x = -1;

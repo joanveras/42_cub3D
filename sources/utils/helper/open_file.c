@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_utils.c                                        :+:      :+:    :+:   */
+/*   open_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/27 15:16:41 by jveras            #+#    #+#             */
-/*   Updated: 2025/03/12 15:17:13 by jveras           ###   ########.fr       */
+/*   Updated: 2025/04/21 16:09:06 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	count_lines(char *path)
 	return (counter);
 }
 
-static void	fill_map(char *path, char **map)
+static void	fill_file(char *path, char **file)
 {
 	int		i;
 	int		fd;
@@ -49,27 +49,27 @@ static void	fill_map(char *path, char **map)
 	i = 0;
 	while (line)
 	{
-		map[i] = ft_strdup(line);
-		if (ft_strchr(map[i], '\n'))
-			map[i][ft_strlen(map[i]) - 1] = '\0';
+		file[i] = ft_strdup(line);
+		if (ft_strchr(file[i], '\n'))
+			file[i][ft_strlen(file[i]) - 1] = '\0';
 		free(line);
 		line = get_next_line(fd);
 		i++;
 	}
-	map[i] = NULL;
+	file[i] = NULL;
 	close(fd);
 }
 
-char	**open_map(char *path)
+char	**open_file(char *path)
 {
-	char	**map;
+	char	**file;
 
-	map = malloc((count_lines(path) + 1) * sizeof(char *));
-	if (!map)
+	file = malloc((count_lines(path) + 1) * sizeof(char *));
+	if (!file)
 	{
-		write(STDERR_FILENO, "Memory allocation failure:: allocating (char **map)", 52);
+		ft_putstr_fd("Memory allocation failure:: allocating (char **file)", 2);
 		exit(EXIT_FAILURE);
 	}
-	fill_map(path, map);
-	return (map);
+	fill_file(path, file);
+	return (file);
 }

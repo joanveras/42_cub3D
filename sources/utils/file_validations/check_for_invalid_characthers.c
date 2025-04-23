@@ -1,26 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_map.c                                         :+:      :+:    :+:   */
+/*   check_for_invalid_characthers.c                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/26 19:18:15 by jveras            #+#    #+#             */
-/*   Updated: 2025/03/26 19:19:31 by jveras           ###   ########.fr       */
+/*   Created: 2025/04/21 03:25:28 by jveras            #+#    #+#             */
+/*   Updated: 2025/04/21 05:00:12 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/cube3d.h"
 
-void	free_map(t_map *map)
+static int	invalid_characther(char C)
 {
-	if (map->map != NULL)
+	if ((C != 'N' && C != 'S' && C != 'E' && C != 'W') &&
+		(C != ' ' && C != '\t' && C != '\n') &&
+		(C != '0' && C != '1'))
+		return (1);
+	return (0);
+}
+
+void	check_for_invalid_characthers(t_program *program, char **map)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (map[i])
 	{
-		for (int i = 0; map->map[i] != NULL; i++)
+		j = 0;
+		while (map[i][j])
 		{
-			free(map->map[i]);
+			if (invalid_characther(map[i][j]))
+			{
+				error_message(program, "Invalid character in map");
+			}
+			j++;
 		}
-		free(map->map);
-		map->map = NULL;
+		i++;
 	}
 }

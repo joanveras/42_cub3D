@@ -1,11 +1,11 @@
 
 NO assets/textures/bluestone.xpm
 SO ./assets/textures/colorstone.xpm
+C 225,30,0 
 WE ./assets/textures/greystone.xpm
 EA ./assets/textures/purplestone.xpm
 
 F 220,100,0
-C 225,30,0
 
         1111111111111111111111111
         1000000000110000000000001

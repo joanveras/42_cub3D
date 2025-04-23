@@ -6,12 +6,27 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 13:32:08 by jveras            #+#    #+#             */
-/*   Updated: 2025/03/26 19:09:27 by jveras           ###   ########.fr       */
+/*   Updated: 2025/04/21 16:37:37 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/libft.h"
 #include "../../../includes/cube3d.h"
+
+static void remain_something(t_program *program,
+	char *str, char *line, int *tmp)
+{
+	str = ft_strtrim(str, " \t\n");
+	if (str[0])
+	{
+		free(str);
+		free(tmp);
+		free(line);
+		error_message(program, INVALID_COLOR_FORMAT);
+	}
+	free(str);
+	free(line);
+}
 
 static void	set_rgb(int *r, int *g, int *b,
 	const char *str, int index)
@@ -36,7 +51,7 @@ static int	is_next_char_a_digit(t_program *program, const char *str)
 		i++;
 
 	if (i == 0 || i > 3)
-		error_message(program, INVALID_FORMAT);
+		error_message(program, INVALID_COLOR_FORMAT);
 
 	return (i);
 
@@ -50,9 +65,9 @@ static void	validate_rgb_format(t_program *program, char *line, int *ret)
 
 	i = 0;
 	if (!line || line[i] == ',')
-		error_message(program, INVALID_FORMAT);
+		error_message(program, INVALID_COLOR_FORMAT);
 
-	str = (char *)line;
+	str = line;
 
 	while (i < 3)
 	{
@@ -80,31 +95,23 @@ static void	validate_rgb_format(t_program *program, char *line, int *ret)
 		i++;
 	}
 
-	free(line);
+	remain_something(program, str, line, ret);
 
 }
 
-int	*check_colors(t_program *program, char **map, int *i)
+int	*check_colors(t_program *program, char **map, int i)
 {
 
-	int	j, k;
+	int	k;
 	int	*ret;
 
 	ret = malloc(sizeof(int) * 3);
 
-	j = *i;
 	k = 0;
-	while (map[j][k] == ' ')
+	while (map[i][k] == ' ')
 		k++;
 
-	if (map[j][k] != 'F' && map[j][k] != 'C')
-		error_message(program, INVALID_FORMAT);
-	else if (map[j][k + 1] != ' ')
-		error_message(program, INVALID_FORMAT);
-
-	validate_rgb_format(program, ft_strtrim(&map[j][k + 1], " \t\n"), ret);
-
-	(*i)++;
+	validate_rgb_format(program, ft_strtrim(&map[i][k + 1], " \t\n"), ret);
 
 	return (ret);
 

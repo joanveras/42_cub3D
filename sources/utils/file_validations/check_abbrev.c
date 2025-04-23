@@ -6,14 +6,13 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 18:06:07 by jveras            #+#    #+#             */
-/*   Updated: 2025/03/26 19:03:02 by jveras           ###   ########.fr       */
+/*   Updated: 2025/04/19 22:24:39 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/libft.h"
 #include "../../../includes/cube3d.h"
 
-// If the characthers match the directions (SO, NO, ...), calls check_path function
 static int	check_characthers(t_program *program, char *line, int i, char c1, char c2)
 {
 	if (line[i] == c1)
@@ -34,16 +33,13 @@ void	check_abbrev( t_program *program, char *line, int *dir_counter )
 
 	if (!line)
 		return ;
-
 	i = 0;
 	while ( line[i] == '\n' )
 		i++;
 	while ( line[i] == ' ' )
 		i++;
-
 	while (line[i])
 	{
-
 		if (check_characthers(program, line, i, 'N', 'O'))
 		{
 			(*dir_counter)++;
@@ -64,9 +60,6 @@ void	check_abbrev( t_program *program, char *line, int *dir_counter )
 			(*dir_counter)++;
 			break;
 		}
-
 		i++;
-
 	}
-
 }
