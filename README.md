@@ -13,7 +13,12 @@ A 3D rendering project using raycasting, inspired by the classic game Wolfenstei
 │   ├── wall_casting.c       # Raycasting implementation
 │   ├── safe_exit.c          # Cleanup and error handling
 │   ├── handle_key_inputs.c  # Keyboard input handling
-│   └── x11_connect.c        # X11 window management
+│   ├── x11_connect.c        # X11 window management
+│   └── bonus/               # Bonus features
+│       ├── raycasting/      # Bonus raycasting features
+│       │   └── ceilling_floor_casting/  # Ceiling and floor textures
+│       ├── bonus_load_textures.c    # Bonus texture loading
+│       └── bonus_safe_exit.c        # Bonus cleanup
 ├── includes/                # Header files
 ├── maps/                    # Map files (*.cub)
 └── textures/                # Wall textures
@@ -28,13 +33,21 @@ A 3D rendering project using raycasting, inspired by the classic game Wolfenstei
 ## Building
 
 ```bash
+# Regular version
 make minilibx && make && make clean
+
+# Bonus version
+make minilibx && make bonus && make clean
 ```
 
 ## Running
 
 ```bash
+# Regular version
 ./cub3D maps/map1.cub
+
+# Bonus version
+./bonus_cube3D maps/map1.cub
 ```
 
 ## Controls
@@ -79,6 +92,7 @@ C 225,30,0               # Ceiling color (RGB)
 
 ## Features
 
+### Regular Version
 - 3D rendering using raycasting
 - Wall textures
 - Floor and ceiling colors
@@ -87,8 +101,15 @@ C 225,30,0               # Ceiling color (RGB)
 - Window resizing
 - Error handling
 
+### Bonus Features
+- Ceiling and floor textures
+- Enhanced texture loading
+- Improved cleanup and error handling
+
 ## Error Handling
 
 The program handles various error cases:
 - Invalid map format
 - Missing textures
+- Invalid texture paths
+- Memory leaks (in bonus version)
