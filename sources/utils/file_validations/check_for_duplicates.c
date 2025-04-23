@@ -6,13 +6,13 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 03:22:55 by jveras            #+#    #+#             */
-/*   Updated: 2025/04/21 17:13:31 by jveras           ###   ########.fr       */
+/*   Updated: 2025/04/23 01:31:34 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/cube3d.h"
 
-static int	check_remaining_positions(t_program *program, int *counts, int i)
+static int	check_remaining_positions(int *counts, int i)
 {
 	while (i < 4)
 	{
@@ -52,7 +52,7 @@ static void	check_for_duplicate_positions(t_program *program, int *counts)
 	check_equal_character_doubles(program, counts, &i);
 	if (i == 4)
 		error_message(program, "There is no player start position in map");
-	else if (check_remaining_positions(program, counts, i))
+	else if (check_remaining_positions(counts, i))
 		error_message(program, "Duplicated player start positions in map");
 }
 
