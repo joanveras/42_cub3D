@@ -6,7 +6,7 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 19:51:52 by jveras            #+#    #+#             */
-/*   Updated: 2025/04/23 02:48:36 by jveras           ###   ########.fr       */
+/*   Updated: 2025/04/23 18:29:52 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,11 @@
 # define TEXTURE_NORTH 2
 # define TEXTURE_SOUTH 3
 
-# define INVALID_PATH "Invalid Texture path\n"
-# define INVALID_COLOR_FORMAT "Invalid Color format\n"
+# define INVALID_PATH "Invalid texture path\n"
+# define INVALID_COLOR_FORMAT "Invalid color format\n"
+# define INVALID_RGB_RANGE "Invalid RGB range\n"
+
+# define FLOOR_TEXTURE "assets/textures/dark_browntile.xpm"
 
 
 /*
@@ -47,6 +50,7 @@ void	validate_file(t_program *program);
 void	is_a_file(t_program *program, char *path);
 void	check_first_info( t_program *program, int *i );
 void	get_player_info(t_program *program, char **map);
+void	validate_rgb_range(t_program *program, int *rgb);
 void	check_map_is_closed(t_program *program, char **map);
 void	check_for_duplicates(t_program *program, char **map);
 void	check_file_extension( t_program *program, char *line );
