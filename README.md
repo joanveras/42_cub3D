@@ -16,7 +16,7 @@ A 3D rendering project using raycasting, inspired by the classic game Wolfenstei
 │   ├── x11_connect.c                    # X11 window management
 │   └── bonus/                           # Bonus features
 │       ├── raycasting/                  # Bonus raycasting features
-│       │   └── ceilling_floor_casting/  # Ceiling and floor textures
+│       │   └── ceilling_floor_casting/
 │       ├── bonus_load_textures.c        # Bonus texture loading
 │       └── bonus_safe_exit.c            # Bonus cleanup
 ├── includes/                            # Header files
