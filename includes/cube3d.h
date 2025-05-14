@@ -6,7 +6,7 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 19:51:52 by jveras            #+#    #+#             */
-/*   Updated: 2025/04/23 18:29:52 by jveras           ###   ########.fr       */
+/*   Updated: 2025/05/14 19:39:32 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@
 # define textureWidth 64
 # define textureHeight 64
 
-# define MOVE_SPEED 0.08
-# define ROT_SPEED 0.05
+# define MOVE_SPEED 0.1
+# define ROT_SPEED 0.066
 
 # define TEXTURE_WEST 0
 # define TEXTURE_EAST 1
