@@ -6,7 +6,7 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:58:30 by marcribe          #+#    #+#             */
-/*   Updated: 2025/03/22 15:37:34 by jveras           ###   ########.fr       */
+/*   Updated: 2025/03/22 16:55:40 by marcribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ typedef struct s_player
 
 typedef struct s_camera
 {
+	double x;
 	double	planeX;
 	double	planeY;
 }	t_camera;
