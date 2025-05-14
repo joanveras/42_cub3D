@@ -67,7 +67,7 @@ re: fclean all
 
 minilibx:
 	@echo -e "${YELLOW}Downloading and extracting minilibx...${NC}"
-	@wget https://cdn.intra.42.fr/document/document/25875/minilibx-linux.tgz
+	@wget https://cdn.intra.42.fr/document/document/33752/minilibx-linux.tgz
 	@tar -xvzf minilibx-linux.tgz
 	@$(RM) minilibx-linux.tgz
 	@$(MAKE) -C minilibx-linux
