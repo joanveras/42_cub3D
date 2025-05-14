@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 NO ./path/to/north_texture.png
 SO ./path/to/south_texture.png
 WE ./path/to/west_texture.png
@@ -19,3 +20,32 @@ C 225,30,0    # Cor do teto (RGB)
         1011111111101
         1000000000001
         1111111111111
+=======
+NO assets/textures/blueskull.xpm
+SO ./assets/textures/eagle.xpm
+WE ./assets/textures/greybrick.xpm
+EA ./assets/textures/bluestone.xpm
+
+C 0,255,255 
+  F 255,0,355
+
+         1
+        101
+       10001
+      1000001
+     100000001
+    10000000001
+   1000000000001
+  100000000000001
+ 10000000000000001
+100000000N000000001
+ 10000000000000001
+  100000000000001
+   1000000000001
+    10000000001
+     100000001
+      1000001
+       10001
+        101
+         1
+>>>>>>> origin/main

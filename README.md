@@ -1,43 +1,115 @@
+# Cub3D
 
-```console
-make minilibx && make && make clean
+A 3D rendering project using raycasting, inspired by the classic game Wolfenstein 3D.
+
+## Project Structure
+
+```
+.
+├── sources/
+│   ├── get_next_line/                   # Line reading utility
+│   ├── libft/                           # Custom C library
+│   ├── utils/                           # Utility functions
+│   ├── wall_casting.c                   # Raycasting implementation
+│   ├── safe_exit.c                      # Cleanup memory leaks
+│   ├── handle_key_inputs.c              # Keyboard input handling
+│   ├── x11_connect.c
+│   └── bonus/                           # Bonus features
+│       ├── raycasting/                  # Bonus raycasting features
+│       │   └── ceilling_floor_casting/
+│       ├── bonus_load_textures.c        # Bonus texture loading
+│       └── bonus_safe_exit.c
+├── includes/
+├── maps/                                # Map files (*.cub)
+└── textures/
 ```
 
-## Table of Contents
-1. [map_utils.c](#map_utilsc)
-2. [put_pixel.c](#put_pixelc)
-3. [get_texel_color.c](#get_texel_colorc)
-4. [clear_image.c](#clear_imagec)
-5. [raycasting.c](#raycastingc)
-6. [handle_key_inputs.c](#handle_key_inputsc)
-7. [main.c](#mainc)
+## Requirements
 
-## map_utils.c
-This file contains utility functions for handling map data:
-- `count_lines(char *path)`: Opens a file and counts the number of lines in it.
-- `fill_map(char *path, char **map)`: Reads the file line by line and fills the `map` array with its content.
-- `open_map(char *path)`: Allocates memory for the map and fills it using the above functions.
+- GCC compiler
+- X11 libraries
+- Make
 
-## put_pixel.c
-This file contains a function to put a pixel on an image:
-- `put_pixel(t_img_data *img, int x, int y, int color)`: Sets the color of a pixel at coordinates `(x, y)` in the image data.
+## Building
 
-## get_texel_color.c
-This file contains a function to get the color of a texel from a texture:
-- `get_texel_color(t_texture_data *tex, int texX, int texY)`: Retrieves the color of a texel at coordinates `(texX, texY)` from the texture data.
+```bash
+# Regular version
+make minilibx && make && make clean
 
-## clear_image.c
-This file contains a function to clear an image by filling it with a specific color:
-- `clear_image(t_img_data *img, int color)`: Fills the entire image with the specified color.
+# Bonus version
+make minilibx && make bonus && make clean
+```
 
-## raycasting.c
-This file contains the main raycasting logic:
-- `raycasting(t_program *program)`: Performs the raycasting algorithm to render the 3D scene based on the player's position and direction, and updates the image accordingly.
+## Running
 
-## handle_key_inputs.c
-This file handles keyboard inputs to control the player:
-- `handle_key_inputs(int keycode, t_program *program)`: Processes key presses to move the player or rotate the view direction.
+```bash
+# Regular version
+./cub3D maps/map1.cub
 
-## main.c
-This is the main entry point of the program:
-- Initializes the program, loads the map and textures, sets up the player and raycasting parameters, and starts the main loop to handle events and render the scene.
+# Bonus version
+./bonus_cube3D maps/map1.cub
+```
+
+## Controls
+
+- WASD: Move player
+- Arrow keys: Rotate view
+- ESC: Exit game
+
+## Map Format
+
+Maps are defined in `.cub` files with the following structure:
+
+```
+NO textures/north.xpm    # North wall texture
+SO textures/south.xpm    # South wall texture
+WE textures/west.xpm     # West wall texture
+EA textures/east.xpm     # East wall texture
+
+F 220,100,0              # Floor color (RGB)
+C 225,30,0               # Ceiling color (RGB)
+
+        1111111111111111111111111
+        1000000000110000000000001
+        1011000001110000000000001
+        1001000000000000000000001
+111111111011000001110000000000001
+100000000011000001110111111111111
+11110111111111011100000010001
+11110111111111011101010010001
+11000000110101011100000010001
+10000000000000001100000010001
+10000000000000001101010010001
+11000001110101011111011110N0111
+11110111 1110101 101111010001
+11111111 1111111 111111111111
+```
+
+- 1: Wall
+- 0: Empty space
+- N/S/E/W: Player starting position and direction
+- Space: Optional space (ignored)
+
+## Features
+
+### Regular Version
+- 3D rendering using raycasting
+- Wall textures
+- Floor and ceiling colors
+- Player movement and rotation
+- Collision detection
+- Window resizing
+- Error handling
+
+### Bonus Features
+- Ceiling and floor textures
+- Enhanced texture loading
+- Improved cleanup and error handling
+
+## Error Handling
+
+The program handles various error cases:
+- Invalid map format
+- Missing textures
+- Invalid texture paths
+- Memory leaks (in bonus version)

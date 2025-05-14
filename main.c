@@ -6,7 +6,7 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 15:01:17 by jveras            #+#    #+#             */
-/*   Updated: 2025/03/12 14:43:35 by jveras           ###   ########.fr       */
+/*   Updated: 2025/04/21 16:13:28 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,15 @@ int	main(int argc, char **argv)
 
 	x11_connect(&program);
 
-	program.map.map = open_map(argv[1]);
+	program.map.whole_file = open_file(argv[1]);
 
-	validate_map(&program);
+	validate_file(&program);
 
 	/* */
 	load_img(program.mlx, &program.main_image, WINDOW_WIDTH, WINDOW_HEIGHT);
 	load_img_data(&program.main_image);
 
 	load_textures(&program);
-
-	load_game_and_raycast_initial_info(&program);
 	
 	mlx_hook(program.mlx_win, ON_KEYDOWN, KeyRelease, handle_key_inputs, &program);
 	mlx_hook(program.mlx_win, ON_DESTROY, NoEventMask, safe_exit, &program);

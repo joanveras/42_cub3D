@@ -6,7 +6,7 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 01:17:31 by jveras            #+#    #+#             */
-/*   Updated: 2025/03/12 15:16:08 by jveras           ###   ########.fr       */
+/*   Updated: 2025/05/14 19:02:20 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@ int	get_color(t_texture_data tex, int texPosX, int texPosY)
 
 int get_texel_color(t_program *program, t_texture_data *tex, int texPosX, int texPosY)
 {
-	int		color;
+	int	color;
 
+	color = 0;
 	if (program->texture_index == 0)
 		color = get_color(tex[0], texPosX, texPosY);
 	else if (program->texture_index == 1)
