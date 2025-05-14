@@ -3,8 +3,8 @@ SO ./assets/textures/eagle.xpm
 WE ./assets/textures/greybrick.xpm
 EA ./assets/textures/bluestone.xpm
 
-C 0,255,255 
-  F 255,0,355
+C 40,40,40 
+  F 194, 48, 90
 
          1
         101
