@@ -6,7 +6,11 @@
 /*   By: marcribe <marcribe@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:58:30 by marcribe          #+#    #+#             */
+<<<<<<< HEAD
+/*   Updated: 2025/03/22 16:55:40 by marcribe         ###   ########.fr       */
+=======
 /*   Updated: 2025/05/14 19:09:57 by marcribe         ###   ########.fr       */
+>>>>>>> origin/main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +97,7 @@ typedef struct s_player
 
 typedef struct s_camera
 {
+	double x;
 	double	planeX;
 	double	planeY;
 }	t_camera;

@@ -1,3 +1,26 @@
+<<<<<<< HEAD
+NO ./path/to/north_texture.png
+SO ./path/to/south_texture.png
+WE ./path/to/west_texture.png
+EA ./path/to/east_texture.png
+S ./path/to/sprite_texture.png
+
+F 220,100,0   # Cor do chão (RGB)
+C 225,30,0    # Cor do teto (RGB)
+
+        1111111111111
+        1000000000001
+        1011111111101
+        1010000000101
+        1010111110101
+        1010100010101
+        101010P010101
+        1010111110101
+        1010000000101
+        1011111111101
+        1000000000001
+        1111111111111
+=======
 NO assets/textures/blueskull.xpm
 SO ./assets/textures/eagle.xpm
 WE ./assets/textures/greybrick.xpm
@@ -25,3 +48,4 @@ C 40,40,40
        10001
         101
          1
+>>>>>>> origin/main
