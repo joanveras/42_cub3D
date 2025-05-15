@@ -6,7 +6,7 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 19:51:52 by jveras            #+#    #+#             */
-/*   Updated: 2025/04/23 18:29:52 by jveras           ###   ########.fr       */
+/*   Updated: 2025/05/14 20:46:10 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 # define WINDOW_WIDTH 800
 # define WINDOW_HEIGHT 600
 
-# define textureWidth 64
-# define textureHeight 64
+# define textureWidth 1024
+# define textureHeight 1024
 
 # define MOVE_SPEED 0.08
 # define ROT_SPEED 0.05
