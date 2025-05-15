@@ -94,4 +94,19 @@ int		safe_exit(t_program *program);
 int		bonus_safe_exit(t_program *program);
 char	**open_file(char *path);
 
+// Color validation utils
+void	skip_spaces_and_comma(char **str);
+void	set_rgb_value(int *ret, const char *str, int index);
+int		is_next_char_a_digit(t_program *program, const char *str);
+
+// First info validation utils
+void	missing_info(t_program *program, int dir_counter);
+void	free_tmp(int *tmp);
+int		is_empty_line(const char *str);
+int		is_all_digits(const char *str);
+int		begin_map_info(char *line);
+
+// Direction validation utils
+int		check_characters(t_program *program, char *line, char c1, char c2);
+
 #endif

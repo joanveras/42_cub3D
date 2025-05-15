@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_for_invalid_characthers.c                    :+:      :+:    :+:   */
+/*   check_for_invalid_characters.c                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,13 +12,10 @@
 
 #include "../../../includes/cube3d.h"
 
-static int	invalid_character(char c)
+static int	is_valid_char(char c)
 {
-	if ((c != 'N' && c != 'S' && c != 'E' && c != 'W') &&
-		(c != ' ' && c != '\t' && c != '\n') &&
-		(c != '0' && c != '1'))
-		return (1);
-	return (0);
+	return (c == '0' || c == '1' || c == 'N' || c == 'S'
+		|| c == 'W' || c == 'E' || c == ' ' || c == '\n');
 }
 
 void	check_for_invalid_characters(t_program *program, char **map)
@@ -32,7 +29,7 @@ void	check_for_invalid_characters(t_program *program, char **map)
 		j = 0;
 		while (map[i][j])
 		{
-			if (invalid_character(map[i][j]))
+			if (!is_valid_char(map[i][j]))
 				error_message(program, "Error: invalid character in map\n");
 			j++;
 		}

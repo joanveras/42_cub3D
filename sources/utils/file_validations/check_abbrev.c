@@ -13,17 +13,15 @@
 #include "../../../includes/libft.h"
 #include "../../../includes/cube3d.h"
 
-static int	check_characters(t_program *program, char *line,
-		int i, char c1, char c2)
+static int	check_direction(t_program *program, char *line, int *dir_counter)
 {
-	if (line[i] == c1)
+	if (check_characters(program, line, 'N', 'O')
+		|| check_characters(program, line, 'S', 'O')
+		|| check_characters(program, line, 'W', 'E')
+		|| check_characters(program, line, 'E', 'A'))
 	{
-		if (line[i + 1] && (line[i + 1] == c2 || line[i + 1] == ' '))
-		{
-			check_path(program, c1, c2, &line[i + 2]);
-			return (1);
-		}
-		error_message(program, "Error: invalid direction abbreviation\n");
+		(*dir_counter)++;
+		return (1);
 	}
 	return (0);
 }
@@ -41,26 +39,8 @@ void	check_abbrev(t_program *program, char *line, int *dir_counter)
 		i++;
 	while (line[i])
 	{
-		if (check_characters(program, line, i, 'N', 'O'))
-		{
-			(*dir_counter)++;
+		if (check_direction(program, &line[i], dir_counter))
 			break ;
-		}
-		else if (check_characters(program, line, i, 'S', 'O'))
-		{
-			(*dir_counter)++;
-			break ;
-		}
-		else if (check_characters(program, line, i, 'W', 'E'))
-		{
-			(*dir_counter)++;
-			break ;
-		}
-		else if (check_characters(program, line, i, 'E', 'A'))
-		{
-			(*dir_counter)++;
-			break ;
-		}
 		i++;
 	}
 }
