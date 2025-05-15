@@ -15,32 +15,22 @@
 
 void	load_texture_data(t_texture_data *texture)
 {
-	texture->data = mlx_get_data_addr(
-		texture->tex_ptr,
-		&texture->bpp,
-		&texture->size_line,
-		&texture->endian
-	);
+	texture->data = mlx_get_data_addr(texture->tex_ptr, &texture->bpp,
+			&texture->size_line, &texture->endian);
 	if (!texture->data)
 	{
-		ft_putendl_fd(
-			"Error! loading texture data: load_texture_data()", STDERR_FILENO);
+		ft_putendl_fd("Error: failed to load texture data", STDERR_FILENO);
 		exit(EXIT_FAILURE);
 	}
 }
 
-void	load_texture(void *mlx, t_texture_data *texture,char *path)
+void	load_texture(void *mlx, t_texture_data *texture, char *path)
 {
-	texture->tex_ptr = mlx_xpm_file_to_image(
-		mlx,
-		path,
-		&texture->width,
-		&texture->height
-	);
+	texture->tex_ptr = mlx_xpm_file_to_image(mlx, path,
+			&texture->width, &texture->height);
 	if (!texture->tex_ptr)
 	{
-		ft_putendl_fd(
-			"Error! loading texture: load_texture()", STDERR_FILENO);
+		ft_putendl_fd("Error: failed to load texture", STDERR_FILENO);
 		exit(EXIT_FAILURE);
 	}
 }

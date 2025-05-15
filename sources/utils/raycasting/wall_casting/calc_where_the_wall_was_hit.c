@@ -16,19 +16,19 @@ void	calc_where_the_wall_was_hit(t_program *program, int side, double *wallX)
 {
 	if (side == 0)
 	{
-		if (program->raycast.rayDirX > 0)
+		if (program->raycast.ray_dir_x > 0)
 			program->texture_index = TEXTURE_EAST;
 		else
 			program->texture_index = TEXTURE_WEST;
-		*wallX = program->player.y + program->raycast.perpWallDist * program->raycast.rayDirY;
+		*wallX = program->player.pos_y + program->raycast.perp_wall_dist * program->raycast.ray_dir_y;
 	}
 	else
 	{
-		if (program->raycast.rayDirY > 0)
+		if (program->raycast.ray_dir_y > 0)
 			program->texture_index = TEXTURE_SOUTH;
 		else
 			program->texture_index = TEXTURE_NORTH;
-		*wallX = program->player.x + program->raycast.perpWallDist * program->raycast.rayDirX;
+		*wallX = program->player.pos_x + program->raycast.perp_wall_dist * program->raycast.ray_dir_x;
 	}
 	*wallX -= floor(*wallX);
 }

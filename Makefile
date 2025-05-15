@@ -10,7 +10,7 @@ SRCS =	$(wildcard sources/*.c) \
 		$(wildcard sources/utils/raycasting/wall_casting/*.c)
 
 BONUS_SRCS =	$(wildcard sources/bonus/*.c) \
-				$(wildcard sources/bonus/raycasting/ceilling_floor_casting/*.c)
+				$(wildcard sources/bonus/raycasting/ceiling_floor_casting/*.c)
 
 OBJS = $(SRCS:.c=.o)
 

@@ -20,12 +20,8 @@ void	x11_connect(t_program *program)
 		write(STDERR_FILENO, "Failed to connect to X11!", 21);
 		exit(EXIT_FAILURE);
 	}
-	program->mlx_win = mlx_new_window(
-		program->mlx,
-		WINDOW_WIDTH,
-		WINDOW_HEIGHT,
-		"Cube3D"
-	);
+	program->mlx_win = mlx_new_window(program->mlx, WINDOW_WIDTH,
+			WINDOW_HEIGHT, "Cube3D");
 	if (!program->mlx_win)
 	{
 		write(STDERR_FILENO, "Failed to open a window!", 21);

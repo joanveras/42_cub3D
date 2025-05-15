@@ -14,11 +14,15 @@
 
 void	free_file(t_map *map)
 {
+	int	i;
+
 	if (map->whole_file != NULL)
 	{
-		for (int i = 0; map->whole_file[i] != NULL; i++)
+		i = 0;
+		while (map->whole_file[i] != NULL)
 		{
 			free(map->whole_file[i]);
+			i++;
 		}
 		free(map->whole_file);
 		map->whole_file = NULL;

@@ -14,7 +14,9 @@
 
 static void	free_wall_textures(t_texture_data wall_texture[4], void *mlx)
 {
-	int i = 0;
+	int	i;
+
+	i = 0;
 	while (i < 4)
 	{
 		if (wall_texture[i].tex_ptr != NULL)

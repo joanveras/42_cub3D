@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ceilling_floor_casting.c                           :+:      :+:    :+:   */
+/*   ceiling_floor_casting.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -25,22 +25,22 @@ void	ceiling_floor_casting(t_program *program)
 	{
 		calc_row_distance(program, &casting, y);
 
-		casting.floorStepX = casting.rowDistance * (casting.rayDirX1 - casting.rayDirX0) / WINDOW_WIDTH;
-		casting.floorStepY = casting.rowDistance * (casting.rayDirY1 - casting.rayDirY0) / WINDOW_WIDTH;
+		casting.floor_step_x = casting.row_distance * (casting.ray_dir_x1 - casting.ray_dir_x0) / WINDOW_WIDTH;
+		casting.floor_step_y = casting.row_distance * (casting.ray_dir_y1 - casting.ray_dir_y0) / WINDOW_WIDTH;
 
-		casting.floorX = program->player.x + casting.rowDistance * casting.rayDirX0;
-		casting.floorY = program->player.y + casting.rowDistance * casting.rayDirY0;
+		casting.floor_x = program->player.pos_x + casting.row_distance * casting.ray_dir_x0;
+		casting.floor_y = program->player.pos_y + casting.row_distance * casting.ray_dir_y0;
 
 		x = 0;
 		while (x < WINDOW_WIDTH)
 		{
 			calc_texel_point(&casting);
 
-			casting.floorX += casting.floorStepX;
-			casting.floorY += casting.floorStepY;
+			casting.floor_x += casting.floor_step_x;
+			casting.floor_y += casting.floor_step_y;
 
 			if (y < WINDOW_HEIGHT/2);
-				// transform_image_ceilling_side(program, &casting, x, y);
+				// transform_image_ceiling_side(program, &casting, x, y);
 			else
 				transform_image_floor_side(program, &casting, x, y);
 

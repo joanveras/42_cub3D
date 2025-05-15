@@ -13,22 +13,18 @@
 #include "../../../includes/libft.h"
 #include "../../../includes/cube3d.h"
 
-void	check_file_extension( t_program *program, char *line )
+void	check_file_extension(t_program *program, char *line)
 {
 	char	*file_extension;
 
 	if (!line)
-		error_message(program, INVALID_PATH);
-
+		error_message(program, "Error: invalid file path\n");
 	file_extension = ft_strtrim(ft_strrchr(line, '.'), " \t");
-
 	if (!ft_strncmp(file_extension, ".xpm", ft_strlen(file_extension)))
 	{
 		free(file_extension);
 		return ;
 	}
-
 	free(file_extension);
-
-	error_message(program, INVALID_PATH);
+	error_message(program, "Error: invalid file extension (must be .xpm)\n");
 }

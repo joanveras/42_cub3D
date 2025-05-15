@@ -50,6 +50,6 @@ static void	transform_floor(t_img_data *img, int color)
 
 void	transform_c_f(t_program *program)
 {
-	transform_ceiling(&program->main_image, program->ceilling_floor.c_color);
-	transform_floor(&program->main_image, program->ceilling_floor.f_color);
+	transform_ceiling(&program->main_image, program->ceiling_floor.ceiling_color);
+	transform_floor(&program->main_image, program->ceiling_floor.floor_color);
 }

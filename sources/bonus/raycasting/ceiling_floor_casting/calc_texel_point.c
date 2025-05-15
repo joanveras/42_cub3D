@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   transform_image_ceilling_side.c                    :+:      :+:    :+:   */
+/*   calc_texel_point.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/22 23:46:57 by jveras            #+#    #+#             */
-/*   Updated: 2025/04/23 02:54:57 by jveras           ###   ########.fr       */
+/*   Created: 2025/04/22 23:41:43 by jveras            #+#    #+#             */
+/*   Updated: 2025/04/23 02:48:04 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../includes/cube3d.h"
 
-void	transform_image_ceilling_side(t_program *program, t_casting *casting, int x, int y)
+void	calc_texel_point(t_casting *casting)
 {
-	int color;
+	casting->cellX = (int)casting->floorX;
+	casting->cellY = (int)casting->floorY;
 
-	color = get_color(program->ceilling_floor.c_f_textures[0], casting->tx, casting->ty);
-	put_pixel(&program->main_image, x, WINDOW_HEIGHT - y - 1, color);
+	casting->text_x = (int)(textureWidth * (casting->floorX - casting->cellX)) & (textureWidth - 1);
+	casting->text_y = (int)(textureHeight * (casting->floorY - casting->cellY)) & (textureHeight - 1);
 }

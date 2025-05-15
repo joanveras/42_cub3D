@@ -16,14 +16,9 @@ int	handle_key_inputs(int keycode, t_program *program)
 {
 	if (keycode == ESC)
 		safe_exit(program);
-
 	foward(program, keycode);
-
 	backward(program, keycode);
-
 	right(program, keycode);
-	
 	left(program, keycode);
-
 	return (0);
 }

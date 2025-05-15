@@ -13,8 +13,8 @@
 #include "../../../includes/libft.h"
 #include "../../../includes/cube3d.h"
 
-static void remain_something(t_program *program,
-	char *str, char *line, int *ret)
+static void	remain_something(t_program *program, char *str,
+		char *line, int *ret)
 {
 	str = ft_strtrim(str, " \t\n");
 	if (str[0])
@@ -28,8 +28,7 @@ static void remain_something(t_program *program,
 	free(line);
 }
 
-static void	set_rgb(int *r, int *g, int *b,
-	const char *str, int index)
+static void	set_rgb(int *r, int *g, int *b, const char *str, int index)
 {
 	if (index == 0)
 		*r = ft_atoi(str);
@@ -45,80 +44,68 @@ static int	is_next_char_a_digit(t_program *program, const char *str)
 
 	if (!str)
 		return (0);
-
 	i = 0;
 	while (ft_isdigit(str[i]))
 		i++;
-
 	if (i == 0 || i > 3)
 		error_message(program, INVALID_COLOR_FORMAT);
-
 	return (i);
+}
 
+static void	skip_spaces_and_comma(char **str)
+{
+	int	j;
+
+	j = 0;
+	if ((*str)[j] == ',')
+		j++;
+	while ((*str)[j] == ' ')
+		j++;
+	*str = *str + j;
+}
+
+static void	process_rgb_value(t_program *program, char **str,
+		int *ret, int index)
+{
+	int	k;
+
+	skip_spaces_and_comma(str);
+	k = is_next_char_a_digit(program, *str);
+	set_rgb(&ret[0], &ret[1], &ret[2], *str, index);
+	*str = *str + k;
+	skip_spaces_and_comma(str);
 }
 
 static void	validate_rgb_format(t_program *program, char *line, int *ret)
 {
-	int	i, j, k;
-
+	int		i;
 	char	*str;
 
 	i = 0;
 	if (!line || line[i] == ',')
 		error_message(program, INVALID_COLOR_FORMAT);
-
 	str = line;
-
 	while (i < 3)
 	{
-		j = 0;
-		if (str[j] == ',')
-			j++;
-
-		while (str[j] == ' ')
-			j++;
-
-		str = str + j;
-
-		k = is_next_char_a_digit(program, str);
-
-		set_rgb(&ret[0], &ret[1], &ret[2], str, i);
-
-		str = str + k;
-
-		j = 0;
-		while (str[j] == ' ')
-			j++;
-
-		str = str + j;
-
+		process_rgb_value(program, &str, ret, i);
 		i++;
 	}
-
 	remain_something(program, str, line, ret);
-
 }
 
 int	*check_colors(t_program *program, char **map, int i)
 {
-
 	int	k;
 	int	*ret;
 
 	ret = malloc(sizeof(int) * 3);
-
 	ret[0] = -1;
 	ret[1] = -1;
 	ret[2] = -1;
-
 	k = 0;
 	while (map[i][k] == ' ')
 		k++;
-
 	validate_rgb_format(program, ft_strtrim(&map[i][k + 1], " \t\n"), ret);
-
 	validate_rgb_range(program, ret);
-
 	return (ret);
-
 }

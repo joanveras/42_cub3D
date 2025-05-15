@@ -15,17 +15,16 @@
 
 void	right(t_program *program, int keycode)
 {
-	double	oldViewDirX;
-	double	oldPlaneX;
+	double old_dir_x;
+	double old_plane_x;
 
-	if (keycode == 'd' || keycode == 'D' || keycode == 65363)
+	if (keycode == 68 || keycode == 100)
 	{
-		oldViewDirX = program->player.viewDirX;
-		program->player.viewDirX = program->player.viewDirX * cos(ROT_SPEED) - program->player.viewDirY * sin(ROT_SPEED);
-		program->player.viewDirY = oldViewDirX * sin(ROT_SPEED) + program->player.viewDirY * cos(ROT_SPEED);
-
-		oldPlaneX = program->raycast.camera.planeX;
-		program->raycast.camera.planeX = program->raycast.camera.planeX * cos(ROT_SPEED) - program->raycast.camera.planeY * sin(ROT_SPEED);
-		program->raycast.camera.planeY = oldPlaneX * sin(ROT_SPEED) + program->raycast.camera.planeY * cos(ROT_SPEED);
+		old_dir_x = program->player.view_dir_x;
+		program->player.view_dir_x = program->player.view_dir_x * cos(ROT_SPEED) - program->player.view_dir_y * sin(ROT_SPEED);
+		program->player.view_dir_y = old_dir_x * sin(ROT_SPEED) + program->player.view_dir_y * cos(ROT_SPEED);
+		old_plane_x = program->raycast.camera.plane_x;
+		program->raycast.camera.plane_x = program->raycast.camera.plane_x * cos(ROT_SPEED) - program->raycast.camera.plane_y * sin(ROT_SPEED);
+		program->raycast.camera.plane_y = old_plane_x * sin(ROT_SPEED) + program->raycast.camera.plane_y * cos(ROT_SPEED);
 	}
 }

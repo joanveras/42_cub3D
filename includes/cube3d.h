@@ -27,6 +27,7 @@
 # define WINDOW_WIDTH 800
 # define WINDOW_HEIGHT 600
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 # define textureWidth 1024
 # define textureHeight 1024
@@ -40,6 +41,12 @@
 # define MOVE_SPEED 0.1
 # define ROT_SPEED 0.066
 >>>>>>> origin/main
+=======
+# define textureWidth 64
+# define textureHeight 64
+# define MOVE_SPEED 0.08
+# define ROT_SPEED 0.05
+>>>>>>> origin/jveras
 # define TEXTURE_WEST 0
 # define TEXTURE_EAST 1
 # define TEXTURE_NORTH 2
@@ -49,9 +56,13 @@
 # define INVALID_RGB_RANGE "Invalid RGB range\n"
 # define FLOOR_TEXTURE "assets/textures/dark_browntile.xpm"
 
+<<<<<<< HEAD
 /*
 ** File validations
 */
+=======
+/* File validations */
+>>>>>>> origin/jveras
 void	validate_file(t_program *program);
 void	is_a_file(t_program *program, char *path);
 void	check_first_info(t_program *program, int *i);
@@ -67,22 +78,31 @@ void	check_abbrev(t_program *program, char *line, int *dir_counter);
 int		rgb_to_int(int *nums);
 int		*check_colors(t_program *program, char **map, int i);
 
+<<<<<<< HEAD
 /*
 ** Input Keys
 */
+=======
+/* Input Keys */
+>>>>>>> origin/jveras
 void	left(t_program *program, int keycode);
 void	right(t_program *program, int keycode);
 void	foward(t_program *program, int keycode);
 void	backward(t_program *program, int keycode);
 int		handle_key_inputs(int keycode, t_program *program);
 
+<<<<<<< HEAD
 /*
 ** Raycasting functions
 */
+=======
+/* Raycasting functions */
+>>>>>>> origin/jveras
 void	calc_texel_point(t_casting *casting);
 void	clear_image(t_img_data *img, int color);
 void	ceiling_floor_casting(t_program *program);
 void	calc_row_distance(t_program *program, t_casting *casting, int y);
+<<<<<<< HEAD
 void	transform_image_floor(t_program *program, t_casting *casting);
 void	transform_image_ceiling(t_program *program, t_casting *casting);
 void	perform_dda(t_program *program, int *side);
@@ -97,6 +117,23 @@ int		get_color(t_texture_data tex, int tex_pos_x, int tex_pos_y);
 /*
 ** Helper functions
 */
+=======
+void	transform_image_floor_side(t_program *program,
+			t_casting *casting, int x, int y);
+void	transform_image_ceiling_side(t_program *program,
+			t_casting *casting, int x, int y);
+void	perform_dda(t_program *program, int *side);
+void	calc_step_and_initial_side_dist(t_program *program);
+void	calc_dist_of_perpendicular_ray(t_program *program, int side);
+void	calc_where_the_wall_was_hit(t_program *program,
+			int side, double *wallX);
+void	calc_vertical_line_and_transform_image(t_program *program,
+			int x, double wallX, int lineHeight, int side);
+int		wall_casting(t_program *program);
+int		bonus_wall_casting(t_program *program);
+
+/* Helper functions */
+>>>>>>> origin/jveras
 void	free_file(t_map *map);
 void	load_img_data(t_img_data *image);
 void	load_textures(t_program *program);
@@ -107,8 +144,13 @@ void	load_texture_data(t_texture_data *texture);
 void	put_pixel(t_img_data *img, int x, int y, int color);
 void	load_texture(void *mlx, t_texture_data *texture, char *path);
 void	load_img(void *mlx, t_img_data *image, int width, int height);
+<<<<<<< HEAD
 int		get_texel_color(t_program *program, t_texture_data *tex,
 			int tex_pos_x, int tex_pos_y);
+=======
+int		get_texel_color(t_program *program,
+			t_texture_data *tex, int tex_x, int tex_y);
+>>>>>>> origin/jveras
 void	x11_connect(t_program *program);
 int		safe_exit(t_program *program);
 int		bonus_safe_exit(t_program *program);

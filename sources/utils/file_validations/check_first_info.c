@@ -17,9 +17,9 @@ static void	missing_info(t_program *program, int dir_counter)
 {
 	if (dir_counter < 4)
 		error_message(program, "Missing direction information\n");
-	else if (program->ceilling_floor.f_color == -1)
+	else if (program->ceiling_floor.floor_color == -1)
 		error_message(program, "Missing floor color information\n");
-	else if (program->ceilling_floor.c_color == -1)
+	else if (program->ceiling_floor.ceiling_color == -1)
 		error_message(program, "Missing ceiling color information\n");
 }
 
@@ -32,10 +32,29 @@ static void	free_tmp(int *tmp)
 	}
 }
 
+static int	process_floor_color(t_program *program, char **map, int line_index)
+{
+	int	*tmp;
+
+	tmp = check_colors(program, map, line_index);
+	program->ceiling_floor.floor_color = rgb_to_int(tmp);
+	free_tmp(tmp);
+	return (1);
+}
+
+static int	process_ceiling_color(t_program *program, char **map, int line_index)
+{
+	int	*tmp;
+
+	tmp = check_colors(program, map, line_index);
+	program->ceiling_floor.ceiling_color = rgb_to_int(tmp);
+	free_tmp(tmp);
+	return (1);
+}
+
 static int	is_rgb(t_program *program, char *line, int line_index)
 {
 	int	i;
-	int	*tmp;
 
 	i = 0;
 	while (line[i] == ' ')
@@ -43,19 +62,11 @@ static int	is_rgb(t_program *program, char *line, int line_index)
 	if (line[i] == '\n' || !line[i])
 		return (0);
 	if (line[i] == 'F' && line[i + 1] == ' ')
-	{
-		tmp = check_colors(program, program->map.whole_file, line_index);
-		program->ceilling_floor.f_color = rgb_to_int(tmp);
-		free_tmp(tmp);
-		return (1);
-	}
+		return (process_floor_color(program, program->map.whole_file,
+				line_index));
 	else if (line[i] == 'C' && line[i + 1] == ' ')
-	{
-		tmp = check_colors(program, program->map.whole_file, line_index);
-		program->ceilling_floor.c_color = rgb_to_int(tmp);
-		free_tmp(tmp);
-		return (1);
-	}
+		return (process_ceiling_color(program, program->map.whole_file,
+				line_index));
 	return (0);
 }
 
@@ -82,15 +93,15 @@ static int	begin_map_info(char *line)
 	return (0);
 }
 
-
-void	check_first_info( t_program *program, int *i )
+void	check_first_info(t_program *program, int *i)
 {
 	int	dir_counter;
 	int	j;
 
 	dir_counter = 0;
 	j = 0;
-	while (program->map.whole_file[j] && !begin_map_info(program->map.whole_file[j]))
+	while (program->map.whole_file[j]
+		&& !begin_map_info(program->map.whole_file[j]))
 	{
 		if (is_rgb(program, program->map.whole_file[j], j))
 		{

@@ -14,14 +14,10 @@
 
 void	calc_row_distance(t_program *program, t_casting *casting, int y)
 {
-	casting->rayDirX0 = program->player.viewDirX - program->raycast.camera.planeX;
-	casting->rayDirY0 = program->player.viewDirY - program->raycast.camera.planeY;
-	casting->rayDirX1 = program->player.viewDirX + program->raycast.camera.planeX;
-	casting->rayDirY1 = program->player.viewDirY + program->raycast.camera.planeY;
-
-	casting->p = y - WINDOW_HEIGHT / 2;
-
-	casting->posZ = 0.5 * WINDOW_HEIGHT;
-
-	casting->rowDistance = casting->posZ / casting->p;
+	casting->ray_dir_x0 = program->player.view_dir_x - program->raycast.camera.plane_x;
+	casting->ray_dir_y0 = program->player.view_dir_y - program->raycast.camera.plane_y;
+	casting->ray_dir_x1 = program->player.view_dir_x + program->raycast.camera.plane_x;
+	casting->ray_dir_y1 = program->player.view_dir_y + program->raycast.camera.plane_y;
+	casting->pos_z = 0.5 * WINDOW_HEIGHT;
+	casting->row_distance = casting->pos_z / (y - WINDOW_HEIGHT / 2);
 }

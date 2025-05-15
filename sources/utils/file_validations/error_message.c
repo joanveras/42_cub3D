@@ -23,7 +23,7 @@ static void	error_safe_exit(t_program *program)
 	exit(EXIT_SUCCESS);
 }
 
-void	error_message( t_program *program, const char *message )
+void	error_message(t_program *program, const char *message)
 {
 	ft_putstr_fd((char *)message, STDERR_FILENO);
 	error_safe_exit(program);
