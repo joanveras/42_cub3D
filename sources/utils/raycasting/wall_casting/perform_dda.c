@@ -14,21 +14,24 @@
 
 void	perform_dda(t_program *program, int *side)
 {
-	while (1)
+	int	hit;
+
+	hit = 0;
+	while (hit == 0)
 	{
-		if (program->raycast.sideDistX < program->raycast.sideDistY)
+		if (program->raycast.side_dist_x < program->raycast.side_dist_y)
 		{
-			program->raycast.sideDistX += program->raycast.deltaDistX;
-			program->map.x += program->map.step.x;
+			program->raycast.side_dist_x += program->raycast.delta_dist_x;
+			program->map.map_x += program->map.step.step_x;
 			*side = 0;
 		}
 		else
 		{
-			program->raycast.sideDistY += program->raycast.deltaDistY;
-			program->map.y += program->map.step.y;
+			program->raycast.side_dist_y += program->raycast.delta_dist_y;
+			program->map.map_y += program->map.step.step_y;
 			*side = 1;
 		}
-		if ((program->map.map[program->map.x][program->map.y] - '0') > 0)
-			break ;
+		if (program->map.map[program->map.map_x][program->map.map_y] == '1')
+			hit = 1;
 	}
 }

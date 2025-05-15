@@ -17,26 +17,22 @@ static int	check_remaining_positions(int *counts, int i)
 	while (i < 4)
 	{
 		if (counts[i] > 0)
-		{
 			return (1);
-		}
 		i++;
 	}
 	return (0);
 }
 
 static void	check_equal_character_doubles(t_program *program,
-	int *counts, int *i)
+		int *counts, int *i)
 {
 	while ((*i) < 4)
 	{
 		if (counts[*i] > 0)
 		{
 			if (counts[*i] > 1)
-			{
 				error_message(program,
-					"Duplicated player start positions in map");
-			}
+					"Error: duplicated player start position\n");
 			(*i)++;
 			return ;
 		}
@@ -51,14 +47,14 @@ static void	check_for_duplicate_positions(t_program *program, int *counts)
 	i = 0;
 	check_equal_character_doubles(program, counts, &i);
 	if (i == 4)
-		error_message(program, "There is no player start position in map");
+		error_message(program, "Error: no player start position\n");
 	else if (check_remaining_positions(counts, i))
-		error_message(program, "Duplicated player start positions in map");
+		error_message(program, "Error: duplicated player start position\n");
 }
 
-static void initialize_counts(int *counts)
+static void	initialize_counts(int *counts)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < 4)
@@ -70,8 +66,8 @@ static void initialize_counts(int *counts)
 
 void	check_for_duplicates(t_program *program, char **map)
 {
-	int counts[4];
-	int i;
+	int	counts[4];
+	int	i;
 	int	j;
 
 	initialize_counts(counts);

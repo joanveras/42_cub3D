@@ -14,21 +14,21 @@
 
 static void	save_player_pos(t_program *program, int x, int y)
 {
-	program->player.x = x + 0.5;
-	program->player.y = y + 0.5;
+	program->player.pos_x = x + 0.5;
+	program->player.pos_y = y + 0.5;
 	program->map.map[x][y] = '0';
 }
 
-static void	save_view_dir(t_program *program, double dirX, double dirY)
+static void	save_view_dir(t_program *program, double dir_x, double dir_y)
 {
-	program->player.viewDirX = dirX;
-	program->player.viewDirY = dirY;
+	program->player.view_dir_x = dir_x;
+	program->player.view_dir_y = dir_y;
 }
 
-static void	save_perp_planes(t_program *program, double planeX, double planeY)
+static void	save_perp_planes(t_program *program, double plane_x, double plane_y)
 {
-	program->raycast.camera.planeX = planeX;
-	program->raycast.camera.planeY = planeY;
+	program->raycast.camera.plane_x = plane_x;
+	program->raycast.camera.plane_y = plane_y;
 }
 
 // The view direction must be perpendicular to the planes!

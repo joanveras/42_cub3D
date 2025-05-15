@@ -16,6 +16,6 @@ void	transform_image_floor_side(t_program *program, t_casting *casting, int x, i
 {
 	int color;
 
-	color = get_color(program->ceilling_floor.c_f_textures[1], casting->tx, casting->ty);
+	color = get_color(program->ceiling_floor.ceiling_floor_textures[1], casting->text_x, casting->text_y);
 	put_pixel(&program->main_image, x, y, color);
 }

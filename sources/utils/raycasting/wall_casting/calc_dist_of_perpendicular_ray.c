@@ -15,7 +15,7 @@
 void	calc_dist_of_perpendicular_ray(t_program *program, int side)
 {
 	if (side == 0)
-		program->raycast.perpWallDist = (program->raycast.sideDistX - program->raycast.deltaDistX);
+		program->raycast.perp_wall_dist = (program->raycast.side_dist_x - program->raycast.delta_dist_x);
 	else
-		program->raycast.perpWallDist = (program->raycast.sideDistY - program->raycast.deltaDistY);
+		program->raycast.perp_wall_dist = (program->raycast.side_dist_y - program->raycast.delta_dist_y);
 }

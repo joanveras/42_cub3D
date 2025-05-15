@@ -23,7 +23,7 @@ static int	count_lines(char *path)
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 	{
-		write(STDERR_FILENO, "error: COULD NOT OPEN FILE\n", 27);
+		ft_putstr_fd("Error: could not open file\n", STDERR_FILENO);
 		exit(EXIT_FAILURE);
 	}
 	counter = 0;
@@ -67,7 +67,7 @@ char	**open_file(char *path)
 	file = malloc((count_lines(path) + 1) * sizeof(char *));
 	if (!file)
 	{
-		ft_putstr_fd("Memory allocation failure:: allocating (char **file)", 2);
+		ft_putstr_fd("Error: memory allocation failure\n", STDERR_FILENO);
 		exit(EXIT_FAILURE);
 	}
 	fill_file(path, file);

@@ -39,30 +39,30 @@ typedef struct s_texture_data
 
 typedef struct s_casting
 {
-	int		p;
-	int		cellX;
-	int		cellY;
-	int		tx;
-	int		ty;
-	float	rayDirX0;
-	float	rayDirY0;
-	float	rayDirX1;
-	float	rayDirY1;
-	float	posZ;
-	float	rowDistance;
-	float	floorStepX;
-	float	floorStepY;
-	float	floorX;
-	float	floorY;
+	int		position;
+	int		cell_x;
+	int		cell_y;
+	int		text_x;
+	int		text_y;
+	float	ray_dir_x0;
+	float	ray_dir_y0;
+	float	ray_dir_x1;
+	float	ray_dir_y1;
+	float	pos_z;
+	float	row_distance;
+	float	floor_step_x;
+	float	floor_step_y;
+	float	floor_x;
+	float	floor_y;
 }	t_casting;
 
-typedef	struct s_ceilling_floor
+typedef	struct s_ceiling_floor
 {
-	int				c_color;
-	int				f_color;
+	int				ceiling_color;
+	int				floor_color;
 	t_casting		casting;
-	t_texture_data	c_f_textures[2];
-}	t_ceilling_floor;
+	t_texture_data	ceiling_floor_textures[2];
+}	t_ceiling_floor;
 
 typedef struct s_textures
 {
@@ -85,42 +85,42 @@ typedef struct s_img_data
 
 typedef struct s_player
 {
-	double	x;
-	double	y;
-	double	viewDirX;
-	double	viewDirY;
+	double	pos_x;
+	double	pos_y;
+	double	view_dir_x;
+	double	view_dir_y;
 }	t_player;
 
 typedef struct s_camera
 {
-	double	planeX;
-	double	planeY;
+	double	plane_x;
+	double	plane_y;
 }	t_camera;
 
 typedef struct s_raycasting
 {
 	t_camera	camera;
-	double		rayDirX;
-	double		rayDirY;
-	double		sideDistX;
-	double		sideDistY;
-	double		deltaDistX;
-	double		deltaDistY;
-	double		perpWallDist;
+	double		ray_dir_x;
+	double		ray_dir_y;
+	double		side_dist_x;
+	double		side_dist_y;
+	double		delta_dist_x;
+	double		delta_dist_y;
+	double		perp_wall_dist;
 }	t_raycasting;
 
 typedef struct s_step
 {
-	int	x;
-	int	y;
+	int	step_x;
+	int	step_y;
 }	t_step;
 
 typedef struct s_map
 {
 	char	**whole_file;
 	char	**map;
-	int		x;
-	int		y;
+	int		map_x;
+	int		map_y;
 	t_step	step;
 }	t_map;
 
@@ -129,7 +129,7 @@ typedef struct s_program
 	void				*mlx;
 	void				*mlx_win;
 	int					texture_index;
-	t_ceilling_floor	ceilling_floor;
+	t_ceiling_floor		ceiling_floor;
 	t_textures			textures;
 	t_texture_data		wall_texture[4];
 	t_img_data			main_image;

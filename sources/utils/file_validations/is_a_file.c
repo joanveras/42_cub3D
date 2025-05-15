@@ -18,14 +18,12 @@ void	is_a_file(t_program *program, char *path)
 	int	fd;
 
 	path = ft_strtrim(path, " \t\n");
-
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 	{
 		free(path);
-		error_message(program, INVALID_PATH);
+		error_message(program, "Error: invalid file path\n");
 	}
 	free(path);
-
 	close(fd);
 }

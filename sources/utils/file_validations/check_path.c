@@ -25,20 +25,17 @@ static void	get_path(t_program *program, char c1, char c2, char *line)
 		program->textures.east = ft_strdup(line);
 }
 
-void	check_path( t_program *program, char c1, char c2, char *line )
+void	check_path(t_program *program, char c1, char c2, char *line)
 {
 	int	i;
 
 	i = 0;
 	if (!line || line[i] == '\n')
-		error_message(program, INVALID_PATH);
-
+		error_message(program, "Error: invalid texture path\n");
 	while (line[i] == ' ')
 		i++;
-
 	if (!line || line[i] == '\n')
-		error_message(program, INVALID_PATH);
-
+		error_message(program, "Error: invalid texture path\n");
 	if (line[i] && line[i] != '\n')
 	{
 		check_file_extension(program, &line[i]);
@@ -46,5 +43,5 @@ void	check_path( t_program *program, char c1, char c2, char *line )
 		get_path(program, c1, c2, &line[i]);
 		return ;
 	}
-	error_message(program, INVALID_PATH);
+	error_message(program, "Error: invalid texture path\n");
 }

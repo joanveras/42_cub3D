@@ -15,8 +15,8 @@
 
 static void	init_crucial_variables(t_program *program)
 {
-	program->ceilling_floor.f_color = -1;
-	program->ceilling_floor.c_color = -1;
+	program->ceiling_floor.floor_color = -1;
+	program->ceiling_floor.ceiling_color = -1;
 	program->textures.north = NULL;
 	program->textures.south = NULL;
 	program->textures.east = NULL;
@@ -35,7 +35,7 @@ void	validate_file(t_program *program)
 
 	program->map.map = &program->map.whole_file[i];
 
-	check_for_invalid_characthers(program, program->map.map);
+	check_for_invalid_characters(program, program->map.map);
 
 	check_for_duplicates(program, program->map.map);
 

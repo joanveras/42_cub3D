@@ -17,17 +17,17 @@ void	validate_rgb_range(t_program *program, int *rgb)
 {
 	if (rgb[0] < 0 || rgb[0] > 255)
 	{
-		free(rgb);	
-		error_message(program, INVALID_RGB_RANGE);
+		free(rgb);
+		error_message(program, "Error: RGB value out of range (0-255)\n");
 	}
 	if (rgb[1] < 0 || rgb[1] > 255)
 	{
 		free(rgb);
-		error_message(program, INVALID_RGB_RANGE);
+		error_message(program, "Error: RGB value out of range (0-255)\n");
 	}
 	if (rgb[2] < 0 || rgb[2] > 255)
 	{
 		free(rgb);
-		error_message(program, INVALID_RGB_RANGE);
+		error_message(program, "Error: RGB value out of range (0-255)\n");
 	}
 }

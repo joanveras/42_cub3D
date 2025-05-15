@@ -14,27 +14,30 @@
 
 void	calc_step_and_initial_side_dist(t_program *program)
 {
-	program->map.x = (int)program->player.x;
-	program->map.y = (int)program->player.y;
-
-	if (program->raycast.rayDirX < 0)
+	if (program->raycast.ray_dir_x < 0)
 	{
-		program->map.step.x = -1;
-		program->raycast.sideDistX = (program->player.x - program->map.x) * program->raycast.deltaDistX;
+		program->map.step.step_x = -1;
+		program->raycast.side_dist_x = (program->player.pos_x - program->map.map_x)
+			* program->raycast.delta_dist_x;
 	}
 	else
 	{
-		program->map.step.x = 1;
-		program->raycast.sideDistX = (program->map.x + 1.0 - program->player.x) * program->raycast.deltaDistX;
+		program->map.step.step_x = 1;
+		program->raycast.side_dist_x = (program->map.map_x + 1.0 - program->player.pos_x)
+			* program->raycast.delta_dist_x;
 	}
-	if (program->raycast.rayDirY < 0)
+	if (program->raycast.ray_dir_y < 0)
 	{
-		program->map.step.y = -1;
-		program->raycast.sideDistY = (program->player.y - program->map.y) * program->raycast.deltaDistY;
+		program->map.step.step_y = -1;
+		program->raycast.side_dist_y = (program->player.pos_y - program->map.map_y)
+			* program->raycast.delta_dist_y;
 	}
 	else
 	{
-		program->map.step.y = 1;
-		program->raycast.sideDistY = (program->map.y + 1.0 - program->player.y) * program->raycast.deltaDistY;
+		program->map.step.step_y = 1;
+		program->raycast.side_dist_y = (program->map.map_y + 1.0 - program->player.pos_y)
+			* program->raycast.delta_dist_y;
 	}
+	program->map.map_x = (int)program->player.pos_x;
+	program->map.map_y = (int)program->player.pos_y;
 }

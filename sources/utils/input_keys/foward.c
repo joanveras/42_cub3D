@@ -15,11 +15,11 @@
 
 void	foward(t_program *program, int keycode)
 {
-	if (keycode == 'w' || keycode == 'W' || keycode == 65362)
+	if (keycode == 87 || keycode == 119)
 	{
-		if (program->map.map[(int)(program->player.x + program->player.viewDirX * MOVE_SPEED)][(int)program->player.y] == '0')
-			program->player.x += program->player.viewDirX * MOVE_SPEED;
-		if (program->map.map[(int)program->player.x][(int)(program->player.y + program->player.viewDirY * MOVE_SPEED)] == '0')
-			program->player.y += program->player.viewDirY * MOVE_SPEED;
+		if (program->map.map[(int)(program->player.pos_x + program->player.view_dir_x * MOVE_SPEED)][(int)program->player.pos_y] == '0')
+			program->player.pos_x += program->player.view_dir_x * MOVE_SPEED;
+		if (program->map.map[(int)program->player.pos_x][(int)(program->player.pos_y + program->player.view_dir_y * MOVE_SPEED)] == '0')
+			program->player.pos_y += program->player.view_dir_y * MOVE_SPEED;
 	}
 }
