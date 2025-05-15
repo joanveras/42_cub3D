@@ -6,7 +6,7 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 17:58:20 by jveras            #+#    #+#             */
-/*   Updated: 2025/04/19 21:43:58 by jveras           ###   ########.fr       */
+/*   Updated: 2025/05/14 19:34:15 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 static void	get_path(t_program *program, char c1, char c2, char *line)
 {
 	if (c1 == 'N' && c2 == 'O')
-		program->textures.north = ft_strdup(line);
+		program->textures.north = ft_strtrim(line, " \t\n");
 	else if (c1 == 'S' && c2 == 'O')
-		program->textures.south = ft_strdup(line);
+		program->textures.south = ft_strtrim(line, " \t\n");
 	else if (c1 == 'W' && c2 == 'E')
-		program->textures.west = ft_strdup(line);
+		program->textures.west = ft_strtrim(line, " \t\n");
 	else if (c1 == 'E' && c2 == 'A')
-		program->textures.east = ft_strdup(line);
+		program->textures.east = ft_strtrim(line, " \t\n");
 }
 
 void	check_path( t_program *program, char c1, char c2, char *line )

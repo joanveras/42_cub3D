@@ -1,11 +1,11 @@
 
 NO assets/textures/greybrick.xpm
 SO ./assets/textures/greybrick.xpm
-C 225,30,0 
-WE ./assets/textures/colorbrick.xpm
-EA ./assets/textures/redbrick.xpm
+C 44, 62, 80 
+WE ./assets/textures/colorbrick.xpm 
+EA ./assets/textures/purplestone.xpm
 
-F 220,100,0
+F 30,100,30
 
         1111111111111111111111111
         1000000000110000N00000001
