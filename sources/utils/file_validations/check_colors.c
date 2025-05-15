@@ -28,16 +28,6 @@ static void	remain_something(t_program *program, char *str,
 	free(line);
 }
 
-static void	set_rgb(int *r, int *g, int *b, const char *str, int index)
-{
-	if (index == 0)
-		*r = ft_atoi(str);
-	else if (index == 1)
-		*g = ft_atoi(str);
-	else if (index == 2)
-		*b = ft_atoi(str);
-}
-
 static int	is_next_char_a_digit(t_program *program, const char *str)
 {
 	int	i;
@@ -64,6 +54,16 @@ static void	skip_spaces_and_comma(char **str)
 	*str = *str + j;
 }
 
+static void	set_rgb_value(int *ret, const char *str, int index)
+{
+	if (index == 0)
+		ret[0] = ft_atoi(str);
+	else if (index == 1)
+		ret[1] = ft_atoi(str);
+	else if (index == 2)
+		ret[2] = ft_atoi(str);
+}
+
 static void	process_rgb_value(t_program *program, char **str,
 		int *ret, int index)
 {
@@ -71,7 +71,7 @@ static void	process_rgb_value(t_program *program, char **str,
 
 	skip_spaces_and_comma(str);
 	k = is_next_char_a_digit(program, *str);
-	set_rgb(&ret[0], &ret[1], &ret[2], *str, index);
+	set_rgb_value(ret, *str, index);
 	*str = *str + k;
 	skip_spaces_and_comma(str);
 }

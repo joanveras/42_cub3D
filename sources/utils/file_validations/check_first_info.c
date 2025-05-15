@@ -70,27 +70,35 @@ static int	is_rgb(t_program *program, char *line, int line_index)
 	return (0);
 }
 
+static int	is_empty_line(const char *str)
+{
+	return (!str[0]);
+}
+
+static int	is_all_digits(const char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] && ft_isdigit(str[i]))
+		i++;
+	return (!str[i]);
+}
+
 static int	begin_map_info(char *line)
 {
-	int		i;
+	int		result;
 	char	*str;
 
 	str = ft_strtrim(line, " \t\n");
-	i = 0;
-	if (!str[i])
+	if (is_empty_line(str))
 	{
 		free(str);
 		return (0);
 	}
-	while (str[i] && ft_isdigit(str[i]))
-		i++;
-	if (!str[i])
-	{
-		free(str);
-		return (1);
-	}
+	result = is_all_digits(str);
 	free(str);
-	return (0);
+	return (result);
 }
 
 void	check_first_info(t_program *program, int *i)

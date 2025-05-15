@@ -21,10 +21,14 @@ void	left(t_program *program, int keycode)
 	if (keycode == 65 || keycode == 97)
 	{
 		old_dir_x = program->player.view_dir_x;
-		program->player.view_dir_x = program->player.view_dir_x * cos(-ROT_SPEED) - program->player.view_dir_y * sin(-ROT_SPEED);
-		program->player.view_dir_y = old_dir_x * sin(-ROT_SPEED) + program->player.view_dir_y * cos(-ROT_SPEED);
+		program->player.view_dir_x = program->player.view_dir_x
+			* cos(-ROT_SPEED) - program->player.view_dir_y * sin(-ROT_SPEED);
+		program->player.view_dir_y = old_dir_x
+			* sin(-ROT_SPEED) + program->player.view_dir_y * cos(-ROT_SPEED);
 		old_plane_x = program->raycast.camera.plane_x;
-		program->raycast.camera.plane_x = program->raycast.camera.plane_x * cos(-ROT_SPEED) - program->raycast.camera.plane_y * sin(-ROT_SPEED);
-		program->raycast.camera.plane_y = old_plane_x * sin(-ROT_SPEED) + program->raycast.camera.plane_y * cos(-ROT_SPEED);
+		program->raycast.camera.plane_x = program->raycast.camera.plane_x
+			* cos(-ROT_SPEED) - program->raycast.camera.plane_y * sin(-ROT_SPEED);
+		program->raycast.camera.plane_y = old_plane_x
+			* sin(-ROT_SPEED) + program->raycast.camera.plane_y * cos(-ROT_SPEED);
 	}
 }
