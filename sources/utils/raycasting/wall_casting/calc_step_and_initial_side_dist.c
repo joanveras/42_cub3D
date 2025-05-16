@@ -3,38 +3,51 @@
 /*                                                        :::      ::::::::   */
 /*   calc_step_and_initial_side_dist.c                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
+/*   By: marcribe <marcribe@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 22:41:10 by jveras            #+#    #+#             */
-/*   Updated: 2025/04/22 22:38:52 by jveras           ###   ########.fr       */
+/*   Updated: 2025/05/15 21:54:59 by marcribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../includes/cube3d.h"
 
-void	calc_step_and_initial_side_dist(t_program *program)
+static void	set_x_step_and_side(t_program *p)
 {
-	program->map.x = (int)program->player.x;
-	program->map.y = (int)program->player.y;
+	if (p->raycast.ray_dir_x < 0)
+	{
+		p->map.step.x = -1;
+		p->raycast.side_dist_x = (p->player.x - p->map.x)
+			* p->raycast.delta_dist_x;
+	}
+	else
+	{
+		p->map.step.x = 1;
+		p->raycast.side_dist_x = (p->map.x + 1.0 - p->player.x)
+			* p->raycast.delta_dist_x;
+	}
+}
 
-	if (program->raycast.rayDirX < 0)
+static void	set_y_step_and_side(t_program *p)
+{
+	if (p->raycast.ray_dir_y < 0)
 	{
-		program->map.step.x = -1;
-		program->raycast.sideDistX = (program->player.x - program->map.x) * program->raycast.deltaDistX;
+		p->map.step.y = -1;
+		p->raycast.side_dist_y = (p->player.y - p->map.y)
+			* p->raycast.delta_dist_y;
 	}
 	else
 	{
-		program->map.step.x = 1;
-		program->raycast.sideDistX = (program->map.x + 1.0 - program->player.x) * program->raycast.deltaDistX;
+		p->map.step.y = 1;
+		p->raycast.side_dist_y = (p->map.y + 1.0 - p->player.y)
+			* p->raycast.delta_dist_y;
 	}
-	if (program->raycast.rayDirY < 0)
-	{
-		program->map.step.y = -1;
-		program->raycast.sideDistY = (program->player.y - program->map.y) * program->raycast.deltaDistY;
-	}
-	else
-	{
-		program->map.step.y = 1;
-		program->raycast.sideDistY = (program->map.y + 1.0 - program->player.y) * program->raycast.deltaDistY;
-	}
+}
+
+void	calc_step_and_initial_side_dist(t_program *p)
+{
+	p->map.x = (int)p->player.x;
+	p->map.y = (int)p->player.y;
+	set_x_step_and_side(p);
+	set_y_step_and_side(p);
 }

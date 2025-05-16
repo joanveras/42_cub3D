@@ -3,32 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   calc_where_the_wall_was_hit.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
+/*   By: marcribe <marcribe@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 22:44:48 by jveras            #+#    #+#             */
-/*   Updated: 2025/04/22 22:38:50 by jveras           ###   ########.fr       */
+/*   Updated: 2025/05/15 21:45:54 by marcribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../includes/cube3d.h"
 
-void	calc_where_the_wall_was_hit(t_program *program, int side, double *wallX)
+void	calc_where_the_wall_was_hit(t_program *p, int side, double *wall_x)
 {
 	if (side == 0)
 	{
-		if (program->raycast.rayDirX > 0)
-			program->texture_index = TEXTURE_EAST;
+		if (p->raycast.ray_dir_x > 0)
+			p->texture_index = TEXTURE_EAST;
 		else
-			program->texture_index = TEXTURE_WEST;
-		*wallX = program->player.y + program->raycast.perpWallDist * program->raycast.rayDirY;
+			p->texture_index = TEXTURE_WEST;
+		*wall_x = p->player.y + p->raycast.perp_wall_dist
+			* p->raycast.ray_dir_y;
 	}
 	else
 	{
-		if (program->raycast.rayDirY > 0)
-			program->texture_index = TEXTURE_SOUTH;
+		if (p->raycast.ray_dir_y > 0)
+			p->texture_index = TEXTURE_SOUTH;
 		else
-			program->texture_index = TEXTURE_NORTH;
-		*wallX = program->player.x + program->raycast.perpWallDist * program->raycast.rayDirX;
+			p->texture_index = TEXTURE_NORTH;
+		*wall_x = p->player.x + p->raycast.perp_wall_dist
+			* p->raycast.ray_dir_x;
 	}
-	*wallX -= floor(*wallX);
+	*wall_x -= floor(*wall_x);
 }

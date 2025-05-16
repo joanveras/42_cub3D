@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   validate_file.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
+/*   By: marcribe <marcribe@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: Invalid date        by                   #+#    #+#             */
-/*   Updated: 2025/05/15 21:24:34 by jveras           ###   ########.fr       */
+/*   Created: 2025/05/15 21:58:58 by marcribe          #+#    #+#             */
+/*   Updated: 2025/05/15 21:59:06 by marcribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "../../../includes/libft.h"
 #include "../../../includes/cube3d.h"

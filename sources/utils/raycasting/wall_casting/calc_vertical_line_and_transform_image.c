@@ -6,11 +6,18 @@
 /*   By: marcribe <marcribe@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 22:46:19 by jveras            #+#    #+#             */
-/*   Updated: 2025/05/15 21:27:05 by marcribe         ###   ########.fr       */
+/*   Updated: 2025/05/15 21:54:31 by marcribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../includes/cube3d.h"
+
+typedef struct s_wall_params {
+	int		x;
+	double	wall_x;
+	int		line_height;
+	int		side;
+}	t_wall_params;
 
 static int	calc_draw_start(int line_height)
 {
@@ -42,24 +49,24 @@ static int	calc_tex_pos_y(int y, int line_height)
 	return (tex_pos_y);
 }
 
-void	calc_vertical_line_and_transform_image(t_program *p, int x,
-			double wall_x, int line_height, int side)
+void	calc_vertical_line_and_transform_image(t_program *p,
+t_wall_params *params)
 {
 	int	y;
 	int	draw_end;
 	int	tex_pos_x;
 	int	color;
 
-	draw_end = calc_draw_end(line_height);
-	tex_pos_x = (int)(wall_x * TEXTURE_WIDTH) % TEXTURE_WIDTH;
-	y = calc_draw_start(line_height);
+	draw_end = calc_draw_end(params->line_height);
+	tex_pos_x = (int)(params->wall_x * TEXTURE_WIDTH) % TEXTURE_WIDTH;
+	y = calc_draw_start(params->line_height);
 	while (y < draw_end)
 	{
 		color = get_texel_color(p, p->wall_texture, tex_pos_x,
-				calc_tex_pos_y(y, line_height));
-		if (side == 1)
+				calc_tex_pos_y(y, params->line_height));
+		if (params->side == 1)
 			color = (color >> 1) & 8355711;
-		put_pixel(&p->main_image, x, y, color);
+		put_pixel(&p->main_image, params->x, y, color);
 		y++;
 	}
 }

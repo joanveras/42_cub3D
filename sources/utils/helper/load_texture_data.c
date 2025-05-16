@@ -6,7 +6,7 @@
 /*   By: marcribe <marcribe@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 09:27:51 by jveras            #+#    #+#             */
-/*   Updated: 2025/05/15 21:38:36 by marcribe         ###   ########.fr       */
+/*   Updated: 2025/05/15 21:57:53 by marcribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 void	load_texture_data(t_texture_data *texture)
 {
 	texture->data = mlx_get_data_addr(
-		texture->tex_ptr,
-		&texture->bpp,
-		&texture->size_line,
-		&texture->endian
-	);
+			texture->tex_ptr,
+			&texture->bpp,
+			&texture->size_line,
+			&texture->endian
+			);
 	if (!texture->data)
 	{
 		ft_putendl_fd(
