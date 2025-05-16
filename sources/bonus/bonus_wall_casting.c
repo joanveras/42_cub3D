@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   bonus_wall_casting.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcribe <marcribe@student.42.rio>         +#+  +:+       +#+        */
+/*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 00:15:22 by jveras            #+#    #+#             */
-/*   Updated: 2025/05/15 21:08:11 by marcribe         ###   ########.fr       */
+/*   Updated: 2025/05/15 23:19:10 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../../includes/cube3d.h"
 
 static void	init_raycast(t_program *p, int x)
 {
@@ -33,7 +35,12 @@ static void	process_wall_column(t_program *p, int x)
 	calc_dist_of_perpendicular_ray(p, side);
 	line_height = (int)(WINDOW_HEIGHT / p->raycast.perp_wall_dist);
 	calc_where_the_wall_was_hit(p, side, &wall_x);
-	calc_vertical_line_and_transform_image(p, x, wall_x, line_height, side);
+	calc_vertical_line_and_transform_image(p, &(t_wall_params){
+		.x = x,
+		.wall_x = wall_x,
+		.line_height = line_height,
+		.side = side
+	});
 }
 
 int	bonus_wall_casting(t_program *program)

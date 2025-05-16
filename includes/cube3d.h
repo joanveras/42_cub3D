@@ -6,7 +6,7 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 18:58:57 by marcribe          #+#    #+#             */
-/*   Updated: 2025/05/15 22:46:02 by jveras           ###   ########.fr       */
+/*   Updated: 2025/05/15 23:21:51 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ void	calc_row_distance(t_program *program, t_casting *casting, int y);
 void	calc_where_the_wall_was_hit(t_program *p, int side, double *wall_x);
 void	calc_vertical_line_and_transform_image(t_program *p,
 			t_wall_params *params);
+void	transform_image_floor_side(t_program *program, t_casting *casting,
+			int x, int y);
 
 /*
 ** Helper functions
