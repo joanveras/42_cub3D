@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   load_img_and_wall_texture_data.c                        :+:      :+:    :+:   */
+/*   load_img_data.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
+/*   By: marcribe <marcribe@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 20:00:06 by jveras            #+#    #+#             */
-/*   Updated: 2024/12/30 21:13:05 by jveras           ###   ########.fr       */
+/*   Updated: 2025/05/15 21:37:00 by marcribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 void	load_img_data(t_img_data *image)
 {
 	image->data = mlx_get_data_addr(
-		image->img_ptr,
-		&image->bpp,
-		&image->size_line,
-		&image->endian
-	);
+			image->img_ptr,
+			&image->bpp,
+			&image->size_line,
+			&image->endian
+			);
 	if (!image->data)
 	{
 		ft_putendl_fd(
@@ -31,11 +31,12 @@ void	load_img_data(t_img_data *image)
 
 void	load_img(void *mlx, t_img_data *image, int width, int height)
 {
-	image->img_ptr = mlx_new_image(
-		mlx,
-		width,
-		height
-	);
+	image->img_ptr = mlx_new_image
+		(
+			mlx,
+			width,
+			height
+			);
 	if (!image->img_ptr)
 	{
 		ft_putendl_fd("Error! creating image: load_img()", STDERR_FILENO);
