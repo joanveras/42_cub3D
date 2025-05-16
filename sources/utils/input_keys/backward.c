@@ -6,20 +6,24 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 00:08:34 by jveras            #+#    #+#             */
-/*   Updated: 2025/02/20 14:23:06 by jveras           ###   ########.fr       */
+/*   Updated: 2025/05/15 21:31:37 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/cube3d.h"
 #include "../../../includes/structs.h"
 
-void	backward(t_program *program, int keycode)
+void	backward(t_program *p, int key)
 {
-	if (keycode == 's' || keycode == 'S' || keycode == 65364)
-	{
-		if (program->map.map[(int)(program->player.x - program->player.viewDirX * MOVE_SPEED)][(int)program->player.y] == '0')
-			program->player.x -= program->player.viewDirX * MOVE_SPEED;
-		if (program->map.map[(int)program->player.x][(int)(program->player.y - program->player.viewDirY * MOVE_SPEED)] == '0')
-			program->player.y -= program->player.viewDirY * MOVE_SPEED;
-	}
+	double	new_x;
+	double	new_y;
+
+	if (key != 's' && key != 'S' && key != 65364)
+		return ;
+	new_x = p->player.x - p->player.viewDirX * MOVE_SPEED;
+	new_y = p->player.y - p->player.viewDirY * MOVE_SPEED;
+	if (p->map.map[(int)new_x][(int)p->player.y] == '0')
+		p->player.x = new_x;
+	if (p->map.map[(int)p->player.x][(int)new_y] == '0')
+		p->player.y = new_y;
 }

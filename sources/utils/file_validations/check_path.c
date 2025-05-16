@@ -6,7 +6,7 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 17:58:20 by jveras            #+#    #+#             */
-/*   Updated: 2025/05/14 19:34:15 by jveras           ###   ########.fr       */
+/*   Updated: 2025/05/15 21:13:32 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,10 @@ void	check_path( t_program *program, char c1, char c2, char *line )
 	i = 0;
 	if (!line || line[i] == '\n')
 		error_message(program, INVALID_PATH);
-
 	while (line[i] == ' ')
 		i++;
-
 	if (!line || line[i] == '\n')
 		error_message(program, INVALID_PATH);
-
 	if (line[i] && line[i] != '\n')
 	{
 		check_file_extension(program, &line[i]);

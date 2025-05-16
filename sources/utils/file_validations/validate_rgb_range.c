@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_rgb_range.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcribe <marcribe@student.42.rio>         +#+  +:+       +#+        */
+/*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 18:27:15 by jveras            #+#    #+#             */
-/*   Updated: 2025/05/15 21:14:30 by marcribe         ###   ########.fr       */
+/*   Updated: 2025/05/15 21:24:18 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ void	validate_rgb_range(t_program *program, int *rgb)
 {
 	if (rgb[0] < 0 || rgb[0] > 255)
 	{
+		free(rgb);
 		free(rgb);
 		error_message(program, INVALID_RGB_RANGE);
 	}
