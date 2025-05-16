@@ -3,97 +3,89 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
+/*   By: marcribe <marcribe@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/22 20:17:54 by dbessa            #+#    #+#             */
-/*   Updated: 2024/12/26 15:25:43 by jveras           ###   ########.fr       */
+/*   Created: 2023/12/14 00:19:25 by marcribe          #+#    #+#             */
+/*   Updated: 2025/05/15 22:28:57 by marcribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/get_next_line.h"
+#include "get_next_line.h"
 
-static char	*save_new_line(char *store)
+static char	*ft_check(const char *s, int i)
 {
-	char	*save;
-	size_t	new_line_size;
-	size_t	i;
-
-	i = 0;
-	new_line_size = 1;
-	while (store[i] && store[i] != '\n')
-		i++;
-	if (!store[i])
+	while (*s)
 	{
-		free(store);
-		return (NULL);
+		if (*s == i)
+			return ((char *)s);
+		s++;
 	}
-	if (ft_strchr(store, 10))
-		new_line_size = ft_strlen(ft_strchr(store, 10) + 1) + 1;
-	save = malloc(new_line_size);
-	if (!save)
-		return (NULL);
-	if (ft_strchr(store, 10))
-		ft_strlcpy(save, ft_strchr(store, 10) + 1, new_line_size);
-	else
-		ft_strlcpy(save, store, new_line_size);
-	free(store);
-	return (save);
+	if (i == '\0')
+		return ((char *)s);
+	return (0);
 }
 
-static char	*actual_line(char *store)
+static char	*get_bkp(char *line)
 {
-	size_t	ret_size;
-	char	*ret;
-	size_t	len;
+	size_t	count;
+	char	*bkp;
 
-	if (!*store)
-		return (NULL);
-	len = 0;
-	while (store[len] && store[len] != '\n')
-		len++;
-	ret_size = (len + 2);
-	ret = malloc(ret_size);
-	if (!ret)
-		return (NULL);
-	ret_size = ft_strlcpy(ret, store, ret_size);
-	return (ret);
+	count = 0;
+	while (line[count] != '\n' && line[count] != '\0')
+		count++;
+	if (line[count] == '\0')
+		return (0);
+	bkp = ft_substr(line, count + 1, ft_strlen(line) - count);
+	if (*bkp == '\0')
+	{
+		free(bkp);
+		bkp = NULL;
+	}
+	line[count +1] = '\0';
+	return (bkp);
 }
 
-static char	*read_line(char *store, int fd)
+static char	*get_line(int fd, char *buf, char *backup)
 {
-	int		read_len;
-	char	*temp;
+	int		read_line;
+	char	*s_temp;
 
-	read_len = 1;
-	temp = malloc(BUFFER_SIZE + 1);
-	if (!temp)
-		return (NULL);
-	while (read_len > 0 && !ft_strchr(store, 10))
+	read_line = 1;
+	while (read_line != '\0')
 	{
-		read_len = read(fd, temp, BUFFER_SIZE);
-		if (read_len < 0)
-		{
-			free(temp);
-			return (NULL);
-		}
-		temp[read_len] = '\0';
-		store = ft_strjoin(store, temp);
+		read_line = read(fd, buf, BUFFER_SIZE);
+		if (read_line == -1)
+			return (0);
+		else if (read_line == 0)
+			break ;
+		buf[read_line] = '\0';
+		if (!bkp)
+			bkp = ft_strdup("");
+		s_temp = bkp;
+		bkp = ft_strjoin(s_temp, buf);
+		free(s_temp);
+		s_temp = NULL;
+		if (ft_check (buf, '\n'))
+			break ;
 	}
-	free(temp);
-	return (store);
+	return (bkp);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*store;
-	char		*ret;
+	static char	*bkp;
+	char		*buffer;
+	char		*line;
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE < 0)
 		return (NULL);
-	store = read_line(store, fd);
-	if (!store)
+	buffer = malloc(sizeof(char) * (BUFFER_SIZE +1));
+	if (!buffer)
 		return (NULL);
-	ret = actual_line(store);
-	store = save_new_line(store);
-	return (ret);
+	line = get_line(fd, buffer, bkp);
+	free(buffer);
+	if (!line)
+		return (NULL);
+	bkp = get_bkp(line);
+	return (line);
 }
