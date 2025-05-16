@@ -6,26 +6,28 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 00:09:32 by jveras            #+#    #+#             */
-/*   Updated: 2025/04/21 02:37:36 by jveras           ###   ########.fr       */
+/*   Updated: 2025/05/15 21:37:29 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/cube3d.h"
 #include "../../../includes/structs.h"
 
-void	right(t_program *program, int keycode)
+void	right(t_program *p, int key)
 {
-	double	oldViewDirX;
-	double	oldPlaneX;
+	double	old_dir;
+	double	old_plane;
 
-	if (keycode == 'd' || keycode == 'D' || keycode == 65363)
-	{
-		oldViewDirX = program->player.viewDirX;
-		program->player.viewDirX = program->player.viewDirX * cos(ROT_SPEED) - program->player.viewDirY * sin(ROT_SPEED);
-		program->player.viewDirY = oldViewDirX * sin(ROT_SPEED) + program->player.viewDirY * cos(ROT_SPEED);
-
-		oldPlaneX = program->raycast.camera.planeX;
-		program->raycast.camera.planeX = program->raycast.camera.planeX * cos(ROT_SPEED) - program->raycast.camera.planeY * sin(ROT_SPEED);
-		program->raycast.camera.planeY = oldPlaneX * sin(ROT_SPEED) + program->raycast.camera.planeY * cos(ROT_SPEED);
-	}
+	if (key != 'd' && key != 'D' && key != 65363)
+		return ;
+	old_dir = p->player.viewDirX;
+	p->player.viewDirX = old_dir * cos(ROT_SPEED)
+		- p->player.viewDirY * sin(ROT_SPEED);
+	p->player.viewDirY = old_dir * sin(ROT_SPEED)
+		+ p->player.viewDirY * cos(ROT_SPEED);
+	old_plane = p->raycast.camera.planeX;
+	p->raycast.camera.planeX = old_plane * cos(ROT_SPEED)
+		- p->raycast.camera.planeY * sin(ROT_SPEED);
+	p->raycast.camera.planeY = old_plane * sin(ROT_SPEED)
+		+ p->raycast.camera.planeY * cos(ROT_SPEED);
 }
