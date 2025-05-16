@@ -3,19 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   transform_image_floor_side.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
+/*   By: marcribe <marcribe@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 23:33:16 by jveras            #+#    #+#             */
-/*   Updated: 2025/04/23 02:48:56 by jveras           ###   ########.fr       */
+/*   Updated: 2025/05/15 21:01:57 by marcribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../includes/cube3d.h"
 
-void	transform_image_floor_side(t_program *program, t_casting *casting, int x, int y)
+void	transform_image_floor_side(t_program *program, t_casting *casting,
+			int x, int y)
 {
-	int color;
+	int	color;
 
-	color = get_color(program->ceilling_floor.c_f_textures[1], casting->tx, casting->ty);
+	color = get_color(program->ceilling_floor.c_f_textures[1],
+			casting->tx, casting->ty);
 	put_pixel(&program->main_image, x, y, color);
 }

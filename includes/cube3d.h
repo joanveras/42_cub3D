@@ -6,7 +6,7 @@
 /*   By: marcribe <marcribe@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 18:58:57 by marcribe          #+#    #+#             */
-/*   Updated: 2025/05/15 19:02:28 by marcribe         ###   ########.fr       */
+/*   Updated: 2025/05/15 20:39:16 by marcribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,14 @@
 # define INVALID_COLOR_FORMAT "Invalid color format\n"
 # define INVALID_RGB_RANGE "Invalid RGB range\n"
 # define FLOOR_TEXTURE "assets/textures/dark_browntile.xpm"
+# define KEY_W 119
+# define KEY_A 97
+# define KEY_S 115
+# define KEY_D 100
+# define KEY_UP 65362
+# define KEY_DOWN 65364
+# define KEY_LEFT 65361
+# define KEY_RIGHT 65363
 
 /*
 ** File validations

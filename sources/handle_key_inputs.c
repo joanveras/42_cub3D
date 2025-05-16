@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_key_inputs.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
+/*   By: marcribe <marcribe@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 16:30:17 by jveras            #+#    #+#             */
-/*   Updated: 2025/03/01 01:00:59 by jveras           ###   ########.fr       */
+/*   Updated: 2025/05/15 20:41:21 by marcribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,13 @@ int	handle_key_inputs(int keycode, t_program *program)
 {
 	if (keycode == ESC)
 		safe_exit(program);
-
-	foward(program, keycode);
-
-	backward(program, keycode);
-
-	right(program, keycode);
-	
-	left(program, keycode);
-
+	if (keycode == KEY_W)
+		foward(program, keycode);
+	if (keycode == KEY_S)
+		backward(program, keycode);
+	if (keycode == KEY_D)
+		right(program, keycode);
+	if (keycode == KEY_A)
+		left(program, keycode);
 	return (0);
 }
