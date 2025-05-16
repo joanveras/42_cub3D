@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcribe <marcribe@student.42.rio>         +#+  +:+       +#+        */
+/*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 18:58:57 by marcribe          #+#    #+#             */
-/*   Updated: 2025/05/15 19:02:28 by marcribe         ###   ########.fr       */
+/*   Updated: 2025/05/15 21:00:02 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,11 @@ void	error_message(t_program *program, const char *message);
 void	check_for_invalid_characters(t_program *program, char **map);
 void	check_path(t_program *program, char c1, char c2, char *line);
 void	check_abbrev(t_program *program, char *line, int *dir_counter);
+void	clean_and_error(t_program *p, char *s, char *l, int *r);
+void	remain_something(t_program *p, char *s, char *l, int *r);
+void	set_rgb(int *rgb, const char *s, int i);
+
+int		is_next_digit(t_program *p, const char *s);
 int		rgb_to_int(int *nums);
 int		*check_colors(t_program *program, char **map, int i);
 

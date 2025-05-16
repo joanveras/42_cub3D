@@ -6,7 +6,7 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 03:22:55 by jveras            #+#    #+#             */
-/*   Updated: 2025/04/23 01:31:34 by jveras           ###   ########.fr       */
+/*   Updated: 2025/05/15 21:06:24 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,9 @@ static void	check_for_duplicate_positions(t_program *program, int *counts)
 		error_message(program, "Duplicated player start positions in map");
 }
 
-static void initialize_counts(int *counts)
+static void	initialize_counts(int *counts)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < 4)
@@ -70,8 +70,8 @@ static void initialize_counts(int *counts)
 
 void	check_for_duplicates(t_program *program, char **map)
 {
-	int counts[4];
-	int i;
+	int	counts[4];
+	int	i;
 	int	j;
 
 	initialize_counts(counts);

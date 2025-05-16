@@ -6,41 +6,39 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 04:18:11 by jveras            #+#    #+#             */
-/*   Updated: 2025/04/21 05:04:43 by jveras           ###   ########.fr       */
+/*   Updated: 2025/05/15 21:13:14 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/libft.h"
 #include "../../../includes/cube3d.h"
 
-static char	**copy_map(char **map)
+static char	**copy_map(char **m)
 {
-	char	**copy;
+	char	**cpy;
 	int		i;
-	int		len;
+	int		l;
 
-	i = 0;
-	while (map[i])
-		i++;
-	len = i;
-	copy = malloc(sizeof(char *) * (len + 1));
-	if (!copy)
+	i = -1;
+	l = 0;
+	while (m[l])
+		l++;
+	cpy = malloc(sizeof(char *) * (l + 1));
+	if (!cpy)
 		return (NULL);
-	i = 0;
-	while (map[i])
+	while (++i < l)
 	{
-		copy[i] = ft_strdup(map[i]);
-		if (!copy[i])
+		cpy[i] = ft_strdup(m[i]);
+		if (!cpy[i])
 		{
 			while (--i >= 0)
-				free(copy[i]);
-			free(copy);
+				free(cpy[i]);
+			free(cpy);
 			return (NULL);
 		}
-		i++;
 	}
-	copy[i] = NULL;
-	return (copy);
+	cpy[i] = NULL;
+	return (cpy);
 }
 
 static void	free_map_copy(char **map)
@@ -58,53 +56,40 @@ static void	free_map_copy(char **map)
 
 static void	flood_fill(char **map, int x, int y, int *is_surrounded)
 {
-	if ((map[x][y] == ' ' || map[x][y] == '\t' || map[x][y] == '\n') ||
-		(x < 0 || y < 0 || !map[x] || !map[x][y]) ||
-		(map[x][y] == '1' || map[x][y] == 'F'))
-		return;
-
-	if ((x == 0 || y == 0 || !map[x + 1] || !map[x][y + 1]) ||
-		(map[x][y + 1] == ' ' || map[x][y - 1] == ' ') ||
-		(map[x + 1] && map[x + 1][y] == ' ') ||
-		(x > 0 && map[x - 1][y] == ' '))
+	if ((map[x][y] == ' ' || map[x][y] == '\t' || map[x][y] == '\n')
+		|| (x < 0 || y < 0 || !map[x] || !map[x][y])
+		|| (map[x][y] == '1' || map[x][y] == 'F'))
+		return ;
+	if ((x == 0 || y == 0 || !map[x + 1] || !map[x][y + 1])
+		|| (map[x][y + 1] == ' ' || map[x][y - 1] == ' ')
+		|| (map[x + 1] && map[x + 1][y] == ' ')
+		|| (x > 0 && map[x - 1][y] == ' '))
 		*is_surrounded = 0;
-
 	map[x][y] = 'F';
-
 	flood_fill(map, x + 1, y, is_surrounded);
 	flood_fill(map, x - 1, y, is_surrounded);
 	flood_fill(map, x, y + 1, is_surrounded);
 	flood_fill(map, x, y - 1, is_surrounded);
 }
 
-void	check_map_is_closed(t_program *program, char **map)
+void	check_map_is_closed(t_program *p, char **m)
 {
-	char	**map_copy;
-	int		i;
-	int		j;
-	int		is_surrounded;
-	
-	map_copy = copy_map(map);
-	if (!map_copy)
-		error_message(program, "Failed to copy map for validation");
-	
-	is_surrounded = 1;
-	i = 0;
-	while (map_copy[i]) {
-		j = 0;
-		while (map_copy[i][j]) {
-			if (map_copy[i][j] == '0') {
-				flood_fill(map_copy, i, j, &is_surrounded);
-				break;
-			}
-			j++;
-		}
-		if (!is_surrounded)
-			break;
-		i++;
+	char	**cpy;
+	int		i[3];
+
+	cpy = copy_map(m);
+	i[2] = 1;
+	if (!cpy)
+		error_message(p, "Failed to copy map");
+	i[0] = -1;
+	while (cpy[++i[0]] && i[2])
+	{
+		i[1] = -1;
+		while (cpy[i[0]][++i[1]] && i[2])
+			if (cpy[i[0]][i[1]] == '0')
+				flood_fill(cpy, i[0], i[1], &i[2]);
 	}
-	free_map_copy(map_copy);
-	if (!is_surrounded) {
-		error_message(program, "Map is not surrounded by walls");
-	}
+	free_map_copy(cpy);
+	if (!i[2])
+		error_message(p, "Map not surrounded by walls");
 }
