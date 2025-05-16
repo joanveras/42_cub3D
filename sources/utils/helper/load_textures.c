@@ -3,23 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   load_textures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
+/*   By: marcribe <marcribe@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 10:59:55 by jveras            #+#    #+#             */
-/*   Updated: 2025/04/23 00:20:08 by jveras           ###   ########.fr       */
+/*   Updated: 2025/05/15 21:29:33 by marcribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/cube3d.h"
 
-void	load_textures(t_program *program)
+static void	load_wall_texture(t_program *p, int index, char *path)
 {
-	load_texture(program->mlx, &program->wall_texture[0], program->textures.west);
-	load_texture_data(&program->wall_texture[0]);
-	load_texture(program->mlx, &program->wall_texture[1], program->textures.east);
-	load_texture_data(&program->wall_texture[1]);
-	load_texture(program->mlx, &program->wall_texture[2], program->textures.north);
-	load_texture_data(&program->wall_texture[2]);
-	load_texture(program->mlx, &program->wall_texture[3], program->textures.south);
-	load_texture_data(&program->wall_texture[3]);
+	load_texture(p->mlx, &p->wall_texture[index], path);
+	load_texture_data(&p->wall_texture[index]);
+}
+
+void	load_textures(t_program *p)
+{
+	load_wall_texture(p, 0, p->textures.west);
+	load_wall_texture(p, 1, p->textures.east);
+	load_wall_texture(p, 2, p->textures.north);
+	load_wall_texture(p, 3, p->textures.south);
 }

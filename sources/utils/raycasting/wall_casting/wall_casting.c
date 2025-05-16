@@ -3,52 +3,52 @@
 /*                                                        :::      ::::::::   */
 /*   wall_casting.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
+/*   By: marcribe <marcribe@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 18:26:48 by jveras            #+#    #+#             */
-/*   Updated: 2025/04/23 01:01:27 by jveras           ###   ########.fr       */
+/*   Updated: 2025/05/15 21:22:30 by marcribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../includes/cube3d.h"
 
-int	wall_casting(t_program *program)
+static void	init_ray(t_program *p, int x)
 {
-	int		x;
-	int		side;
-	int		lineHeight;
-	double	wallX;
+	p->raycast.ray_dir_x = p->player.view_dir_x + p->raycast.camera.plane_x
+		* (2 * x / (double)WINDOW_WIDTH - 1);
+	p->raycast.ray_dir_y = p->player.view_dir_y + p->raycast.camera.plane_y
+		* (2 * x / (double)WINDOW_WIDTH - 1);
+	p->map.x = (int)p->player.x;
+	p->map.y = (int)p->player.y;
+	p->raycast.delta_dist_x = fabs(1 / p->raycast.ray_dir_x);
+	p->raycast.delta_dist_y = fabs(1 / p->raycast.ray_dir_y);
+}
 
-	transform_c_f(program);
+static void	process_wall_column(t_program *p, int x, int *side)
+{
+	int		line_height;
+	double	wall_x;
 
-	x = 0;
-	while (x < WINDOW_WIDTH)
+	calc_step_and_initial_side_dist(p);
+	perform_dda(p, side);
+	calc_dist_of_perpendicular_ray(p, *side);
+	line_height = (int)(WINDOW_HEIGHT / p->raycast.perp_wall_dist);
+	calc_where_the_wall_was_hit(p, *side, &wall_x);
+	calc_vertical_line_and_transform_image(p, x, wall_x, line_height, *side);
+}
+
+int	wall_casting(t_program *p)
+{
+	int	x;
+	int	side;
+
+	transform_c_f(p);
+	x = -1;
+	while (++x < WINDOW_WIDTH)
 	{
-		program->raycast.rayDirX = program->player.viewDirX + program->raycast.camera.planeX * (2 * x / (double)WINDOW_WIDTH - 1);
-		program->raycast.rayDirY = program->player.viewDirY + program->raycast.camera.planeY * (2 * x / (double)WINDOW_WIDTH - 1);
-
-		program->map.x = (int)program->player.x;
-		program->map.y = (int)program->player.y;
-
-		program->raycast.deltaDistX = fabs(1 / program->raycast.rayDirX);
-		program->raycast.deltaDistY = fabs(1 / program->raycast.rayDirY);
-
-		calc_step_and_initial_side_dist(program);
-
-		perform_dda(program, &side);
-
-		calc_dist_of_perpendicular_ray(program, side);
-
-		lineHeight = (int)(WINDOW_HEIGHT / program->raycast.perpWallDist);
-		
-		calc_where_the_wall_was_hit(program, side, &wallX);
-		
-		calc_vertical_line_and_transform_image(program, x, wallX, lineHeight, side);
-		
-		x++;
+		init_ray(p, x);
+		process_wall_column(p, x, &side);
 	}
-
-	mlx_put_image_to_window(program->mlx, program->mlx_win, program->main_image.img_ptr, 0, 0);
-
+	mlx_put_image_to_window(p->mlx, p->mlx_win, p->main_image.img_ptr, 0, 0);
 	return (0);
 }

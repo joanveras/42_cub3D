@@ -3,65 +3,63 @@
 /*                                                        :::      ::::::::   */
 /*   calc_vertical_line_and_transform_image.c           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
+/*   By: marcribe <marcribe@student.42.rio>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 22:46:19 by jveras            #+#    #+#             */
-/*   Updated: 2025/04/23 01:33:10 by jveras           ###   ########.fr       */
+/*   Updated: 2025/05/15 21:27:05 by marcribe         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../includes/cube3d.h"
 
-static int	calc_draw_start(int lineHeight)
+static int	calc_draw_start(int line_height)
 {
-	int	drawStart;
+	int	draw_start;
 
-	drawStart = -lineHeight / 2 + WINDOW_HEIGHT / 2;
-	if (drawStart < 0)
-		drawStart = 0;
-	return (drawStart);
+	draw_start = -line_height / 2 + WINDOW_HEIGHT / 2;
+	if (draw_start < 0)
+		draw_start = 0;
+	return (draw_start);
 }
 
-static int	calc_draw_end(int lineHeight)
+static int	calc_draw_end(int line_height)
 {
-	int	drawEnd;
+	int	draw_end;
 
-	drawEnd = lineHeight / 2 + WINDOW_HEIGHT / 2;
-	if (drawEnd >= WINDOW_HEIGHT)
-		drawEnd = WINDOW_HEIGHT - 1;
-	return (drawEnd);
+	draw_end = line_height / 2 + WINDOW_HEIGHT / 2;
+	if (draw_end >= WINDOW_HEIGHT)
+		draw_end = WINDOW_HEIGHT - 1;
+	return (draw_end);
 }
 
-static int	calc_tex_pos_y(int y, int lineHeight)
+static int	calc_tex_pos_y(int y, int line_height)
 {
 	int	d;
-	int	texPosY;
+	int	tex_pos_y;
 
-	d = y * 256 - WINDOW_HEIGHT * 128 + lineHeight * 128;
-
-	texPosY = ((d * textureHeight) / lineHeight) / 256;
-
-	return (texPosY);
+	d = y * 256 - WINDOW_HEIGHT * 128 + line_height * 128;
+	tex_pos_y = ((d * TEXTURE_HEIGHT) / line_height) / 256;
+	return (tex_pos_y);
 }
 
-void	calc_vertical_line_and_transform_image(t_program *program, int x, double wallX, int lineHeight, int side)
+void	calc_vertical_line_and_transform_image(t_program *p, int x,
+			double wall_x, int line_height, int side)
 {
-	int	drawEnd;
-	int	texPosX;
 	int	y;
+	int	draw_end;
+	int	tex_pos_x;
 	int	color;
 
-	drawEnd = calc_draw_end(lineHeight);
-
-	texPosX = (int)(wallX * textureWidth) % textureWidth;
-
-	y = calc_draw_start(lineHeight);
-	while (y < drawEnd)
+	draw_end = calc_draw_end(line_height);
+	tex_pos_x = (int)(wall_x * TEXTURE_WIDTH) % TEXTURE_WIDTH;
+	y = calc_draw_start(line_height);
+	while (y < draw_end)
 	{
-		color = get_texel_color(program, program->wall_texture, texPosX, calc_tex_pos_y(y, lineHeight));
+		color = get_texel_color(p, p->wall_texture, tex_pos_x,
+				calc_tex_pos_y(y, line_height));
 		if (side == 1)
 			color = (color >> 1) & 8355711;
-		put_pixel(&program->main_image, x, y, color);
+		put_pixel(&p->main_image, x, y, color);
 		y++;
 	}
 }
