@@ -6,7 +6,7 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 15:37:31 by jveras            #+#    #+#             */
-/*   Updated: 2024/12/26 15:54:28 by jveras           ###   ########.fr       */
+/*   Updated: 2025/05/15 21:48:49 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ void	x11_connect(t_program *program)
 		exit(EXIT_FAILURE);
 	}
 	program->mlx_win = mlx_new_window(
-		program->mlx,
-		WINDOW_WIDTH,
-		WINDOW_HEIGHT,
-		"Cube3D"
-	);
+			program->mlx,
+			WINDOW_WIDTH,
+			WINDOW_HEIGHT,
+			"Cube3D"
+			);
 	if (!program->mlx_win)
 	{
 		write(STDERR_FILENO, "Failed to open a window!", 21);
