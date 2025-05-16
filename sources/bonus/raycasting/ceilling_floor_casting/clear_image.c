@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   clear_image.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcribe <marcribe@student.42.rio>         +#+  +:+       +#+        */
+/*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 23:19:32 by jveras            #+#    #+#             */
-/*   Updated: 2025/05/15 20:50:51 by marcribe         ###   ########.fr       */
+/*   Updated: 2025/05/16 16:53:25 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../../includes/cube3d.h"
+#include "../../../../includes/cub3D.h"
 
 void	clear_image(t_img_data *img, int color)
 {

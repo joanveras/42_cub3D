@@ -6,11 +6,11 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/04 00:08:34 by jveras            #+#    #+#             */
-/*   Updated: 2025/05/15 22:11:19 by jveras           ###   ########.fr       */
+/*   Updated: 2025/05/16 16:53:25 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/cube3d.h"
+#include "../../../includes/cub3D.h"
 #include "../../../includes/structs.h"
 
 void	backward(t_program *p, int key)

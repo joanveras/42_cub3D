@@ -6,12 +6,12 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/06 13:32:08 by jveras            #+#    #+#             */
-/*   Updated: 2025/05/15 22:20:24 by jveras           ###   ########.fr       */
+/*   Updated: 2025/05/16 16:53:25 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../includes/libft.h"
-#include "../../../../includes/cube3d.h"
+#include "../../../../includes/cub3D.h"
 
 static void	validate_rgb_format(t_program *p, char *l, int *r)
 {

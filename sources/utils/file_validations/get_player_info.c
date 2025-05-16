@@ -6,11 +6,11 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 01:13:47 by jveras            #+#    #+#             */
-/*   Updated: 2025/05/15 22:13:00 by jveras           ###   ########.fr       */
+/*   Updated: 2025/05/16 16:53:25 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../includes/cube3d.h"
+#include "../../../includes/cub3D.h"
 
 static void	save_player_pos(t_program *program, int x, int y)
 {

@@ -47,7 +47,7 @@ make minilibx && make bonus && make clean
 ./cub3D maps/map1.cub
 
 # Bonus version
-./bonus_cube3D maps/map1.cub
+./bonus_cub3D maps/map1.cub
 ```
 
 ## Controls

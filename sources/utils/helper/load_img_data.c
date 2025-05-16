@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   load_img_data.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcribe <marcribe@student.42.rio>         +#+  +:+       +#+        */
+/*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 20:00:06 by jveras            #+#    #+#             */
-/*   Updated: 2025/05/15 21:37:00 by marcribe         ###   ########.fr       */
+/*   Updated: 2025/05/16 16:53:25 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/libft.h"
-#include "../../../includes/cube3d.h"
+#include "../../../includes/cub3D.h"
 
 void	load_img_data(t_img_data *image)
 {

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ceilling_floor_casting.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcribe <marcribe@student.42.rio>         +#+  +:+       +#+        */
+/*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/22 23:07:03 by jveras            #+#    #+#             */
-/*   Updated: 2025/05/15 21:07:00 by marcribe         ###   ########.fr       */
+/*   Updated: 2025/05/16 16:53:25 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../../includes/cube3d.h"
+#include "../../../../includes/cub3D.h"
 
 static void	calculate_floor_step(t_casting *cast)
 {

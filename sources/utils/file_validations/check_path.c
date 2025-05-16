@@ -6,12 +6,12 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 17:58:20 by jveras            #+#    #+#             */
-/*   Updated: 2025/05/15 21:13:32 by jveras           ###   ########.fr       */
+/*   Updated: 2025/05/16 16:53:25 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/libft.h"
-#include "../../../includes/cube3d.h"
+#include "../../../includes/cub3D.h"
 
 static void	get_path(t_program *program, char c1, char c2, char *line)
 {

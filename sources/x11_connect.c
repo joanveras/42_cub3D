@@ -6,11 +6,11 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/26 15:37:31 by jveras            #+#    #+#             */
-/*   Updated: 2025/05/15 21:48:49 by jveras           ###   ########.fr       */
+/*   Updated: 2025/05/16 16:53:25 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/cube3d.h"
+#include "../includes/cub3D.h"
 
 void	x11_connect(t_program *program)
 {
@@ -24,7 +24,7 @@ void	x11_connect(t_program *program)
 			program->mlx,
 			WINDOW_WIDTH,
 			WINDOW_HEIGHT,
-			"Cube3D"
+			"cub3D"
 			);
 	if (!program->mlx_win)
 	{

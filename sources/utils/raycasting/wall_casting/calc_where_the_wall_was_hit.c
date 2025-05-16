@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   calc_where_the_wall_was_hit.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcribe <marcribe@student.42.rio>         +#+  +:+       +#+        */
+/*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 22:44:48 by jveras            #+#    #+#             */
-/*   Updated: 2025/05/15 21:45:54 by marcribe         ###   ########.fr       */
+/*   Updated: 2025/05/16 16:53:25 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../../includes/cube3d.h"
+#include "../../../../includes/cub3D.h"
 
 void	calc_where_the_wall_was_hit(t_program *p, int side, double *wall_x)
 {

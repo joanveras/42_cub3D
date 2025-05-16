@@ -6,12 +6,12 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 04:18:11 by jveras            #+#    #+#             */
-/*   Updated: 2025/05/15 21:13:14 by jveras           ###   ########.fr       */
+/*   Updated: 2025/05/16 16:53:25 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/libft.h"
-#include "../../../includes/cube3d.h"
+#include "../../../includes/cub3D.h"
 
 static char	**copy_map(char **m)
 {

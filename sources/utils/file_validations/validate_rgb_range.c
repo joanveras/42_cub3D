@@ -6,12 +6,12 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 18:27:15 by jveras            #+#    #+#             */
-/*   Updated: 2025/05/15 21:24:18 by jveras           ###   ########.fr       */
+/*   Updated: 2025/05/16 16:53:25 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/libft.h"
-#include "../../../includes/cube3d.h"
+#include "../../../includes/cub3D.h"
 
 void	validate_rgb_range(t_program *program, int *rgb)
 {

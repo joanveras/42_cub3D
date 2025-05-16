@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   calc_dist_of_perpendicular_ray.c                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcribe <marcribe@student.42.rio>         +#+  +:+       +#+        */
+/*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 22:43:40 by jveras            #+#    #+#             */
-/*   Updated: 2025/05/15 21:56:21 by marcribe         ###   ########.fr       */
+/*   Updated: 2025/05/16 16:53:25 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../../includes/cube3d.h"
+#include "../../../../includes/cub3D.h"
 
 void	calc_dist_of_perpendicular_ray(t_program *p, int side)
 {

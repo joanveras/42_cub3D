@@ -1,4 +1,4 @@
-NAME = cube3D.a
+NAME = cub3D.a
 
 SRCS =	$(wildcard sources/*.c) \
 		$(wildcard sources/libft/*.c) \
@@ -36,15 +36,15 @@ NC = \033[0m # No Color
 $(NAME): $(OBJS)
 	@echo -e "${BLUE}Creating archive $(NAME)...${NC}"
 	@ar rc $(NAME) $(OBJS)
-	@echo -e "${BLUE}Compiling executable cube3D...${NC}"
-	@$(CC) $(CFLAGS) -g main.c $(SRCS) -L minilibx-linux -lmlx_Linux -o cube3D -lX11 -lXext -lm
+	@echo -e "${BLUE}Compiling executable cub3D...${NC}"
+	@$(CC) $(CFLAGS) -g main.c $(SRCS) -L minilibx-linux -lmlx_Linux -o cub3D -lX11 -lXext -lm
 	@echo -e "${GREEN}Compilation finished.${NC}"
 
 bonus: $(NAME) $(BONUS_OBJS)
 	@echo -e "${BLUE}Creating archive $(NAME) with bonus...${NC}"
 	@ar rc $(NAME) $(OBJS) $(BONUS_OBJS)
-	@echo -e "${BLUE}Compiling executable bonus_cube3D...${NC}"
-	@$(CC) $(CFLAGS) -fsanitize=address -g bonus_main.c $(SRCS) $(BONUS_SRCS) -L minilibx-linux -lmlx_Linux -o bonus_cube3D -lX11 -lXext -lm
+	@echo -e "${BLUE}Compiling executable bonus_cub3D...${NC}"
+	@$(CC) $(CFLAGS) -fsanitize=address -g bonus_main.c $(SRCS) $(BONUS_SRCS) -L minilibx-linux -lmlx_Linux -o bonus_cub3D -lX11 -lXext -lm
 	@echo -e "${GREEN}Bonus compilation finished.${NC}"
 
 %.o: %.c
@@ -61,7 +61,7 @@ clean:
 fclean: clean
 	@echo -e "${YELLOW}Cleaning all generated files...${NC}"
 	@$(RM) $(NAME)
-	@$(RM) cube3D bonus_cube3D
+	@$(RM) cub3D bonus_cub3D
 	@echo -e "${GREEN}All generated files cleaned.${NC}"
 
 re: fclean all
