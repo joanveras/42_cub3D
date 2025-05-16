@@ -6,7 +6,7 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 04:18:11 by jveras            #+#    #+#             */
-/*   Updated: 2025/05/16 16:53:25 by jveras           ###   ########.fr       */
+/*   Updated: 2025/05/16 17:19:47 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,13 @@ static void	free_map_copy(char **map)
 
 static void	flood_fill(char **map, int x, int y, int *is_surrounded)
 {
-	if ((map[x][y] == ' ' || map[x][y] == '\t' || map[x][y] == '\n')
-		|| (x < 0 || y < 0 || !map[x] || !map[x][y])
-		|| (map[x][y] == '1' || map[x][y] == 'F'))
+	if (x < 0 || y < 0 || !map[x] || !map[x][y])
 		return ;
-	if ((x == 0 || y == 0 || !map[x + 1] || !map[x][y + 1])
-		|| (map[x][y + 1] == ' ' || map[x][y - 1] == ' ')
+	if (map[x][y] == ' ' || map[x][y] == '\t' || map[x][y] == '\n'
+		|| map[x][y] == '1' || map[x][y] == 'F')
+		return ;
+	if (x == 0 || y == 0 || !map[x + 1] || !map[x][y + 1]
+		|| map[x][y + 1] == ' ' || (y > 0 && map[x][y - 1] == ' ')
 		|| (map[x + 1] && map[x + 1][y] == ' ')
 		|| (x > 0 && map[x - 1][y] == ' '))
 		*is_surrounded = 0;
