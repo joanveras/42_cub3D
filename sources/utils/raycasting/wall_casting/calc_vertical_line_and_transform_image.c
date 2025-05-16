@@ -3,21 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   calc_vertical_line_and_transform_image.c           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcribe <marcribe@student.42.rio>         +#+  +:+       +#+        */
+/*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 22:46:19 by jveras            #+#    #+#             */
-/*   Updated: 2025/05/15 21:54:31 by marcribe         ###   ########.fr       */
+/*   Updated: 2025/05/15 22:33:20 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../../includes/cube3d.h"
-
-typedef struct s_wall_params {
-	int		x;
-	double	wall_x;
-	int		line_height;
-	int		side;
-}	t_wall_params;
 
 static int	calc_draw_start(int line_height)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   validate_file.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcribe <marcribe@student.42.rio>         +#+  +:+       +#+        */
+/*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 21:58:58 by marcribe          #+#    #+#             */
-/*   Updated: 2025/05/15 21:59:06 by marcribe         ###   ########.fr       */
+/*   Updated: 2025/05/15 22:17:06 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,6 @@ static void	init_crucial_variables(t_program *p)
 	p->textures.west = NULL;
 }
 
-static void	perform_map_checks(t_program *p, int i)
-{
-	p->map.map = &p->map.whole_file[i];
-	check_for_invalid_characters(p, p->map.map);
-	check_for_duplicates(p, p->map.map);
-	check_map_is_closed(p, p->map.map);
-	get_player_info(p, p->map.map);
-}
-
 void	validate_file(t_program *program)
 {
 	int	i;
@@ -40,7 +31,7 @@ void	validate_file(t_program *program)
 	i = 0;
 	check_first_info(program, &i);
 	program->map.map = &program->map.whole_file[i];
-	check_for_invalid_characthers(program, program->map.map);
+	check_for_invalid_characters(program, program->map.map);
 	check_for_duplicates(program, program->map.map);
 	check_map_is_closed(program, program->map.map);
 	get_player_info(program, program->map.map);

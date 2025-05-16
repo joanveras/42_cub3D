@@ -3,12 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   get_texel_color.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcribe <marcribe@student.42.rio>         +#+  +:+       +#+        */
+/*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/30 01:17:31 by jveras            #+#    #+#             */
-/*   Updated: 2025/05/15 21:34:24 by marcribe         ###   ########.fr       */
+/*   Updated: 2025/05/15 22:10:59 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "../../../includes/cube3d.h"
 
 int	get_color(t_texture_data tex, int tex_pos_x, int tex_pos_y)
 {

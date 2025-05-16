@@ -7,6 +7,7 @@ SRCS =	$(wildcard sources/*.c) \
 		$(wildcard sources/utils/helper/*.c) \
 		$(wildcard sources/utils/input_keys/*.c) \
 		$(wildcard sources/utils/file_validations/*.c) \
+		$(wildcard sources/utils/file_validations/utils_check_colors/*.c) \
 		$(wildcard sources/utils/raycasting/wall_casting/*.c)
 
 BONUS_SRCS =	$(wildcard sources/bonus/*.c) \

@@ -6,7 +6,7 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 01:13:47 by jveras            #+#    #+#             */
-/*   Updated: 2025/04/21 16:25:56 by jveras           ###   ########.fr       */
+/*   Updated: 2025/05/15 22:13:00 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@ static void	save_player_pos(t_program *program, int x, int y)
 
 static void	save_view_dir(t_program *program, double dirX, double dirY)
 {
-	program->player.viewDirX = dirX;
-	program->player.viewDirY = dirY;
+	program->player.view_dir_x = dirX;
+	program->player.view_dir_y = dirY;
 }
 
 static void	save_perp_planes(t_program *program, double planeX, double planeY)
 {
-	program->raycast.camera.planeX = planeX;
-	program->raycast.camera.planeY = planeY;
+	program->raycast.camera.plane_x = planeX;
+	program->raycast.camera.plane_y = planeY;
 }
 
 // The view direction must be perpendicular to the planes!

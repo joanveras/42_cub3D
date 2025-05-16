@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcribe <marcribe@student.42.rio>         +#+  +:+       +#+        */
+/*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 17:58:30 by marcribe          #+#    #+#             */
-/*   Updated: 2025/05/15 18:54:06 by marcribe         ###   ########.fr       */
+/*   Updated: 2025/05/15 22:33:02 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,24 @@
 # define STRUCTS_H
 
 # include <stdint.h>
+
+/*
+** New struct for draw parameters
+*/
+typedef struct s_draw_params
+{
+	int		x;
+	double	wall_x;
+	int		line_height;
+	int		side;
+}	t_draw_params;
+
+typedef struct s_wall_params {
+	int		x;
+	double	wall_x;
+	int		line_height;
+	int		side;
+}	t_wall_params;
 
 typedef enum e_hook_events
 {
@@ -115,5 +133,28 @@ typedef struct s_step
 	int	x;
 	int	y;
 }	t_step;
+
+typedef struct s_map
+{
+	char	**whole_file;
+	char	**map;
+	int		x;
+	int		y;
+	t_step	step;
+}	t_map;
+
+typedef struct s_program
+{
+	void				*mlx;
+	void				*mlx_win;
+	int					texture_index;
+	t_ceilling_floor	ceilling_floor;
+	t_textures			textures;
+	t_texture_data		wall_texture[4];
+	t_img_data			main_image;
+	t_player			player;
+	t_raycasting		raycast;
+	t_map				map;
+}	t_program;
 
 #endif

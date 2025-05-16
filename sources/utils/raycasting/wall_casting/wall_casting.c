@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wall_casting.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marcribe <marcribe@student.42.rio>         +#+  +:+       +#+        */
+/*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/29 18:26:48 by jveras            #+#    #+#             */
-/*   Updated: 2025/05/15 21:22:30 by marcribe         ###   ########.fr       */
+/*   Updated: 2025/05/15 22:41:16 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,12 @@ static void	process_wall_column(t_program *p, int x, int *side)
 	calc_dist_of_perpendicular_ray(p, *side);
 	line_height = (int)(WINDOW_HEIGHT / p->raycast.perp_wall_dist);
 	calc_where_the_wall_was_hit(p, *side, &wall_x);
-	calc_vertical_line_and_transform_image(p, x, wall_x, line_height, *side);
+	calc_vertical_line_and_transform_image(p, &(t_wall_params){
+		.x = x,
+		.wall_x = wall_x,
+		.line_height = line_height,
+		.side = *side
+	});
 }
 
 int	wall_casting(t_program *p)

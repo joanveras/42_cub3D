@@ -6,7 +6,7 @@
 /*   By: jveras <jveras@student.42.rio>             +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 18:58:57 by marcribe          #+#    #+#             */
-/*   Updated: 2025/05/15 21:23:58 by jveras           ###   ########.fr       */
+/*   Updated: 2025/05/15 22:46:02 by jveras           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,20 +77,19 @@ int		handle_key_inputs(int keycode, t_program *program);
 /*
 ** Raycasting functions
 */
+int		wall_casting(t_program *program);
 void	calc_texel_point(t_casting *casting);
+int		bonus_wall_casting(t_program *program);
 void	clear_image(t_img_data *img, int color);
 void	ceiling_floor_casting(t_program *program);
-void	calc_row_distance(t_program *program, t_casting *casting, int y);
-void	transform_image_floor(t_program *program, t_casting *casting);
-void	transform_image_ceiling(t_program *program, t_casting *casting);
 void	perform_dda(t_program *program, int *side);
 void	calc_step_and_initial_side_dist(t_program *program);
-void	calc_dist_of_perpendicular_ray(t_program *program, int side);
-void	calc_wall_hit(t_program *program, int side, double *wall_x);
-void	draw_vertical_line(t_program *program, t_draw_params *params);
-int		wall_casting(t_program *program);
-int		bonus_wall_casting(t_program *program);
 int		get_color(t_texture_data tex, int tex_pos_x, int tex_pos_y);
+void	calc_dist_of_perpendicular_ray(t_program *program, int side);
+void	calc_row_distance(t_program *program, t_casting *casting, int y);
+void	calc_where_the_wall_was_hit(t_program *p, int side, double *wall_x);
+void	calc_vertical_line_and_transform_image(t_program *p,
+			t_wall_params *params);
 
 /*
 ** Helper functions
@@ -107,20 +106,10 @@ void	load_texture(void *mlx, t_texture_data *texture, char *path);
 void	load_img(void *mlx, t_img_data *image, int width, int height);
 int		get_texel_color(t_program *program, t_texture_data *tex,
 			int tex_pos_x, int tex_pos_y);
+
 void	x11_connect(t_program *program);
 int		safe_exit(t_program *program);
 int		bonus_safe_exit(t_program *program);
 char	**open_file(char *path);
-
-/*
-** New struct for draw parameters
-*/
-typedef struct s_draw_params
-{
-	int		x;
-	double	wall_x;
-	int		line_height;
-	int		side;
-}	t_draw_params;
 
 #endif
